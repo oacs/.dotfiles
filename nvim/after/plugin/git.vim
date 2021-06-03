@@ -1,5 +1,4 @@
 " GIT
-nmap h <nop>
 nmap <leader>gs :G<CR>
 nmap <leader>gp :G push<CR>
 nmap <leader>gP :G push -f<CR>
