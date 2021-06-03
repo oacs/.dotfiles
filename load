@@ -9,3 +9,7 @@ for f in `find . -regex ".*\.vim$\|.*\.lua$"`; do
     ln -s ~/dotfiles/$f ~/.config/$f
     echo ~/.config/$f
 done
+
+rm -rf ~/.tmux.conf.local
+ln -s ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
+
