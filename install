@@ -6,7 +6,7 @@ read REPLAY
 
 if [ "$REPLAY" == "y" ] 
 then
-        zypper -n install ninja libtool autoconf automake cmake gcc-c++ gettext-tools git zsh tmux curl
+        zypper -n install ninja libtool autoconf automake cmake gcc-c++ gettext-tools git zsh tmux curl ripgrep
 fi
 
 # neovim
