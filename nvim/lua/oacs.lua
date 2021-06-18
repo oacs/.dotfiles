@@ -27,6 +27,10 @@ require'lspconfig'.tsserver.setup{
 require'lspconfig'.vimls.setup{
   capabilities = capabilities,
 }
+require'lspconfig'.html.setup {
+  capabilities = capabilities,
+}
+
 
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 local sumneko_root_path = "/home/oacs/lua-language-server"
@@ -85,3 +89,22 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = { enable = true },
   textobjects = { enable = true },
 }
+
+require("harpoon").setup{
+    global_settings = {
+        save_on_toggle = false,
+        save_on_change = true,
+    },
+     projects = {
+        -- Yes $HOME works
+        ["$HOME/dev/admin-portal"] = {
+            term = {
+                cmds = {
+                    "./frontend && npm start",
+                    "./backend && npm run start:ubuntu",
+                }
+            }
+        }
+    }
+}
+

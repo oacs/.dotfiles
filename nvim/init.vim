@@ -36,6 +36,10 @@ Plug 'ryanoasis/vim-devicons'
 " Files utils
 Plug 'tpope/vim-eunuch'
 
+Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
+Plug 'nvim-lua/popup.nvim'
+Plug 'ThePrimeagen/harpoon'
+
 call plug#end()
 
 lua require('oacs')
