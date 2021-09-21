@@ -5,10 +5,14 @@ nmap <Leader>t :tabnew<CR>
 nmap <Leader>p <C-w>
 nmap <Leader>cp :let @* = expand("%")<CR>
 nmap <Leader>bp :bp<CR>
+nmap <Leader>bb :buffers<CR>
+nmap <Leader>bd :bd<CR>
+nmap <Leader>bw :bw<CR>
 nmap <Leader>bn :bn<CR>
 nmap <Leader>; :Neoformat <CR>
 tnoremap <Esc> <C-\><C-n>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+xnoremap <leader>p "_dP
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search

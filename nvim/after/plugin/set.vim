@@ -21,8 +21,6 @@ set updatetime=50
 
 syntax enable
 
-highlight link CompeDocumentation NormalFloat
-
 let g:symbols_outline = {
     \ "highlight_hovered_item": v:true,
     \ "show_guides": v:true,

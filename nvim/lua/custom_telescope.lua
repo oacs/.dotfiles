@@ -5,6 +5,15 @@ M.search_todos = function()
                 search = "[T|t][O|o][D|d][O|o]([S|s]?)|(@?[O|o][A|a][C|c][S|s])"
        })
 end
+
+M.search_dotfiles = function()
+    require("telescope.builtin").find_files({
+        prompt_title = "< VimRC >",
+       cwd = "~/dotfiles",
+   })
+end
+
+
 -- todo
 -- oacs
 -- @oacs

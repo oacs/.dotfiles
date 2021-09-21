@@ -14,6 +14,7 @@ set sts=2
 set ignorecase
 set et     "expand tabs to spaces
 set path+=**
+set hidden
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

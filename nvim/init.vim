@@ -11,7 +11,17 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Plebvim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+" Complete
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+
+" Install snippet engine (This example installs [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip))
+" For vsnip user.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
+" Install the buffer completion source
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
