@@ -30,7 +30,7 @@ createSession() {
     window=$2
     shift
     shift
-    cmd="tmux new -s $session -d -n $window $@ > /dev/null 2>&1"
+    cmd="tmux new -s $session -d -n $window $@"
 
     echo "Creating Session: $cmd"
     eval $cmd
@@ -48,22 +48,18 @@ while [ "$#" -gt 0 ]; do
     case "$curr" in
     "-a")
         echo $ADTAL
-        createSession adtal adtal -c $ADTAL  " nvim ."
-        createWindow adtal frontA -c $ADTAL_FRONT " npm run start"
-        createWindow adtal backA -c $ADTAL_BACK " npm run start:ubuntu"
-        createWindow adtal sandbox -c $SANDBOX " nvim ."
+        createSession adtal adtal -c $ADTAL
         attachSession adtal
         ;;
     "-b")
-        createSession backend back -c $BACK " nvim ."
-        createWindow backend console -c $BACK " npm run start:ubuntu"
+        createSession backend back -c $BACK
+        createWindow backend console -c $BACK
         attachSession back
         ;;
 
     "-f")
         createSession frontend primary
-        createWindow frontend front -c $FRONT
-        createWindow frontend console -c $FRONT "npm run start:ubuntu"
+        createWindow frontend console -c $FRONT
         attachSession front
         ;;
 
