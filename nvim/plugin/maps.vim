@@ -2,7 +2,7 @@ let mapleader=" "
 nmap <Leader>q :q<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>t :tabnew<CR>
-nmap <Leader>p <C-w>
+nmap <Leader>[ <C-w>
 nmap <Leader>cp :let @* = expand("%")<CR>
 nmap <Leader>bp :bp<CR>
 nmap <Leader>bn :bn<CR>
@@ -18,3 +18,14 @@ map <left> <nop>
 map <right> <nop>
 " Easy quick of insert mode
 imap jj <Esc>
+
+" greatest remap ever
+xnoremap <leader>p "_dP
+
+" next greatest remap ever : asbjornHaland
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y gg"+yG
+
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d

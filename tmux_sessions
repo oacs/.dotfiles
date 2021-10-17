@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+PERSONAL_SESSION="oacs"
+DOTFILE="~/dotfiles"
+ADTAL="~/dev/adtal"
+ADTAL_FRONT="~/dev/adtal/frontend"
+ADTAL_BACK="~/dev/adtal/backend"
+BACK="~/dev/back"
+FRONT="~/dev/front"
+SANDBOX="~/dev/playground"
+
+createWindow() {
+    session=$1
+    window=$2
+    shift
+    shift
+    hasWindow=$(tmux list-windows -t $session | grep "$window")
+    if [ -z "$hasWindow" ]; then
+        cmd="tmux neww -t $session: -n $window -d"
+        if [ $# -gt 0 ]; then
+            cmd="$cmd $@"
+        fi
+        echo "Creating Window(\"$hasWindow\"): $cmd"
+        eval $cmd
+    fi
+}
+
+createSession() {
+    session=$1
+    window=$2
+    shift
+    shift
+    cmd="tmux new -s $session -d -n $window $@"
+
+    echo "Creating Session: $cmd"
+    eval $cmd
+}
+
+attachSession() {
+    session=$1
+    eval "tmux attach -t $session"
+}
+
+while [ "$#" -gt 0 ]; do
+    curr=$1
+    shift
+
+    case "$curr" in
+    "-a")
+        echo $ADTAL
+        createSession adtal adtal -c $ADTAL
+        attachSession adtal
+        ;;
+    "-b")
+        createSession backend back -c $BACK
+        createWindow backend console -c $BACK
+        attachSession back
+        ;;
+
+    "-f")
+        createSession frontend primary
+        createWindow frontend console -c $FRONT
+        attachSession front
+        ;;
+
+    "-s")
+        createSession $PERSONAL_SESSION primary -c "~"
+        createWindow $PERSONAL_SESSION oacs -c "~"
+        createWindow $PERSONAL_SESSION dotfiles -c $SANDBOX
+        attachSession oacs
+        ;;
+
+    *) echo "Unavailable command... $curr"
+    esac
+done
