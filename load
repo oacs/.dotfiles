@@ -2,9 +2,10 @@
 mkdir -p ~/.config/nvim/plugin
 mkdir -p ~/.config/nvim/after/plugin
 mkdir -p ~/.config/nvim/lua
+mkdir -p ~/.config/nvim/lua/plugin
 
 # link wholesale
-for f in `find . -regex ".*\.vim$\|.*\.lua$"`; do
+for f in `find . -regex "\.\/nvim\/.*\..*"`; do
     rm -rf ~/.config/$f
     ln -s ~/dotfiles/$f ~/.config/$f
     echo ~/.config/$f
