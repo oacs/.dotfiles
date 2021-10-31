@@ -3,9 +3,9 @@ call plug#begin('~/.vim/plugged')
 " Themes
 "Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
+Plug 'glepnir/dashboard-nvim'
 
 " Telescope
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
@@ -24,7 +24,6 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
 " Install the buffer completion source
-Plug 'kabouzeid/nvim-lspinstall'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
 
@@ -35,7 +34,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'easymotion/vim-easymotion' " Jump
 
 " Git
-Plug 'ThePrimeagen/git-worktree.nvim'
+"Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'tpope/vim-fugitive'
 
 " Prettier
@@ -48,14 +47,17 @@ Plug 'ryanoasis/vim-devicons'
 " Files utils
 Plug 'tpope/vim-eunuch'
 
-Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
 Plug 'nvim-lua/popup.nvim'
 Plug 'ThePrimeagen/harpoon'
+
+" Delete ( ) [ ] { } without inner content
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
 lua require('oacs')
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+
+lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 let g:symbols_outline = {
     \ "highlight_hovered_item": v:true,
@@ -79,10 +81,15 @@ augroup END
 
 augroup THE_PRIMEAGEN
     autocmd!
+    autocmd BufWritePre lua,vua,typescript,ts,cpp,c,h,hpp,cxx,cc Neoformat
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END
 
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
 " themes
 "colorscheme onedark
 colorscheme gruvbox
