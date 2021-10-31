@@ -36,3 +36,5 @@ let g:symbols_outline = {
     \ },
     \ "lsp_blacklist": [],
 \ }
+
+let g:neoformat_enabled_typescript = ['eslint_d']

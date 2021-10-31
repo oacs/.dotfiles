@@ -13,7 +13,6 @@ M.search_dotfiles = function()
    })
 end
 
-
 -- todo
 -- oacs
 -- @oacs
