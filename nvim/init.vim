@@ -50,14 +50,16 @@ Plug 'tpope/vim-eunuch'
 Plug 'nvim-lua/popup.nvim'
 Plug 'ThePrimeagen/harpoon'
 
+
+" Learning to use from here to down
+Plug 'mbbill/undotree'
+Plug 'code-biscuits/nvim-biscuits'
 " Delete ( ) [ ] { } without inner content
 Plug 'tpope/vim-surround'
-
 call plug#end()
 
 lua require('oacs')
 
-lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 let g:symbols_outline = {
     \ "highlight_hovered_item": v:true,
@@ -74,6 +76,7 @@ let g:symbols_outline = {
     \ },
     \ "lsp_blacklist": [],
 \ }
+
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
@@ -88,7 +91,7 @@ augroup END
 
 augroup fmt
   autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
+  autocmd BufWritePre *lua,vue,typescript,ts,cpp,c,h,hpp,cxx,cc undojoin | Neoformat
 augroup END
 " themes
 "colorscheme onedark

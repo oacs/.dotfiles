@@ -7,7 +7,7 @@ nmap <Leader>cp :let @* = expand("%")<CR>
 nmap <Leader>bp :bp<CR>
 nmap <Leader>bn :bn<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
+nnoremap <F5> :UndotreeToggle<CR>
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>

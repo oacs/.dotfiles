@@ -17,6 +17,7 @@ set path+=**
 set hidden
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set fml=16
 let g:dashboard_default_executive ='telescope'
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

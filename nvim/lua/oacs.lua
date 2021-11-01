@@ -17,6 +17,30 @@ local opts = {
 	show_guides = true,
 }
 
+require("nvim-treesitter.configs").setup({
+	ensure_installed = "maintained",
+	indent = { enable = true },
+	highlight = { enable = true },
+	incremental_selection = { enable = true },
+	textobjects = { enable = true },
+})
+
+require("nvim-biscuits").setup({
+	default_config = {
+		max_length = 12,
+		min_distance = 5,
+		prefix_string = " 📎 ",
+	},
+	language_config = {
+		html = {
+			prefix_string = " 🌐 ",
+		},
+		javascript = {
+			prefix_string = " ✨ ",
+			max_length = 80,
+		},
+	},
+})
 require("symbols-outline").setup(opts)
 
 require("nvim-treesitter.install").compilers = { "tsserver", "vuels" }
