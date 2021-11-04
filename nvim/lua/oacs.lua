@@ -26,7 +26,9 @@ require("nvim-treesitter.configs").setup({
 })
 
 require("nvim-biscuits").setup({
+	toggle_keybind = "<leader>bt",
 	default_config = {
+		disabled = true,
 		max_length = 12,
 		min_distance = 5,
 		prefix_string = " 📎 ",
