@@ -14,9 +14,11 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'neovim/nvim-lspconfig'
 
 " Complete
+Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-path'
+Plug 'onsails/lspkind-nvim'
 
 " Install snippet engine (This example installs [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip))
 " For vsnip user.
@@ -82,16 +84,9 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
-augroup THE_PRIMEAGEN
-    autocmd!
-    autocmd BufWritePre lua,vua,typescript,ts,cpp,c,h,hpp,cxx,cc Neoformat
-    autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-augroup END
-
 augroup fmt
   autocmd!
-  autocmd BufWritePre *lua,vue,typescript,ts,cpp,c,h,hpp,cxx,cc undojoin | Neoformat
+  autocmd BufWritePre *.\(lua\|vue\|js\|ts\|go\|html\|css\) undojoin | Neoformat
 augroup END
 " themes
 "colorscheme onedark

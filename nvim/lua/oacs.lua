@@ -45,7 +45,7 @@ require("nvim-biscuits").setup({
 })
 require("symbols-outline").setup(opts)
 
-require("nvim-treesitter.install").compilers = { "tsserver", "vuels" }
+require("nvim-treesitter.install").compilers = { "tsserver", "vuels", "lua", "gopls" }
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
