@@ -56,6 +56,13 @@ Plug 'mbbill/undotree'
 Plug 'code-biscuits/nvim-biscuits'
 " Delete ( ) [ ] { } without inner content
 Plug 'tpope/vim-surround'
+
+Plug 'xiyaowong/nvim-transparent'
+
+Plug 'github/copilot.vim'
+
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 call plug#end()
 
 lua require('oacs')
@@ -82,17 +89,11 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
-augroup THE_PRIMEAGEN
-    autocmd!
-    autocmd BufWritePre lua,vua,typescript,ts,cpp,c,h,hpp,cxx,cc Neoformat
-    autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-augroup END
-
 augroup fmt
   autocmd!
-  autocmd BufWritePre *lua,vue,typescript,ts,cpp,c,h,hpp,cxx,cc undojoin | Neoformat
+  autocmd BufWritePre * undojoin | Neoformat
 augroup END
+
 " themes
 "colorscheme onedark
 colorscheme gruvbox
