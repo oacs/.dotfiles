@@ -1,8 +1,8 @@
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local lsp_servers = { "tsserver", "vimls", "vuels" }
+local lsp_servers = { "tsserver", "vimls", "vuels", "gopls" }
 for _, server in ipairs(lsp_servers) do
-	-- require("lspconfig")[server].setup({ capabilities = capabilities })
+	 require("lspconfig")[server].setup({ capabilities = capabilities })
 end
 
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use

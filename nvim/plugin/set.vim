@@ -15,7 +15,7 @@ set ignorecase
 set et     "expand tabs to spaces
 set path+=**
 set hidden
-set foldmethod=expr
+set foldmethod=manual
 set foldexpr=nvim_treesitter#foldexpr()
 set fml=16
 let g:dashboard_default_executive ='telescope'
