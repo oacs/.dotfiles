@@ -37,8 +37,8 @@ let g:symbols_outline = {
     \ "lsp_blacklist": [],
 \ }
 
-let g:neoformat_enabled_typescript = ['eslint_d', 'prettier']
-let g:neoformat_enabled_vue = ['eslint_d', 'prettier']
+let g:neoformat_enabled_typescript = ['eslint_d']
+let g:neoformat_enabled_vue = ['prettier', 'eslint_d']
 let g:neoformat_enabled_javascript = [ 'prettier']
 let g:neoformat_enabled_lua = [ 'prettier']
 let g:neoformat_enabled_vim = [ 'prettier']

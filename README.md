@@ -1,7 +1,15 @@
 # dotfiles
+
 Dotfiles for linux systems
 
+# List of utils
 
-## TODOS
+## Console
 
-- Config dashboard
+lf - file manager
+gdu - disk usage tool
+NetworkManager - network tool
+
+## Apps
+
+flameshot - screenshots

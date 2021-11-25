@@ -1,9 +1,6 @@
-local wezterm = require 'wezterm';
+-- local wezterm = require 'wezterm';
 return {
-         font_dirs = {"/usr/share/fonts/OTF", "~/.fonts"},
-        font = wezterm.font_with_fallback({
-    "PowerlineSymbols",
-  }),
+  font_dirs = {"/usr/share/fonts/OTF", "~/.fonts"},
   font_size = 16.0,
   color_scheme = "Brogrammer",
   default_prog = {"/usr/bin/zsh"},

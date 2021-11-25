@@ -12,6 +12,18 @@ for f in `find . -regex "\.\/nvim\/.*\..*" | sed "s/\.\///g"`; do
     echo /home/oacs/.config/$f
 done
 
-rm -rf /home/oacs/tmux.conf.local
-ln -s /home/oacs/.dotfiles/.tmux.conf.local /home/oacs/.tmux.conf.local
+ln -sf /home/oacs/.dotfiles/.tmux.conf.local /home/oacs/.tmux.conf.local
+
+
+mkdir -p /home/oacs/.config/wezterm
+mkdir -p /home/oacs/.config/bspwm
+mkdir -p /home/oacs/.config/sxhkd
+mkdir -p /home/oacs/.config/polybar
+ln -sf /home/oacs/.dotfiles/wezterm/wezterm.lua /home/oacs/.config/wezterm/wezterm.lua
+ln -sf /home/oacs/.dotfiles/bspwm/bspwmrc /home/oacs/.config/bspwm/bspwmrc
+ln -sf /home/oacs/.dotfiles/bspwm/sxhkdrc /home/oacs/.config/sxhkd/sxhkdrc
+ln -sf /home/oacs/.dotfiles/polybar/config /home/oacs/.config/polybar/config
+ln -sf /home/oacs/.dotfiles/ta /home/oacs/bin
+ln -sf /home/oacs/.dotfiles/ta /usr/local/bin/ta
+ln -sf /home/oacs/.dotfiles/.zshrc /home/oacs/.zshrc
 
