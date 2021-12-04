@@ -58,6 +58,13 @@ Plug 'mbbill/undotree'
 Plug 'code-biscuits/nvim-biscuits'
 " Delete ( ) [ ] { } without inner content
 Plug 'tpope/vim-surround'
+
+Plug 'xiyaowong/nvim-transparent'
+
+Plug 'github/copilot.vim'
+
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 call plug#end()
 
 lua require('oacs')
@@ -88,6 +95,7 @@ augroup fmt
   autocmd!
   autocmd BufWritePre *.\(lua\|vue\|js\|ts\|go\|html\|css\) undojoin | Neoformat
 augroup END
+
 " themes
 "colorscheme onedark
 colorscheme gruvbox

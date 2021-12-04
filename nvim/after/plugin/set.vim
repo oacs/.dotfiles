@@ -1,7 +1,7 @@
 set number
 set mouse=a
 set numberwidth=1
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set showcmd
 set ruler
 set encoding=UTF-8
@@ -38,3 +38,8 @@ let g:symbols_outline = {
 \ }
 
 let g:neoformat_enabled_typescript = ['eslint_d']
+let g:neoformat_enabled_vue = ['prettier', 'eslint_d']
+let g:neoformat_enabled_javascript = [ 'prettier']
+let g:neoformat_enabled_lua = [ 'prettier']
+let g:neoformat_enabled_vim = [ 'prettier']
+let g:neoformat_run_all_formatters = 1

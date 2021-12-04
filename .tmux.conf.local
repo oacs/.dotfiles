@@ -414,3 +414,4 @@ bind k select-window -t 3
 bind l select-window -t 4
 
 set-option -g prefix M-a
+set-option -g default-shell /bin/zsh

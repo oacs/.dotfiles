@@ -1,6 +1,14 @@
 # dotfiles
+
 Dotfiles for linux systems
 
+# List of utils
+
+## Console
+
+lf - file manager
+gdu - disk usage tool
+NetworkManager - network tool
 
 
 ## TODOS
@@ -17,3 +25,6 @@ let g:dbs = {
 \ 'mordev': 'postgres://postgres:mypassword@localhost:5432/my-dev-db',
 \ }
 ```
+## Apps
+
+flameshot - screenshots
