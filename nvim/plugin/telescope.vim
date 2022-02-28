@@ -14,4 +14,3 @@ nnoremap <leader>gb :lua require('telescope.builtin').git_branches()<CR>
 nnoremap <leader>gs :lua require('telescope.builtin').git_stash()<CR>
 
 nnoremap <leader>ts :lua require('telescope.builtin').treesitter()<cr>
-

@@ -14,6 +14,12 @@ set sts=2
 set ignorecase
 set et     "expand tabs to spaces
 set path+=**
+set hidden
+set foldmethod=manual
+set foldexpr=nvim_treesitter#foldexpr()
+set fml=16
+let g:dashboard_default_executive ='telescope'
+let g:lf_map_keys = 0
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

@@ -63,8 +63,14 @@ Plug 'github/copilot.vim'
 
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
+
+Plug 'ptzz/lf.vim'
+Plug 'voldikss/vim-floaterm'
+
+Plug 'numToStr/Comment.nvim'
 call plug#end()
 
+let mapleader = " "
 lua require('oacs')
 
 

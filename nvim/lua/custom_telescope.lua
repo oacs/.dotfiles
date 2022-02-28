@@ -21,4 +21,7 @@ end
 -- TODo
 -- TODO
 
+local default_opts = {noremap = true, silent = true}
+vim.api.nvim_set_keymap('v', '<leader>fg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', default_opts)
+
 return M
