@@ -59,8 +59,6 @@ Plug 'code-biscuits/nvim-biscuits'
 " Delete ( ) [ ] { } without inner content
 Plug 'tpope/vim-surround'
 
-Plug 'xiyaowong/nvim-transparent'
-
 Plug 'github/copilot.vim'
 
 Plug 'tpope/vim-dadbod'
