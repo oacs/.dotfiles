@@ -117,8 +117,8 @@ override-redirect = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-
-[bar/mid]
+[bar/mid2]
+monitor = ${env:MONITOR:eDP1}
 width = 24%
 height = 24
 offset-x = 38%
@@ -145,11 +145,43 @@ font-2 = siji:pixelsize=14;1
 font-3 = FontAwesome:pixelsize=11;1
 
 modules-center = bspwm
-
 wm-restack = bspwm
 
 override-redirect = true
 
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/mid]
+width = 12%
+height = 24
+offset-x = 48%
+offset-y = 7px
+radius=16
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Fira Code Medium:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=true;0
+font-2 = siji:pixelsize=14;1
+font-3 = FontAwesome:pixelsize=11;1
+
+modules-center = bspwm
+wm-restack = bspwm
+
+override-redirect = true
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -157,7 +189,7 @@ cursor-scroll = ns-resize
 
 [bar/right]
 
-width = 20%
+width = 22%
 height = 24
 offset-x = 75%
 offset-y = 7px
@@ -179,7 +211,7 @@ font-0 = FiraCode Nerd Font:pixelsize=10;1
 font-1 = Material Icons:pixelsize=13:style:Regular;3
 font-2 = Font Awesome 5 Free:pixelsize=11;1
 
-modules-center = cpu sep temperature sep memory sep volume sep battery sep  wifi sep eth
+modules-center = polypomo sep cpu sep memory sep volume sep battery sep eth sep vpn
 
 wm-restack = bspwm
 
@@ -254,6 +286,25 @@ label-empty-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
+
+[module/bspwm2]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
 
 [module/i3]
 type = internal/i3
@@ -516,6 +567,31 @@ label-connected-foreground = ${colors.cyan}
 label-disconnected = 
 label-disconnected-foreground = ${colors.red}
 
+[module/vpn]
+type = custom/script
+exec = $HOME/.dotfiles/polybar/polybar-vpn-controller/vpn_module.sh
+click-left = $HOME/.dotfiles/polybar/polybar-vpn-controller/vpn_module.sh --toggle-connection &
+click-right = $HOME/.dotfiles/polybar/polybar-vpn-controller/vpn_module.sh --location-menu &
+click-middle = $HOME/.dotfiles/polybar/polybar-vpn-controller/vpn_module.sh --ip-address &
+interval = 5
+format = <label>
+format-background = ${color.mb}
+
+[module/polypomo]
+type = custom/script
+
+exec = $HOME/.dotfiles/polybar/polypomo/polypomo
+tail = true
+
+label = %output%
+click-left = $HOME/.dotfiles/polybar/polypomo/polypomo toggle
+click-right = $HOME/.dotfiles/polybar/polypomo/polypomo end
+click-middle = $HOME/.dotfiles/polybar/polypomo/polypomo lock
+scroll-up = $HOME/.dotfiles/polybar/polypomo/polypomo time +60
+scroll-down = $HOME/.dotfiles/polybar/polypomo/polypomo time -60
+
+font-0 = fixed:pixelsize=10;1
+font-1 = Noto Emoji:scale=15:antialias=false;0
 
 [module/powermenu]
 type = custom/menu

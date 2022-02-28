@@ -20,10 +20,11 @@ bspc config gapless_monocle      true
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Brave-browser desktop='^1'
 bspc rule -a Slack desktop='^3'
+bspc rule -a Teams desktop='^4'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 feh --bg-scale ~/Pictures/Wallpapers/wallhaven-2839em_1920x1080.png
 
-polybar left & polybar right & polybar mid
+polybar left & polybar right & polybar mid & polybar mid2

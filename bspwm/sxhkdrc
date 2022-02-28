@@ -5,6 +5,8 @@
 # terminal emulator
 super + Return
 	wezterm
+super + u
+  flameshot gui
 
 # program launcher
 super + @space
