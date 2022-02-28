@@ -8,23 +8,23 @@ require("harpoon").setup({
 		["$HOME/dev/adtal"] = {
 			term = {
 				cmds = {
-					"./frontend && npm start\n",
-					"./backend && npm run start:ubuntu\n",
+					"./frontend && npm start",
+					"./backend && npm run start:ubuntu",
 				},
 			},
 		},
 		["$HOME/dev/front"] = {
 			term = {
 				cmds = {
-					"npm run dev:broker:local\n",
+					"npm run dev:broker:local",
 				},
 			},
 		},
 		["$HOME/dev/back"] = {
 			term = {
 				cmds = {
-					"npm run start\n",
-					"npm run validate && npm run lint-fix\n",
+					"npm run start",
+					"npm run validate && npm run lint-fix",
 				},
 			},
 		},
