@@ -99,8 +99,13 @@ augroup END
 
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.\(lua\|vue\|js\|ts\|go\|html\|css\) undojoin | Neoformat
+  autocmd BufWritePre *. undojoin | Neoformat shmft
 augroup END
+
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre *.\(lua\|vue\|js\|ts\|go\|html\|css\) undojoin | Neoformat
+" augroup END
 
 " themes
 "colorscheme onedark

@@ -1,5 +1,5 @@
 require("plugin")
----@diagnostic disable-next-line: unused-local
+                ---@diagnostic disable-next-line: unused-local
 local function on_attach()
 	-- TODO: TJ told me to do this and I should do it because he is Telescopic
 	-- "Big Tech" "Cash Money" Johnson

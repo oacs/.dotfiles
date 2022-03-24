@@ -43,9 +43,19 @@ let g:symbols_outline = {
     \ "lsp_blacklist": [],
 \ }
 
+" npm install -g @fsouza/prettierd
+let g:neoformat_enabled_vue = ['prettierd', 'eslint_d']
+let g:neoformat_enabled_javascript = [ 'prettierd']
 let g:neoformat_enabled_typescript = ['eslint_d']
-let g:neoformat_enabled_vue = ['prettier', 'eslint_d']
-let g:neoformat_enabled_javascript = [ 'prettier']
-let g:neoformat_enabled_lua = [ 'prettier']
+
+" https://pkg.go.dev/cmd/gofmt
+let g:neoformat_enabled_go = ['gofmt']
+
+" luarocks install --server=https://luarocks.org/dev luaformatter
+let g:neoformat_enabled_lua = [ 'lua-format']
+
 let g:neoformat_enabled_vim = [ 'prettier']
+" go install mvdan.cc/sh/v3/cmd/shfmt@latest
+let g:neoformat_enabled_shell = [ 'shmft']
 let g:neoformat_run_all_formatters = 1
+let g:shfmt_opt="-ci"
