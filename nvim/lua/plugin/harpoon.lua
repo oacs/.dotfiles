@@ -13,6 +13,20 @@ require("harpoon").setup({
 				},
 			},
 		},
+		["$HOME/dev/adtal/frontend"] = {
+			term = {
+				cmds = {
+					"npm start 2>&1 | tee output",
+				},
+			},
+		},
+		["$HOME/dev/adtal/backend"] = {
+			term = {
+				cmds = {
+					"npm start 2>&1 | tee output",
+				},
+			},
+		},
 		["$HOME/dev/front"] = {
 			term = {
 				cmds = {

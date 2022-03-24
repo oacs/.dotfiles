@@ -68,11 +68,13 @@ Plug 'ptzz/lf.vim'
 Plug 'voldikss/vim-floaterm'
 
 Plug 'numToStr/Comment.nvim'
+
+Plug 'romainl/vim-qf'
 call plug#end()
 
 let mapleader = " "
 lua require('oacs')
-
+let g:qf_mapping_ack_style = 1
 
 let g:symbols_outline = {
     \ "highlight_hovered_item": v:true,
