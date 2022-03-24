@@ -1,6 +1,6 @@
 #!/bin/bash
 not_in_tmux() {
-   [ -z "$TMUX" ]
+        [ -z "$TMUX" ]
 }
 
 DIR=$1
@@ -8,54 +8,64 @@ WORKDIR=~/dev
 
 echo $DIR
 
-_session_name=$( cd $WORKDIR && ls -d */ | sed  "s|/||g" | fzf --reverse --header="Select project from $(basename $WORKDIR) >")
-session_name=${_session_name//./_}
-path_name=$WORKDIR/$session_name
+if [ -z "$DIR" ]; then
+        _session_name=$(cd $WORKDIR && ls -d */ | sed "s|/||g" | fzf --reverse --header="Select project from $(basename $WORKDIR) >")
+        session_name=${_session_name//./_}
+        path_name=$WORKDIR/$session_name
+else
+        path_name=$DIR
+        if [ $DIR = "." ]; then
+                path_name=$(pwd)
+        fi
+        session_name=$(basename $path_name)
+fi
 
 echo session name is \"$session_name\"
 echo path name is $path_name
 
 if [ -z "$session_name" ]; then
-    # operation cancelled by user
-    exit 1
+        # operation cancelled by user
+        exit 1
 fi
 
 session_exists() {
-    # checks if the $session_name exists
-    tmux has-session -t "=$session_name"
+        # checks if the $session_name exists
+        tmux has-session -t "=$session_name"
 }
 
 create_detached_session() {
-    echo "created detached session $session_name"
-case $session_name in
+        echo "created detached session $session_name"
+        case $session_name in
 
-  adtal)
-    (TMUX=''
-    tmux new-session -Ad -s "$session_name" -c "$path_name/frontend" -n "front"
-    )
-    tmux send-keys -t "$session_name" "nvim ." Enter;
-    tmux new-window -t "$session_name" -n "back" -c "$path_name/backend"
-    tmux send-keys -t "$session_name" "nvim ." Enter;
-    ;;
-  *)
-    (TMUX=''
-    tmux new-session -Ad -s "$session_name" -c $path_name
-    )
-    echo -n "unknown"
-    ;;
-esac
+        adtal)
+                (
+                        TMUX=''
+                        tmux new-session -Ad -s "$session_name" -c "$path_name/frontend" -n "front"
+                )
+                tmux send-keys -t "$session_name" "nvim ." Enter
+                tmux new-window -t "$session_name" -n "back" -c "$path_name/backend"
+                tmux send-keys -t "$session_name" "nvim ." Enter
+                ;;
+        *)
+                (
+                        TMUX=''
+                        tmux new-session -Ad -s "$session_name" -c $path_name
+                )
+                tmux send-keys -t "$session_name" "nvim ." Enter
+                echo -n "unknown"
+                ;;
+        esac
 }
 
 create_if_needed_and_attach() {
         if ! session_exists; then
                 create_detached_session
         fi
-    if not_in_tmux; then
-        tmux attach-session -t "$session_name"
-    else
-        tmux switch-client -t "$session_name"
-    fi
+        if not_in_tmux; then
+                tmux attach-session -t "$session_name"
+        else
+                tmux switch-client -t "$session_name"
+        fi
 }
-
 
 create_if_needed_and_attach
