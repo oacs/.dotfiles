@@ -1,29 +1,15 @@
 #!/usr/bin/env bash
-mkdir -p /home/oacs/.config/nvim
 mkdir -p /home/oacs/.config/nvim/plugin
 mkdir -p /home/oacs/.config/nvim/after/plugin
-mkdir -p /home/oacs/.config/nvim/lua
 mkdir -p /home/oacs/.config/nvim/lua/plugin
 
 # link wholesale
-for f in `find . -regex "\.\/nvim\/.*\..*" | sed "s/\.\///g"`; do
+for f in `find . -regex "\.\/nvim\/.*\.lua" | sed "s/\.\///g"`; do
     rm -rf /home/oacs/.config/$f
-    ln -sf /home/oacs/.dotfiles/$f /home/oacs/.config/$f
+    ln -sf /home/oacs/dev/dotfiles/$f /home/oacs/.config/$f
     echo /home/oacs/.config/$f
 done
 
-ln -sf /home/oacs/.dotfiles/.tmux.conf.local /home/oacs/.tmux.conf.local
-
-
-mkdir -p /home/oacs/.config/wezterm
-mkdir -p /home/oacs/.config/bspwm
-mkdir -p /home/oacs/.config/sxhkd
-mkdir -p /home/oacs/.config/polybar
-ln -sf /home/oacs/.dotfiles/wezterm/wezterm.lua /home/oacs/.config/wezterm/wezterm.lua
-ln -sf /home/oacs/.dotfiles/bspwm/bspwmrc /home/oacs/.config/bspwm/bspwmrc
-ln -sf /home/oacs/.dotfiles/bspwm/sxhkdrc /home/oacs/.config/sxhkd/sxhkdrc
-ln -sf /home/oacs/.dotfiles/polybar/config /home/oacs/.config/polybar/config
-ln -sf /home/oacs/.dotfiles/ta /home/oacs/bin
-ln -sf /home/oacs/.dotfiles/ta /usr/local/bin/ta
-ln -sf /home/oacs/.dotfiles/.zshrc /home/oacs/.zshrc
-
+ln -sf /home/oacs/dev/dotfiles/.tmux.conf.local /home/oacs/.tmux.conf.local
+ln -sf /home/oacs/dev/dotfiles/ta /home/oacs/bin
+ln -sf /home/oacs/dev/dotfiles/ta /usr/local/bin/ta

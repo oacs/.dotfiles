@@ -1,3 +1,5 @@
+
+                    nvim_set_keymap('n', ' <NL>', '', {'nowait': v:true})
 nmap <Leader>q :q<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>p <C-w>
