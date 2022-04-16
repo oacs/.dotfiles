@@ -8,9 +8,12 @@ vim.o.syntax = true
 vim.cmd("colorscheme dracula")
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*.lua", "*.sh" },
+	pattern = { "*.lua", "*.sh", "*.ts", "*.vue" },
 	command = "undojoin | Neoformat",
 })
+
+require("oacs")
+require("tmux")
 
 return require("packer").startup(function(use)
 	-- Packer can manage itself
@@ -23,6 +26,7 @@ return require("packer").startup(function(use)
 	use({ "dracula/vim", as = "dracula" })
 
 	use({ "nvim-lua/plenary.nvim" })
+	use({ "ThePrimeagen/harpoon" })
 	use({ "nvim-telescope/telescope.nvim" })
 	use({ "nvim-telescope/telescope-fzy-native.nvim" })
 
@@ -56,5 +60,21 @@ return require("packer").startup(function(use)
 	use({ "tpope/vim-surround" })
 	use({ "tpope/vim-dadbod" })
 	use({ "kristijanhusak/vim-dadbod-ui" })
-	use({ "numToStr/Comment.nvim" })
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = {
+			"kyazdani42/nvim-web-devicons", -- optional, for file icon
+		},
+		config = function()
+			require("nvim-tree").setup({})
+		end,
+	})
+	use({ "lmburns/lf.nvim" })
+	use({ "akinsho/toggleterm.nvim" })
 end)
