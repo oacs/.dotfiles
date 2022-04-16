@@ -415,3 +415,5 @@ bind l select-window -t 4
 
 set-option -g prefix M-a
 set-option -g default-shell /bin/zsh
+
+bind-key -r b run-shell "/home/oacs/.local/share/nvim/site/pack/packer/start/harpoon/scripts/tmux/switch-back-to-nvim"
