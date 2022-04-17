@@ -1,5 +1,5 @@
 local o = vim.o
-local wo = vim.wo
+-- local wo = vim.wo
 local g = vim.g
 
 o.number = true
@@ -23,7 +23,7 @@ o.foldexpr = "nvim_treesitter#foldexpr()"
 o.fml = 16
 
 g.dashboard_default_executive = "telescope"
-g.lf_map_keys = 0
+g.completeopt = "menu,menuone,noselect"
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.

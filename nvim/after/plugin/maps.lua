@@ -20,14 +20,14 @@ map("n", "<F5>", ":UndotreeToggle<CR>")
 -- next search
 map("n", "<C-L>", ":nohl<CR><C-L>")
 -- Don't use arrow keys
-map("", "<up>", "<nop>")
+--[[ map("", "<up>", "<nop>")
 map("", "<down>", "<nop>")
 map("", "<left>", "<nop>")
-map("", "<right>", "<nop>")
+map("", "<right>", "<nop>") ]]
 -- Easy quick of insert mode
 map("i", "jj", "<Esc>")
 
-map("", "<Leader>e", "<cmd>lua require('lf').start()<CR>")
+-- map("", "<Leader>e", "<cmd>lua require('lf').start()<CR>")
 
 -- greatest remap ever
 map("x", "<leader>p", '"_dP')
@@ -39,3 +39,5 @@ map("n", "<leader>Y", 'gg"+yG')
 
 map("n", "<leader>d", '"_d')
 map("v", "<leader>d", '"_d')
+
+map("n", "<Leader>o", ":SymbolsOutline<CR>")

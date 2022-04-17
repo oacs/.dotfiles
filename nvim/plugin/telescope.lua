@@ -10,7 +10,7 @@ map("n", "<leader>fr", ":lua require('telescope.builtin').registers()<cr>")
 -- map("n", "<leader>ft", ":lua require('custom_telescope').search_todos()<cr>")
 map("n", "<leader>fl", ":lua require('telescope.builtin').quickfix()<cr>")
 
-map("n", "<leader>gw", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
+-- map("n", "<leader>gw", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
 map("n", "<leader>gb", ":lua require('telescope.builtin').git_branches()<CR>")
 map("n", "<leader>gs", ":lua require('telescope.builtin').git_stash()<CR>")
 

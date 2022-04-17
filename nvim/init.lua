@@ -35,20 +35,29 @@ return require("packer").startup(function(use)
 
 	-- Complete
 	use({ "hrsh7th/nvim-cmp" })
-	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-buffer" })
 	use({ "hrsh7th/cmp-path" })
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-nvim-lua" })
 	use({ "onsails/lspkind-nvim" })
+	use({ "kristijanhusak/vim-dadbod-completion" })
 
-	-- Install snippet engine (This example installs [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip))
-	-- For vsnip user.
-	use({ "hrsh7th/cmp-vsnip" })
-	use({ "hrsh7th/vim-vsnip" })
+	use({
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			local opts = {
+				-- whether to highlight the currently hovered symbol
+				-- disable if your cpu usage is higher than you want it
+				highlight_hovered_item = true,
+				-- whether to show outline guides
+				show_guides = true,
+			}
+			require("symbols-outline").setup(opts)
+		end,
+	})
 
-	-- Install the buffer completion source
-	use({ "glepnir/lspsaga.nvim" })
-	use({ "simrat39/symbols-outline.nvim" })
-
+	use({ "L3MON4D3/LuaSnip" })
+	use({ "saadparwaiz1/cmp_luasnip" })
 	-- updating the parsers on update
 	use({ "nvim-treesitter/playground" })
 	-- Git
@@ -66,15 +75,5 @@ return require("packer").startup(function(use)
 			require("Comment").setup()
 		end,
 	})
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		},
-		config = function()
-			require("nvim-tree").setup({})
-		end,
-	})
-	use({ "lmburns/lf.nvim" })
 	use({ "akinsho/toggleterm.nvim" })
 end)

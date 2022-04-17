@@ -1,8 +1,5 @@
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local lspkind = require("lspkind")
-lspkind.init()
-
 local lsp_servers = { "tsserver", "vimls", "vuels", "gopls" }
 for _, server in ipairs(lsp_servers) do
 	require("lspconfig")[server].setup({ capabilities = capabilities })
@@ -37,42 +34,7 @@ require("lspconfig").sumneko_lua.setup({
 	},
 })
 
-local cmp = require("cmp")
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			-- For `vsnip` user.
-			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
-		end,
-	},
-	mapping = {
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.close(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-	},
-	sources = {
-		{ name = "nvim_lua" },
-		{ name = "nvim_lsp" },
-		{ name = "path" },
-		{ name = "buffer", keyword_length = 5 },
-	},
-	formatting = {
-		format = lspkind.cmp_format({
-			with_text = true,
-			menu = {
-				buffer = "[buf]",
-				nvim_lsp = "[LSP]",
-				nvim_lua = "[api]",
-				path = "[path]",
-				luasnip = "[snip]",
-			},
-		}),
-	},
-})
-
+-- TODO move this to a map file for lsp
 local map = function(mode, lhf, rhf)
 	vim.api.nvim_set_keymap(mode, lhf, rhf, { noremap = true })
 end
