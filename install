@@ -1,22 +1,30 @@
 #!/bin/bash
 
+HOME_DIR=/home/oacs
 echo "Do you want to install dependencies?"
 echo -n "y/n: "
 read REPLAY
 
 if [ "$REPLAY" == "y" ] 
 then
-        zypper -n install ninja libtool autoconf automake cmake gcc-c++ gettext-tools git zsh tmux curl ripgrep
+        # update repo
+        pacman -Syu git
+        pacman -S base-devel cmake unzip ninja tree-sitter curl zsh tmux curl ripgrep
 fi
 
 # neovim
 cd
-NVIM_DIR="~/neovim"
+LOCAL_DIR="~/local"
+mkdir -p $LOCAL_DIR
 
 function install_nvim () {
-        cd $NVIM_DIR
+        cd $LOCAL_DIR
+	git clone https://github.com/neovim/neovim
+	cd neovim
+	ls
+        echo "Installing  fresh nvim"
         make CMAKE_BUILD_TYPE=Release
-        make CMAKE_INSTALL_PREFIX=$HOME/local/nvim install
+        make CMAKE_INSTALL_PREFIX=$HOME_DIR/local/nvim install
 }
 
 if  command -v nvim &> /dev/null
@@ -26,39 +34,38 @@ then
         read -r
         if [ "$REPLAY" == "y" ] 
         then
-                git pull && install_nvim
+                git pull
+                echo "TODO update nvim"
         fi
 else
-        echo "Installing  fresh nvim"
-        git clone https://github.com/neovim/neovim
         install_nvim
 fi
 
 
-# vim plug
-VIMPLUG_DIR="$HOME/.local/share/nvim/site/autoload/plug.vim"
 
-function install_vim_plug () {
-        sh -c 'curl -fLo $VIMPLUG_DIR --create-dirs \
-                https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+VIMPLUG_DIR="~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+
+function install_nvim_packer () {
+        git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+                ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 }
 
 if [ -f "$VIMPLUG_DIR" ] 
 then
-        echo "Do you want to update the vim plug ?"
+        echo "Do you want to update the nvim packer ?"
         echo -n "y/n: "
         read -r
         if [ "$REPLAY" == "y" ] 
         then
-                install_vim_plug
+                install_nvim_packer
         fi
 else
-        echo "Installing  fresh vim plug"
-        install_vim_plug
+        echo "Installing  fresh nvim packer"
+        install_nvim_packer
 fi
 
 # oh-my-zsh 
-OHMYZSH_DIR="$HOME/.oh-my-zsh/"
+OHMYZSH_DIR="$HOME_DIR/.oh-my-zsh/"
 if [ ! -d "$OHMYZSH_DIR" ] 
 then
         cd
@@ -66,7 +73,7 @@ then
 fi
 
 # oh-my-tmux
-OHMYTMUX_DIR="$HOME/.tmux/"
+OHMYTMUX_DIR="$HOME_DIR/.tmux/"
 if [ ! -d "$OHMYTMUX_DIR" ] 
 then
 cd
@@ -82,13 +89,4 @@ read -r
 if [ "$REPLAY" == "y" ] 
 then
         bash load
-fi
-
-#nvm
-if  command -v nvm &> /dev/null
-then
-        echo "Installing  fresh nvm"
-        #curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-else
-        echo "Nvm is already installed"
 fi

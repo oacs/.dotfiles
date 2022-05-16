@@ -1,0 +1,13 @@
+npm install -g graphql-language-service-cli vscode-langservers-extracted typescript-language-server vls eslint_d @fsouza/prettierd
+
+# clone project
+cd /home/oacs/local
+git clone  --depth=1 https://github.com/sumneko/lua-language-server
+cd lua-language-server
+git submodule update --depth 1 --init --recursive
+cd 3rd/luamake
+./compile/install.sh
+cd ../..
+./3rd/luamake/luamake rebuild
+
+

@@ -29,10 +29,12 @@ M.tmux_sessions = function(opts)
 		only_dirs = true,
 		selint = true,
 	})
+  table.insert(dirs, "/home/oacs/.dotfiles")
 	pickers.new(opts, {
 		prompt_title = "colors",
 		finder = finders.new_table({
 			results = dirs,
+
 		}),
 		sorter = conf.generic_sorter(opts),
 		attach_mappings = function(prompt_bufnr, _)
