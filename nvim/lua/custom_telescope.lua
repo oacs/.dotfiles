@@ -42,13 +42,25 @@ M.tmux_sessions = function(opts)
 				actions.close(prompt_bufnr)
 				local selection = action_state.get_selected_entry()
 				selection = string.gsub(selection[1], ".home.oacs.dev.(.*)", "%1")
+        local err = 0
 				Job
 					:new({
 						command = "tmux",
 						args = { "switch-client", "-t", selection },
 						cwd = vim.loop.cwd(),
+            on_stderr = function ()
+                    err = 1
+            end
 					})
 					:sync()
+          if err == 1 then
+			          Job
+				         :new({
+					          command = "ta",
+					          args = {  "/home/oacs/dev/"..selection },
+					          cwd = vim.loop.cwd()
+                 }):sync()
+         end
 			end)
 			return true
 		end,

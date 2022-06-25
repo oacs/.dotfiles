@@ -9,7 +9,7 @@ vim.cmd("colorscheme dracula")
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*.lua", "*.sh", "*.ts", "*.vue" },
-	command = "undojoin | Neoformat",
+	command = "Neoformat",
 })
 
 require("oacs")
@@ -76,4 +76,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({ "akinsho/toggleterm.nvim" })
+
+  -- debugger
+  use 'mfussenegger/nvim-dap'
+use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 end)

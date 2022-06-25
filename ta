@@ -3,7 +3,7 @@ not_in_tmux() {
         [ -z "$TMUX" ]
 }
 
-        DIR=$1
+DIR=$1
 WORKDIR=~/dev
 
 echo $DIR

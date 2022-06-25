@@ -43,10 +43,10 @@ map("n", "<leader>sr", ":lua vim.lsp.buf.references()<CR>")
 map("n", "<leader>si", ':lua require("telescope.builtin").lsp_implementations()<cr>')
 map("n", "<leader>sh", ":lua vim.lsp.buf.hover()<CR>")
 map("n", "<leader>ss", ":lua vim.lsp.buf.signature_help()<CR>")
-map("n", "<leader>sl", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
+map("n", "<leader>sl", ":lua vim.diagnostic.open_float()<CR>")
 map("n", "<leader>sf", ':lua require("telescope.builtin").lsp_document_diagnostics()<cr>')
 
-map("n", "<leader>ca", ':lua require("telescope.builtin").lsp_code_actions()<cr>')
+map("n", "<leader>ca", ':lua vim.lsp.buf.code_action()<cr>')
 
 map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 map("n", "<leader>gn", ":lua vim.lsp.diagnostic.goto_next()<CR>")
