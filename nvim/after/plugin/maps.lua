@@ -4,14 +4,14 @@ end
 
 map("n", "<Leader>q", ":q<CR>")
 map("n", "<Leader>w", ":w<CR>")
-map("n", "<Leader>p", "<C-w>")
+map("n", "<Leader>l", "<C-w>")
 map("n", "<Leader>cp", ":let @* =', 'expand(\"%\")<CR>")
 map("n", "<Leader>bp", ":bp<CR>")
 map("n", "<Leader>bb", ":buffers<CR>")
 map("n", "<Leader>bd", ":bd<CR>")
 map("n", "<Leader>bw", ":bw<CR>")
 map("n", "<Leader>bn", ":bn<CR>")
-map("n", "<Leader>l", ":bn<CR>")
+-- map("n", "<Leader>l", ":bn<CR>")
 map("n", "<Leader>e", ":Explore<CR>")
 map("t", "<Esc>", "<C-\\><C-n>")
 map("v", "//", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
@@ -26,7 +26,7 @@ map("", "<down>", "<nop>")
 map("", "<left>", "<nop>")
 map("", "<right>", "<nop>") ]]
 -- Easy quick of insert mode
-map("i", "jj", "<Esc>")
+map("i", "hh", "<Esc>")
 
 -- map("", "<Leader>e", "<cmd>lua require('lf').start()<CR>")
 

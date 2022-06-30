@@ -49,4 +49,4 @@ map("n", "<leader>sf", ':lua require("telescope.builtin").lsp_document_diagnosti
 map("n", "<leader>ca", ':lua vim.lsp.buf.code_action()<cr>')
 
 map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
-map("n", "<leader>gn", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+map("n", "<leader>sn", ":lua vim.lsp.diagnostic.goto_next()<CR>")
