@@ -5,13 +5,13 @@ vim.g.mapleader = " "
 
 -- set color scheme
 vim.o.syntax = true
-vim.cmd("colorscheme dracula")
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*.lua", "*.sh", "*.ts", "*.vue" },
 	command = "Neoformat",
 })
 
+vim.cmd("colorscheme dracula")
 require("oacs")
 require("tmux")
 
@@ -77,7 +77,12 @@ return require("packer").startup(function(use)
 	})
 	use({ "akinsho/toggleterm.nvim" })
 
-  -- debugger
-  use 'mfussenegger/nvim-dap'
-use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+	use({ "vimwiki/vimwiki" })
+	use({ "junegunn/fzf" })
+	use({ "junegunn/fzf.vim" })
+	use({ "michal-h21/vim-zettel" })
+
+	-- debugger
+	use("mfussenegger/nvim-dap")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 end)

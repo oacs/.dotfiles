@@ -4,16 +4,14 @@ local M = {}
 function M.tmux_move_to_window(number)
 	local stderr = {}
 	-- stdout, ret
-	local _, _ = Job
-		:new({
-			command = "tmux",
-			args = { "select-window", "-t:" .. number },
-			cwd = "/usr/bin",
-			on_stderr = function(_, data)
-				table.insert(stderr, data)
-			end,
-		})
-		:sync()
+	local _, _ = Job:new({
+		command = "tmux",
+		args = { "select-window", "-t:" .. number },
+		cwd = "/usr/bin",
+		on_stderr = function(_, data)
+			table.insert(stderr, data)
+		end,
+	}):sync()
 end
 
 local map = function(mode, lhf, rhf)

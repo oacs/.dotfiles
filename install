@@ -14,7 +14,7 @@ fi
 
 # neovim
 cd
-LOCAL_DIR="~/local"
+LOCAL_DIR=$HOME_DIR"/local"
 mkdir -p $LOCAL_DIR
 
 function install_nvim () {
@@ -43,7 +43,7 @@ fi
 
 
 
-VIMPLUG_DIR="~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+VIMPLUG_DIR="$HOME_DIR/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
 function install_nvim_packer () {
         git clone --depth 1 https://github.com/wbthomason/packer.nvim \
@@ -90,3 +90,19 @@ if [ "$REPLAY" == "y" ]
 then
         bash load
 fi
+
+# lua lsp
+LUA_LSP="$HOME_DIR/local/lua-language-server"
+if [ ! -d "$LUA_LSP" ] 
+then
+# clone project
+git clone  --depth=1 https://github.com/sumneko/lua-language-server
+cd lua-language-server
+git submodule update --depth 1 --init --recursive
+fi
+
+#sh <(curl -L https://nixos.org/nix/install) --no-daemon
+#. /home/oacs/.nix-profile/etc/profile.d/nix.sh
+#nix-env -iA cachix -f https://cachix.org/api/v1/install
+#sudo cachix use srid
+#nix-env -if https://github.com/srid/neuron/archive/master.tar.gz

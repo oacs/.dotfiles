@@ -2,8 +2,8 @@ local map = function(mode, lhf, rhf)
 	vim.api.nvim_set_keymap(mode, lhf, rhf, { noremap = true })
 end
 
-map("n", "<Leader>q", ":q<CR>")
-map("n", "<Leader>w", ":w<CR>")
+map("n", "<Leader>'", ":q<CR>")
+map("n", "<Leader>,", ":w<CR>")
 map("n", "<Leader>l", "<C-w>")
 map("n", "<Leader>cp", ":let @* =', 'expand(\"%\")<CR>")
 map("n", "<Leader>bp", ":bp<CR>")
