@@ -16,8 +16,9 @@ done
 ln -sf $HOME_DIR/.dotfiles/.tmux.conf.local $HOME_DIR/.tmux.conf.local
 
 
-mkdir $HOME_DIR/bin
+mkdir -p $HOME_DIR/bin
 ln -sf $HOME_DIR/local/nvim/bin/nvim $HOME_DIR/bin/nvim
 ln -sf $HOME_DIR/.dotfiles/ta $HOME_DIR/bin/ta
 ln -sf $HOME_DIR/.dotfiles/ta /usr/local/bin/ta
 ln -sf $HOME_DIR/.dotfiles/.zshrc $HOME_DIR/.zshrc
+ln -sf $HOME_DIR/.dotfiles $HOME_DIR/dev/dotfiles

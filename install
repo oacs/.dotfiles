@@ -8,8 +8,8 @@ read REPLAY
 if [ "$REPLAY" == "y" ] 
 then
         # update repo
-        pacman -Syu git
-        pacman -S base-devel cmake unzip ninja tree-sitter curl zsh tmux curl ripgrep
+        sudo pacman -Syu git
+        sudo pacman -S base-devel cmake unzip ninja tree-sitter curl zsh tmux curl ripgrep
 fi
 
 # neovim
@@ -23,8 +23,7 @@ function install_nvim () {
 	cd neovim
 	ls
         echo "Installing  fresh nvim"
-        make CMAKE_BUILD_TYPE=Release
-        make CMAKE_INSTALL_PREFIX=$HOME_DIR/local/nvim install
+        make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME_DIR/local/nvim install
 }
 
 if  command -v nvim &> /dev/null
@@ -47,22 +46,22 @@ VIMPLUG_DIR="$HOME_DIR/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
 function install_nvim_packer () {
         git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-                ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-}
+                $HOME_DIR/local/share/nvim/site/pack/packer/start/packer.nvim
+        }
 
-if [ -f "$VIMPLUG_DIR" ] 
-then
-        echo "Do you want to update the nvim packer ?"
-        echo -n "y/n: "
-        read -r
-        if [ "$REPLAY" == "y" ] 
+        if [ -f "$VIMPLUG_DIR" ] 
         then
+                echo "Do you want to update the nvim packer ?"
+                echo -n "y/n: "
+                read -r
+                if [ "$REPLAY" == "y" ] 
+                then
+                        install_nvim_packer
+                fi
+        else
+                echo "Installing  fresh nvim packer"
                 install_nvim_packer
         fi
-else
-        echo "Installing  fresh nvim packer"
-        install_nvim_packer
-fi
 
 # oh-my-zsh 
 OHMYZSH_DIR="$HOME_DIR/.oh-my-zsh/"
@@ -76,10 +75,9 @@ fi
 OHMYTMUX_DIR="$HOME_DIR/.tmux/"
 if [ ! -d "$OHMYTMUX_DIR" ] 
 then
-cd
+        cd
         git clone https://github.com/gpakosz/.tmux.git
-        ln -s -f .tmux/.tmux.conf
-        cp .tmux/.tmux.conf.local .
+        sudo ln -s -f .tmux/.tmux.conf
 fi
 
 # oacs dot fiels
@@ -106,3 +104,5 @@ fi
 #nix-env -iA cachix -f https://cachix.org/api/v1/install
 #sudo cachix use srid
 #nix-env -if https://github.com/srid/neuron/archive/master.tar.gz
+
+sudo npm i -g vuels typescript tsserver
