@@ -1,5 +1,6 @@
 #!/bin/bash
 WORK_DIR=/home/oacs/dev
+NOTES_DIR=/home/oacs/notes
 LOCAL_DIR=/home/oacs/local
 mkdir -p $LOCAL_DIR
 cd $LOCAL_DIR
@@ -13,6 +14,7 @@ git clone git@github.com:Moregidge/moregidge-backend.git back
 git clone git@github.com:Moregidge/moregidge-frontend.git front
 git clone git@github.com:Moregidge/admin-portal.git adtal
 git clone git@github.com:Moregidge/pdf-genie.git genie
+git clone git@github.com:oacs/emanote.git $NOTES_DIR
 
 aws configure
 

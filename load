@@ -22,3 +22,4 @@ ln -sf $HOME_DIR/.dotfiles/ta $HOME_DIR/bin/ta
 ln -sf $HOME_DIR/.dotfiles/ta /usr/local/bin/ta
 ln -sf $HOME_DIR/.dotfiles/.zshrc $HOME_DIR/.zshrc
 ln -sf $HOME_DIR/.dotfiles $HOME_DIR/dev/dotfiles
+ln -sf $HOME_DIR/notes $HOME_DIR/dev/notes

@@ -1,4 +1,4 @@
-npm install -g graphql-language-service-cli vscode-langservers-extracted typescript-language-server vls eslint_d @fsouza/prettierd
+sudo npm install -g graphql-language-service-cli vscode-langservers-extracted typescript-language-server vls eslint_d @fsouza/prettierd
 
 # clone project
 cd /home/oacs/local

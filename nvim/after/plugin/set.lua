@@ -44,3 +44,9 @@ g.neoformat_enabled_vim = { "prettier" }
 g.neoformat_enabled_shell = { "shmft" }
 g.neoformat_run_all_formatters = 1
 g.shfmt_opt = "ci"
+
+-- Settings for Vimwiki
+g.vimwiki_list = { { path = "~/notes", ext = ".md", syntax = "markdown" } }
+g.zettel_options =
+	{ { front_matter = { { "tags", "" }, { "type", "note" } }, template = "~/.dotfiles/zettel_template.tpl" } }
+g.zettel_format = "%y%m%d-%H%M-%title"
