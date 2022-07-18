@@ -1,11 +1,13 @@
 #!/bin/bash
 
 HOME_DIR=/home/oacs
+LOCAL_DIR=$HOME_DIR"/local"
+NEOVIM_DIR=$LOCAL_DIR"/neovim"
 echo "Do you want to install dependencies?"
 echo -n "y/n: "
 read REPLAY
 
-if [ "$REPLAY" == "y" ] 
+if [ "$REPLAY" == "y" ]
 then
         # update repo
         sudo pacman -Syu git
@@ -13,17 +15,11 @@ then
 fi
 
 # neovim
-cd
-LOCAL_DIR=$HOME_DIR"/local"
-mkdir -p $LOCAL_DIR
-
 function install_nvim () {
-        cd $LOCAL_DIR
-	git clone https://github.com/neovim/neovim
-	cd neovim
-	ls
+        git clone https://github.com/neovim/neovim $NEOVIM_DIR
+        cd $NEOVIM_DIR
         echo "Installing  fresh nvim"
-        make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME_DIR/local/nvim install
+        make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$NEOVIM_DIR install
 }
 
 if  command -v nvim &> /dev/null
@@ -31,7 +27,7 @@ then
         echo "Do you want to update the neovim file?"
         echo -n "y/n: "
         read -r
-        if [ "$REPLAY" == "y" ] 
+        if [ "$REPLAY" == "y" ]
         then
                 git pull
                 echo "TODO update nvim"
@@ -46,15 +42,15 @@ VIMPLUG_DIR="$HOME_DIR/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
 function install_nvim_packer () {
         git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-                $HOME_DIR/local/share/nvim/site/pack/packer/start/packer.nvim
+                $VIMPLUG_DIR
         }
 
-        if [ -f "$VIMPLUG_DIR" ] 
+        if [ -f "$VIMPLUG_DIR" ]
         then
                 echo "Do you want to update the nvim packer ?"
                 echo -n "y/n: "
                 read -r
-                if [ "$REPLAY" == "y" ] 
+                if [ "$REPLAY" == "y" ]
                 then
                         install_nvim_packer
                 fi
@@ -63,20 +59,18 @@ function install_nvim_packer () {
                 install_nvim_packer
         fi
 
-# oh-my-zsh 
+# oh-my-zsh
 OHMYZSH_DIR="$HOME_DIR/.oh-my-zsh/"
-if [ ! -d "$OHMYZSH_DIR" ] 
+if [ ! -d "$OHMYZSH_DIR" ]
 then
-        cd
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
 # oh-my-tmux
 OHMYTMUX_DIR="$HOME_DIR/.tmux/"
-if [ ! -d "$OHMYTMUX_DIR" ] 
+if [ ! -d "$OHMYTMUX_DIR" ]
 then
-        cd
-        git clone https://github.com/gpakosz/.tmux.git
+        git clone https://github.com/gpakosz/.tmux.git $OHMYTMUX_DIR
         sudo ln -s -f .tmux/.tmux.conf
 fi
 
@@ -84,19 +78,9 @@ fi
 echo "Do you want to update the dotfiles?"
 echo -n "y/n: "
 read -r
-if [ "$REPLAY" == "y" ] 
+if [ "$REPLAY" == "y" ]
 then
-        bash load
-fi
-
-# lua lsp
-LUA_LSP="$HOME_DIR/local/lua-language-server"
-if [ ! -d "$LUA_LSP" ] 
-then
-# clone project
-git clone  --depth=1 https://github.com/sumneko/lua-language-server
-cd lua-language-server
-git submodule update --depth 1 --init --recursive
+        sudo bash load
 fi
 
 #sh <(curl -L https://nixos.org/nix/install) --no-daemon
@@ -104,5 +88,3 @@ fi
 #nix-env -iA cachix -f https://cachix.org/api/v1/install
 #sudo cachix use srid
 #nix-env -if https://github.com/srid/neuron/archive/master.tar.gz
-
-sudo npm i -g vuels typescript tsserver
