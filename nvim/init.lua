@@ -11,10 +11,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	command = "Neoformat",
 })
 
-vim.cmd("colorscheme dracula")
-require("oacs")
-require("tmux")
-
+-- silent to avoid error if theme is missing
+vim.cmd("silent! colorscheme dracula")
+local status, _ = pcall(require, "oacs")
+if status then
+	--lfs exists, so use it.
+	require("tmux")
+end
 return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")

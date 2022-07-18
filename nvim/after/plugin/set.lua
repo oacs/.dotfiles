@@ -40,13 +40,13 @@ g.neoformat_enabled_go = { "gofmt" }
 g.neoformat_enabled_lua = { "stylua" }
 
 g.neoformat_enabled_vim = { "prettier" }
+
 -- go install mvdan.cc/sh/v3/cmd/shfmt@latest
-g.neoformat_enabled_shell = { "shmft" }
+g.neoformat_enabled_shell = { "shmft", "prettierd" }
+g.neoformat_enabled_sh = { "shmft", "prettierd" }
 g.neoformat_run_all_formatters = 1
 g.shfmt_opt = "ci"
 
--- Settings for Vimwiki
-g.vimwiki_list = { { path = "~/notes", ext = ".md", syntax = "markdown" } }
-g.zettel_options =
-	{ { front_matter = { { "tags", "" }, { "type", "note" } }, template = "~/.dotfiles/zettel_template.tpl" } }
-g.zettel_format = "%y%m%d-%H%M-%title"
+g.neoformat_basic_format_align = 1
+g.neoformat_basic_format_retab = 1
+g.neoformat_basic_format_trim = 1
