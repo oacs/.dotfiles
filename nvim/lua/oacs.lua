@@ -1,4 +1,5 @@
 require("plugin")
+require("vimWiki")
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
