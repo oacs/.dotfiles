@@ -29,42 +29,41 @@ M.tmux_sessions = function(opts)
 		only_dirs = true,
 		selint = true,
 	})
-  table.insert(dirs, "/home/oacs/.dotfiles")
-	pickers.new(opts, {
-		prompt_title = "colors",
-		finder = finders.new_table({
-			results = dirs,
-
-		}),
-		sorter = conf.generic_sorter(opts),
-		attach_mappings = function(prompt_bufnr, _)
-			actions.select_default:replace(function()
-				actions.close(prompt_bufnr)
-				local selection = action_state.get_selected_entry()
-				selection = string.gsub(selection[1], ".home.oacs.dev.(.*)", "%1")
-        local err = 0
-				Job
-					:new({
+	table.insert(dirs, "/home/oacs/dev/dotfiles")
+	table.insert(dirs, "/home/oacs/notes")
+	pickers
+		.new(opts, {
+			prompt_title = "colors",
+			finder = finders.new_table({
+				results = dirs,
+			}),
+			sorter = conf.generic_sorter(opts),
+			attach_mappings = function(prompt_bufnr, _)
+				actions.select_default:replace(function()
+					actions.close(prompt_bufnr)
+					local selection = action_state.get_selected_entry()
+					selection = string.gsub(selection[1], ".home.oacs.dev.(.*)", "%1")
+					local err = 0
+					Job:new({
 						command = "tmux",
 						args = { "switch-client", "-t", selection },
 						cwd = vim.loop.cwd(),
-            on_stderr = function ()
-                    err = 1
-            end
-					})
-					:sync()
-          if err == 1 then
-			          Job
-				         :new({
-					          command = "ta",
-					          args = {  "/home/oacs/dev/"..selection },
-					          cwd = vim.loop.cwd()
-                 }):sync()
-         end
-			end)
-			return true
-		end,
-	}):find()
+						on_stderr = function()
+							err = 1
+						end,
+					}):sync()
+					if err == 1 then
+						Job:new({
+							command = "ta",
+							args = { "/home/oacs/dev/" .. selection },
+							cwd = vim.loop.cwd(),
+						}):sync()
+					end
+				end)
+				return true
+			end,
+		})
+		:find()
 end
 -- todos
 -- oacs

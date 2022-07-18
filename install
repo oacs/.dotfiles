@@ -11,7 +11,7 @@ if [ "$REPLAY" == "y" ]
 then
         # update repo
         sudo pacman -Syu git
-        sudo pacman -S base-devel cmake unzip ninja tree-sitter curl zsh tmux curl ripgrep
+        sudo pacman -S base-devel cmake unzip ninja tree-sitter curl zsh tmux curl ripgrep stylua
 fi
 
 # neovim

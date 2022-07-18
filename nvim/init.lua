@@ -65,7 +65,8 @@ return require("packer").startup(function(use)
 	use({ "nvim-treesitter/playground" })
 	-- Git
 	use({ "tpope/vim-fugitive" })
-
+	use({ "moll/vim-bbye" })
+	use({ "aymericbeaumet/vim-symlink" })
 	-- Prettier
 	use({ "sbdchd/neoformat" })
 	-- Delete ( ) [ ] { } without inner content
