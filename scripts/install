@@ -80,7 +80,7 @@ echo -n "y/n: "
 read -r
 if [ "$REPLAY" == "y" ]
 then
-        sudo bash load
+        sudo bash $HOME_DIR/.dotfiles/scripts/load
 fi
 
 #sh <(curl -L https://nixos.org/nix/install) --no-daemon

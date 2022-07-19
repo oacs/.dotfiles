@@ -13,13 +13,13 @@ for f in `find . -regex "\.\/nvim\/.*\.lua" | sed "s/\.\///g"`; do
         echo /home/oacs/.config/$f
 done
 
-ln -sf $HOME_DIR/.dotfiles/.tmux.conf.local $HOME_DIR/.tmux.conf.local
+ln -sf $DOTFILES_DIR/.tmux.conf.local $HOME_DIR/.tmux.conf.local
 
 
 mkdir -p $HOME_DIR/bin
 ln -sf $HOME_DIR/local/nvim/bin/nvim $HOME_DIR/bin/nvim
-ln -sf $HOME_DIR/.dotfiles/ta $HOME_DIR/bin/ta
-ln -sf $HOME_DIR/.dotfiles/ta /usr/local/bin/ta
-ln -sf $HOME_DIR/.dotfiles/.zshrc $HOME_DIR/.zshrc
-ln -sf $HOME_DIR/.dotfiles $HOME_DIR/dev/dotfiles
+ln -sf $DOTFILES_DIR/scripts/ta $HOME_DIR/bin/ta
+ln -sf $DOTFILES_DIR/scripts/ta /usr/local/bin/ta
+ln -sf $DOTFILES_DIR/.zshrc $HOME_DIR/.zshrc
+ln -sf $DOTFILES_DIR $HOME_DIR/dev/dotfiles
 ln -sf $HOME_DIR/notes $HOME_DIR/dev/notes

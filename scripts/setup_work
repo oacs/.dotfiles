@@ -10,6 +10,7 @@ sudo ./aws/install
 mkdir -p $WORK_DIR
 cd $WORK_DIR
 
+# TODO check workflow with barebones repo
 git clone git@github.com:Moregidge/moregidge-backend.git back
 git clone git@github.com:Moregidge/moregidge-frontend.git front
 git clone git@github.com:Moregidge/admin-portal.git adtal
