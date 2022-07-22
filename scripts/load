@@ -6,7 +6,6 @@ mkdir -p $HOME_DIR/.config/nvim/after/plugin
 mkdir -p $HOME_DIR/.config/nvim/lua/plugin
 
 # link wholesale
-# TODO load only init.lua first tim#e
 for f in `find . -regex "\.\/nvim\/.*\.lua" | sed "s/\.\///g"`; do
         rm -rf /home/oacs/.config/$f
         ln -sf $DOTFILES_DIR/$f /home/oacs/.config/$f
@@ -14,7 +13,6 @@ for f in `find . -regex "\.\/nvim\/.*\.lua" | sed "s/\.\///g"`; do
 done
 
 ln -sf $DOTFILES_DIR/.tmux.conf.local $HOME_DIR/.tmux.conf.local
-
 
 mkdir -p $HOME_DIR/bin
 ln -sf $HOME_DIR/local/nvim/bin/nvim $HOME_DIR/bin/nvim
