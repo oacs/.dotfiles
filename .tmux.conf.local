@@ -20,21 +20,25 @@
 # new window retains current path, possible values are:
 #   - true
 #   - false (default)
+#   - disabled (do not modify new-window bindings)
 tmux_conf_new_window_retain_current_path=false
 
 # new pane retains current path, possible values are:
 #   - true (default)
 #   - false
+#   - disabled (do not modify split-window bindings)
 tmux_conf_new_pane_retain_current_path=true
 
-# new pane tries to reconnect ssh sessions (experimental), possible values are:
+# new pane tries to reconnect ssh sessions, possible values are:
 #   - true
 #   - false (default)
+#   - disabled (do not modify split-window bindings)
 tmux_conf_new_pane_reconnect_ssh=false
 
 # prompt for session name when creating a new session, possible values are:
 #   - true
 #   - false (default)
+#   - disabled (do not modify new-session bindings)
 tmux_conf_new_session_prompt=false
 
 
@@ -318,6 +322,7 @@ tmux_conf_theme_clock_style="24"
 # in copy mode, copying selection also copies to the OS clipboard
 #   - true
 #   - false (default)
+#   - disabled
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel or xclip
 tmux_conf_copy_to_os_clipboard=true
@@ -347,6 +352,7 @@ tmux_conf_copy_to_os_clipboard=true
 # move status line to top
 #set -g status-position top
 
+
 # -- tpm -----------------------------------------------------------------------
 
 # while I don't use tpm myself, many people requested official support so here
@@ -365,6 +371,17 @@ tmux_conf_update_plugins_on_launch=true
 #   - true (default)
 #   - false
 tmux_conf_update_plugins_on_reload=true
+
+# by default, reloading the configuration will uninstall tpm and plugins when no
+# plugins are enabled
+#   - true (default)
+#   - false
+tmux_conf_uninstall_plugins_on_reload=true
+
+# /!\ the tpm bindings differ slightly from upstream:
+#   - installing plugins: <prefix> + I
+#   - uninstalling plugins: <prefix> + Alt + u
+#   - updating plugins: <prefix> + u
 
 # /!\ do not add set -g @plugin 'tmux-plugins/tpm'
 # /!\ do not add run '~/.tmux/plugins/tpm/tpm'
@@ -415,3 +432,5 @@ bind l select-window -t 4
 
 set-option -g prefix M-a
 set-option -g default-shell /bin/zsh
+
+bind-key -r b run-shell "/home/oacs/.local/share/nvim/site/pack/packer/start/harpoon/scripts/tmux/switch-back-to-nvim"

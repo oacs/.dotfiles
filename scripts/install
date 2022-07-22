@@ -1,0 +1,90 @@
+#!/bin/bash
+
+HOME_DIR=/home/oacs
+LOCAL_DIR=$HOME_DIR"/local"
+NEOVIM_DIR=$LOCAL_DIR"/neovim"
+echo "Do you want to install dependencies?"
+echo -n "y/n: "
+read REPLAY
+
+if [ "$REPLAY" == "y" ]
+then
+        # update repo
+        sudo pacman -Syu git
+        sudo pacman -S base-devel cmake unzip ninja tree-sitter curl zsh tmux curl ripgrep stylua
+fi
+
+# neovim
+function install_nvim () {
+        git clone https://github.com/neovim/neovim $NEOVIM_DIR
+        cd $NEOVIM_DIR
+        echo "Installing  fresh nvim"
+        make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$NEOVIM_DIR install
+}
+
+if  command -v nvim &> /dev/null
+then
+        echo "Do you want to update the neovim file?"
+        echo -n "y/n: "
+        read -r
+        if [ "$REPLAY" == "y" ]
+        then
+                git pull
+                echo "TODO update nvim"
+        fi
+else
+        install_nvim
+fi
+
+
+
+VIMPLUG_DIR="$HOME_DIR/.local/share/nvim/site/pack/packer/start/packer.nvim"
+
+function install_nvim_packer () {
+        git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+                $VIMPLUG_DIR
+        }
+
+        if [ -f "$VIMPLUG_DIR" ]
+        then
+                echo "Do you want to update the nvim packer ?"
+                echo -n "y/n: "
+                read -r
+                if [ "$REPLAY" == "y" ]
+                then
+                        install_nvim_packer
+                fi
+        else
+                echo "Installing  fresh nvim packer"
+                install_nvim_packer
+        fi
+
+# oh-my-zsh
+OHMYZSH_DIR="$HOME_DIR/.oh-my-zsh/"
+if [ ! -d "$OHMYZSH_DIR" ]
+then
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+# oh-my-tmux
+OHMYTMUX_DIR="$HOME_DIR/.tmux/"
+if [ ! -d "$OHMYTMUX_DIR" ]
+then
+        git clone https://github.com/gpakosz/.tmux.git $OHMYTMUX_DIR
+        sudo ln -s -f .tmux/.tmux.conf
+fi
+
+# oacs dot fiels
+echo "Do you want to update the dotfiles?"
+echo -n "y/n: "
+read -r
+if [ "$REPLAY" == "y" ]
+then
+        sudo bash $HOME_DIR/.dotfiles/scripts/load
+fi
+
+#sh <(curl -L https://nixos.org/nix/install) --no-daemon
+#. /home/oacs/.nix-profile/etc/profile.d/nix.sh
+#nix-env -iA cachix -f https://cachix.org/api/v1/install
+#sudo cachix use srid
+#nix-env -if https://github.com/srid/neuron/archive/master.tar.gz

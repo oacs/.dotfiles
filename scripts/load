@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+HOME_DIR=/home/oacs
+DOTFILES_DIR=/home/oacs/.dotfiles
+mkdir -p $HOME_DIR/.config/nvim/plugin
+mkdir -p $HOME_DIR/.config/nvim/after/plugin
+mkdir -p $HOME_DIR/.config/nvim/lua/plugin
+
+# link wholesale
+for f in `find . -regex "\.\/nvim\/.*\.lua" | sed "s/\.\///g"`; do
+        rm -rf /home/oacs/.config/$f
+        ln -sf $DOTFILES_DIR/$f /home/oacs/.config/$f
+        echo /home/oacs/.config/$f
+done
+
+ln -sf $DOTFILES_DIR/.tmux.conf.local $HOME_DIR/.tmux.conf.local
+
+mkdir -p $HOME_DIR/bin
+ln -sf $HOME_DIR/local/nvim/bin/nvim $HOME_DIR/bin/nvim
+ln -sf $DOTFILES_DIR/scripts/ta $HOME_DIR/bin/ta
+ln -sf $DOTFILES_DIR/scripts/ta /usr/local/bin/ta
+ln -sf $DOTFILES_DIR/.zshrc $HOME_DIR/.zshrc
+ln -sf $DOTFILES_DIR $HOME_DIR/dev/dotfiles
+ln -sf $HOME_DIR/notes $HOME_DIR/dev/notes
