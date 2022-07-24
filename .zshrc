@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias n="nvim ."
 export PATH="$HOME/.config/rofi/bin:$HOME/local/bin:$HOME/bin:$PATH"
 
 if [ -e /home/oacs/.nix-profile/etc/profile.d/nix.sh ]; then . /home/oacs/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

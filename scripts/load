@@ -15,9 +15,10 @@ done
 ln -sf $DOTFILES_DIR/.tmux.conf.local $HOME_DIR/.tmux.conf.local
 
 mkdir -p $HOME_DIR/bin
-ln -sf $HOME_DIR/local/nvim/bin/nvim $HOME_DIR/bin/nvim
+ln -sf $HOME_DIR/local/neovim/bin/nvim $HOME_DIR/bin/nvim
 ln -sf $DOTFILES_DIR/scripts/ta $HOME_DIR/bin/ta
 ln -sf $DOTFILES_DIR/scripts/ta /usr/local/bin/ta
 ln -sf $DOTFILES_DIR/.zshrc $HOME_DIR/.zshrc
+ln -sf $HOME_DIR/.tmux/.tmux.conf $HOME_DIR/.tmux.conf
 ln -sf $DOTFILES_DIR $HOME_DIR/dev/dotfiles
 ln -sf $HOME_DIR/notes $HOME_DIR/dev/notes
