@@ -1,44 +1,46 @@
-local map = function(mode, lhf, rhf)
-	vim.api.nvim_set_keymap(mode, lhf, rhf, { noremap = true })
-end
+local nnoremap = require("keymap").nnoremap
+local vnoremap = require("keymap").vnoremap
+local tnoremap = require("keymap").tnoremap
+local xnoremap = require("keymap").xnoremap
+local inoremap = require("keymap").inoremap
 
-map("n", "<Leader>q", ":q<CR>")
-map("n", "<Leader>w", ":w<CR>")
-map("n", "<Leader>l", "<C-w>")
---map("n", "<Leader>cp", ":let @* =', 'expand(\"%\")<CR>")
---map("n", "<Leader>bp", ":bp<CR>")
---map("n", "<Leader>bb", ":buffers<CR>")
---map("n", "<Leader>bd", ":bd<CR>")
---map("n", "<Leader>bw", ":bw<CR>")
---map("n", "<Leader>bn", ":bn<CR>")
--- map("n", "<Leader>l", ":bn<CR>")
-map("n", "<Leader>e", ":Explore<CR>")
-map("t", "hh", "<C-\\><C-n>")
-map("v", "//", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
-map("x", "<leader>p", '"_dP')
-map("n", "<F5>", ":UndotreeToggle<CR>")
+nnoremap("<Leader>q", ":q<CR>")
+nnoremap("<Leader>w", ":w<CR>")
+nnoremap("<Leader>l", "<C-w>")
+nnoremap("<Leader>cp", ":let @* =', 'expand(\"%\")<CR>")
+nnoremap("<Leader>bp", ":bp<CR>")
+nnoremap("<Leader>bb", ":buffers<CR>")
+nnoremap("<Leader>bd", ":bd<CR>")
+nnoremap("<Leader>bw", ":bw<CR>")
+nnoremap("<Leader>bn", ":bn<CR>")
+nnoremap("<Leader>l", ":bn<CR>")
+nnoremap("<Leader>e", ":Explore<CR>")
+tnoremap("hh", "<C-\\><C-n>")
+vnoremap("//", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
+xnoremap("<leader>p", '"_dP')
+nnoremap("<F5>", ":UndotreeToggle<CR>")
 -- map <C-L> (redraw screen) to also turn off search highlighting until the
 -- next search
-map("n", "<C-L>", ":nohl<CR><C-L>")
+nnoremap("<C-L>", ":nohl<CR><C-L>")
 -- Don't use arrow keys
 --[[ map("", "<up>", "<nop>")
 map("", "<down>", "<nop>")
 map("", "<left>", "<nop>")
 map("", "<right>", "<nop>") ]]
 -- Easy quick of insert mode
-map("i", "hh", "<Esc>")
+inoremap("hh", "<Esc>")
 
 -- map("", "<Leader>e", "<cmd>lua require('lf').start()<CR>")
 
 -- greatest remap ever
-map("x", "<leader>p", '"_dP')
+xnoremap("<leader>p", '"_dP')
 
 -- next greatest remap ever : asbjornHaland
-map("n", "<leader>y", '"+y')
-map("v", "<leader>y", '"+y')
-map("n", "<leader>Y", 'gg"+yG')
+nnoremap("<leader>y", '"+y')
+vnoremap("<leader>y", '"+y')
+nnoremap("<leader>Y", 'gg"+yG')
 
-map("n", "<leader>d", '"_d')
-map("v", "<leader>d", '"_d')
+nnoremap("<leader>d", '"_d')
+vnoremap("<leader>d", '"_d')
 
-map("n", "<Leader>o", ":SymbolsOutline<CR>")
+nnoremap("<Leader>o", ":SymbolsOutline<CR>")

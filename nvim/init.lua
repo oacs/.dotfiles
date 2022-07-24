@@ -12,11 +12,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- set color scheme
 -- silent to avoid error if theme is missing
 vim.cmd("silent! colorscheme gruvbox-material")
-local status, _ = pcall(require, "oacs")
-if status then
-	--lfs exists, so use it.
-	require("tmux")
-end
+local _, _ = pcall(require, "oacs")
+
 return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")

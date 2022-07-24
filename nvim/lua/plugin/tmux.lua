@@ -14,10 +14,9 @@ function M.tmux_move_to_window(number)
 	}):sync()
 end
 
-local map = function(mode, lhf, rhf)
-	vim.api.nvim_set_keymap(mode, lhf, rhf, { noremap = true })
-end
+local nnoremap = require("keymap").nnoremap
 
-map("n", "<leader>tu", ':lua require("tmux").tmux_move_to_window("{previous}")<CR>')
-map("n", "<leader>ti", ':lua require("tmux").tmux_move_to_window("{next}")<CR>')
+nnoremap("<leader>tu", ':lua require("plugin.tmux").tmux_move_to_window("{previous}")<CR>')
+nnoremap("<leader>ti", ':lua require("plugin.tmux").tmux_move_to_window("{next}")<CR>')
+
 return M
