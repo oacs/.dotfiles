@@ -1,6 +1,10 @@
 require("plugin")
 require("vimWiki")
-
+require("lualine").setup({
+	options = {
+		theme = "gruvbox-material",
+	},
+})
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",

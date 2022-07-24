@@ -3,16 +3,15 @@ vim.cmd([[packadd packer.nvim]])
 -- use space as a the leader key
 vim.g.mapleader = " "
 
--- set color scheme
 vim.o.syntax = true
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*.lua", "*.sh", "*.ts", "*.vue" },
 	command = "Neoformat",
 })
-
+-- set color scheme
 -- silent to avoid error if theme is missing
-vim.cmd("silent! colorscheme dracula")
+vim.cmd("silent! colorscheme gruvbox-material")
 local status, _ = pcall(require, "oacs")
 if status then
 	--lfs exists, so use it.
@@ -26,7 +25,12 @@ return require("packer").startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
 	-- You can alias plugin names
-	use({ "dracula/vim", as = "dracula" })
+	-- use({ "dracula/vim", as = "dracula" })
+	use({ "sainnhe/gruvbox-material" })
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 
 	use({ "nvim-lua/plenary.nvim" })
 	use({ "ThePrimeagen/harpoon" })
