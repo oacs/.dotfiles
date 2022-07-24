@@ -8,8 +8,8 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-j>"] = cmp.mapping.scroll_docs(-4),
+		["<C-k>"] = cmp.mapping.scroll_docs(4),
 		["<tab>"] = cmp.mapping.select_next_item(),
 		["<S-tab>"] = cmp.mapping.select_prev_item(),
 		["<C-Space>"] = cmp.mapping.complete(),
@@ -21,7 +21,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "luasnip" },
-		{ name = "buffer", keyword_length = 5 },
+		{ name = "buffer", keyword_length = 3 },
 	},
 
 	formatting = {

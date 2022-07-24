@@ -18,3 +18,4 @@ map("n", "<leader>sT", ":lua require('telescope.builtin').treesitter()<cr>")
 
 map("v", "<leader>sg", "y<ESC>:Telescope live_grep default_text=<c-r>0<CR>")
 map("n", "<leader>st", ":lua require('custom_telescope').tmux_sessions()<CR>")
+map("n", "<leader>sd", ":lua require('custom_telescope').search_dotfiles()<CR>")
