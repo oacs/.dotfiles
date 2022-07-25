@@ -71,7 +71,8 @@ return require("packer").startup(function(use)
 	-- Prettier
 	use({ "sbdchd/neoformat" })
 	-- Delete ( ) [ ] { } without inner content
-	use({ "tpope/vim-surround" })
+	use({ "kylechui/nvim-surround" })
+
 	use({ "tpope/vim-dadbod" })
 	use({ "kristijanhusak/vim-dadbod-ui" })
 	use({
