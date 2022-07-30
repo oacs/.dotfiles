@@ -91,4 +91,6 @@ return require("packer").startup(function(use)
 	-- debugger
 	use("mfussenegger/nvim-dap")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	-- prisma '
+	use("pantharshit00/vim-prisma")
 end)

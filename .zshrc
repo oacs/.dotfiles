@@ -102,3 +102,5 @@ alias n="nvim ."
 export PATH="$HOME/.config/rofi/bin:$HOME/local/bin:$HOME/bin:$PATH"
 
 if [ -e /home/oacs/.nix-profile/etc/profile.d/nix.sh ]; then . /home/oacs/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+alias luamake=/home/oacs/local/lua-language-server/3rd/luamake/luamake
