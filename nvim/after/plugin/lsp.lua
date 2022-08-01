@@ -36,9 +36,10 @@ local nnoremap = require("keymap").nnoremap
 
 -- set completeopt=menuone,noselect
 -- let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-nnoremap("<leader>cd", ":lua vim.lsp.buf.definition()<CR>")
-nnoremap("<leader>cr", ":lua vim.lsp.buf.references()<CR>")
+nnoremap("<leader>cd", ':lua require("telescope.builtin").lsp_definitions()<CR>')
+nnoremap("<leader>cr", ':lua require("telescope.builtin").lsp_references()<CR>')
 nnoremap("<leader>ci", ':lua require("telescope.builtin").lsp_implementations()<cr>')
+nnoremap("<leader>ct", ':lua require("telescope.builtin").lsp_type_highlight()<cr>')
 nnoremap("<leader>ch", ":lua vim.lsp.buf.hover()<CR>")
 nnoremap("<leader>cs", ":lua vim.lsp.buf.signature_help()<CR>")
 nnoremap("<leader>cf", ":lua vim.diagnostic.open_float()<CR>")

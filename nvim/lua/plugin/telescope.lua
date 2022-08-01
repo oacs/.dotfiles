@@ -1,8 +1,35 @@
 local nnoremap = require("keymap").nnoremap
 local vnoremap = require("keymap").vnoremap
+-- This is your opts table
+require("telescope").setup({
+	extensions = {
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({
+				-- even more opts
+			}),
 
-nnoremap("<leader>ss", ":lua require('telescope.builtin').git_files()<cr>")
-nnoremap("<leader>sS", ":lua require('telescope.builtin').find_files()<cr>")
+			-- pseudo code / specification for writing custom displays, like the one
+			-- for "codeactions"
+			-- specific_opts = {
+			--   [kind] = {
+			--     make_indexed = function(items) -> indexed_items, width,
+			--     make_displayer = function(widths) -> displayer
+			--     make_display = function(displayer) -> function(e)
+			--     make_ordinal = function(e) -> string
+			--   },
+			--   -- for example to disable the custom builtin "codeactions" display
+			--      do the following
+			--   codeactions = false,
+			-- }
+		},
+	},
+})
+-- To get ui-select loaded and working with telescope, you need to call
+-- load_extension, somewhere after setup function:
+require("telescope").load_extension("ui-select")
+
+nnoremap("<leader>sS", ":lua require('telescope.builtin').git_files()<cr>")
+nnoremap("<leader>ss", ":lua require('telescope.builtin').find_files()<cr>")
 nnoremap("<leader>sg", ":lua require('telescope.builtin').live_grep()<cr>")
 vnoremap("<leader>sg", "y<ESC>:Telescope live_grep default_text=<c-r>0<CR>")
 nnoremap("<leader>sb", ":lua require('telescope.builtin').buffers()<cr>")

@@ -1,5 +1,4 @@
 vim.cmd([[packadd packer.nvim]])
-
 -- use space as a the leader key
 vim.g.mapleader = " "
 
@@ -33,7 +32,7 @@ return require("packer").startup(function(use)
 	use({ "ThePrimeagen/harpoon" })
 	use({ "nvim-telescope/telescope.nvim" })
 	use({ "nvim-telescope/telescope-fzy-native.nvim" })
-
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
 	-- Plebvim lsp Plugins
 	use({ "neovim/nvim-lspconfig" })
 
@@ -93,4 +92,11 @@ return require("packer").startup(function(use)
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	-- prisma '
 	use("pantharshit00/vim-prisma")
+
+	use("j-hui/fidget.nvim")
+
+	use({
+		"luukvbaal/nnn.nvim",
+		config = function() end,
+	})
 end)
