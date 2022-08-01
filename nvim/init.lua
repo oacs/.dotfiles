@@ -94,9 +94,10 @@ return require("packer").startup(function(use)
 	use("pantharshit00/vim-prisma")
 
 	use("j-hui/fidget.nvim")
-
 	use({
-		"luukvbaal/nnn.nvim",
-		config = function() end,
+		"kyazdani42/nvim-tree.lua",
+		requires = {
+			"kyazdani42/nvim-web-devicons", -- optional, for file icons
+		},
 	})
 end)

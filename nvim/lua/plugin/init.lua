@@ -10,4 +10,8 @@ require("nvim-surround").setup()
 require("fidget").setup({ text = {
 	spinner = "moon",
 } })
-require("nnn").setup()
+require("lualine").setup({
+	options = {
+		theme = "gruvbox-material",
+	},
+})
