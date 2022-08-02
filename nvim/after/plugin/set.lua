@@ -33,6 +33,7 @@ o.updatetime = 50
 g.neoformat_enabled_vue = { "prettierd", "eslint_d" }
 g.neoformat_enabled_javascript = { "prettierd" }
 g.neoformat_enabled_typescript = { "eslint_d" }
+g.neoformat_enabled_json = { "prettierd" }
 
 -- https://pkg.go.dev/cmd/gofmt
 g.neoformat_enabled_go = { "gofmt" }

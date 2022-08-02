@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 vim.o.syntax = true
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*.lua", "*.sh", "*.ts", "*.vue" },
+	pattern = { "*.lua", "*.sh", "*.ts", "*.vue", "*.json" },
 	command = "Neoformat",
 })
 -- set color scheme
