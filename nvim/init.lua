@@ -100,4 +100,6 @@ return require("packer").startup(function(use)
 			"kyazdani42/nvim-web-devicons", -- optional, for file icons
 		},
 	})
+
+	use("/home/oacs/dev/rocket")
 end)
