@@ -48,4 +48,4 @@ nnoremap("<leader>cl", ':lua require("telescope.builtin").lsp_document_diagnosti
 nnoremap("<leader>ca", ":lua vim.lsp.buf.code_action()<cr>")
 
 nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
-nnoremap("<leader>cn", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+nnoremap("<leader>cn", ":lua vim.diagnostic.goto_next()<CR>")
