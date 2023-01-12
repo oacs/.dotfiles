@@ -4,7 +4,7 @@ HOME_DIR=/home/oacs
 LOCAL_DIR=$HOME_DIR"/local"
 LUA_LSP_DIR=$LOCAL_DIR"/lua-language-server"
 
-sudo npm install -g graphql-language-service-cli vscode-langservers-extracted typescript-language-server vls typescript
+sudo npm install -g graphql-language-service-cli vscode-langservers-extracted typescript-language-server vls typescript @prisma/language-server
 
 # clone project
 git clone  --depth=1 https://github.com/sumneko/lua-language-server $LUA_LSP_DIR
