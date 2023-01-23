@@ -1,6 +1,6 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local lsp_servers = { "tsserver", "vuels", "gopls", "prismals" }
+local lsp_servers = { "tailwindcss", "tsserver", "vuels", "gopls", "prismals" }
 
 for _, server in ipairs(lsp_servers) do
 	require("lspconfig")[server].setup({ capabilities = capabilities })
@@ -34,7 +34,6 @@ require("lspconfig").sumneko_lua.setup({
 
 local nnoremap = require("keymap").nnoremap
 
--- set completeopt=menuone,noselect
 -- let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 nnoremap("<leader>cd", ':lua require("telescope.builtin").lsp_definitions()<CR>')
 nnoremap("<leader>cr", ':lua require("telescope.builtin").lsp_references()<CR>')

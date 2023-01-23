@@ -1,5 +1,5 @@
 local nnoremap = require("keymap").nnoremap
-
+-- Git mappings
 nnoremap("<leader>gg", ":G<CR>")
 nnoremap("<leader>gp", ":G push<CR>")
 nnoremap("<leader>gP", ":G push -f<CR>")

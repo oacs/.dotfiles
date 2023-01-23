@@ -1,3 +1,4 @@
+-- deprecated plugin
 local o = vim.o
 -- local wo = vim.wo
 local g = vim.g

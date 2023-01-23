@@ -5,7 +5,7 @@ require("plugin.notes")
 require("plugin.treesitter")
 require("plugin.tmux")
 require("plugin.telescope")
-require("plugin.vimWiki")
+--require("plugin.vimWiki")
 require("nvim-surround").setup()
 require("fidget").setup({ text = {
 	spinner = "moon",

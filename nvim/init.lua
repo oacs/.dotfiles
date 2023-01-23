@@ -10,90 +10,78 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 -- set color scheme
 -- silent to avoid error if theme is missing
-vim.cmd("silent! colorscheme gruvbox-material")
-local _, _ = pcall(require, "oacs")
+vim.cmd("silent! colorscheme tokyonight-moon")
+
+-- local _, _ = pcall(require, "oacs")
+require("oacs")
 
 return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	-- Post-install/update hook with neovim command
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-
 	-- You can alias plugin names
 	-- use({ "dracula/vim", as = "dracula" })
 	use({ "sainnhe/gruvbox-material" })
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+	use("folke/tokyonight.nvim")
 
-	use({ "nvim-lua/plenary.nvim" })
-	use({ "ThePrimeagen/harpoon" })
-	use({ "nvim-telescope/telescope.nvim" })
-	use({ "nvim-telescope/telescope-fzy-native.nvim" })
-	use({ "nvim-telescope/telescope-ui-select.nvim" })
 	-- Plebvim lsp Plugins
 	use({ "neovim/nvim-lspconfig" })
 
-	-- Complete
-	use({ "hrsh7th/nvim-cmp" })
-	use({ "hrsh7th/cmp-buffer" })
-	use({ "hrsh7th/cmp-path" })
-	use({ "hrsh7th/cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-nvim-lua" })
-	use({ "onsails/lspkind-nvim" })
-	use({ "kristijanhusak/vim-dadbod-completion" })
-
 	use({
-		"simrat39/symbols-outline.nvim",
-		config = function()
-			local opts = {
-				-- whether to highlight the currently hovered symbol
-				-- disable if your cpu usage is higher than you want it
-				highlight_hovered_item = true,
-				-- whether to show outline guides
-				show_guides = true,
-			}
-			require("symbols-outline").setup(opts)
-		end,
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		requires = { { "nvim-lua/plenary.nvim" } },
 	})
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
 
-	use({ "L3MON4D3/LuaSnip" })
-	use({ "saadparwaiz1/cmp_luasnip" })
-	-- updating the parsers on update
-	use({ "nvim-treesitter/playground" })
+	-- Harpoon quick terminal jumps
+	use("ThePrimeagen/harpoon")
+
 	-- Git
 	use({ "tpope/vim-fugitive" })
-	use({ "moll/vim-bbye" })
-	use({ "aymericbeaumet/vim-symlink" })
+
 	-- Prettier
 	use({ "sbdchd/neoformat" })
-	-- Delete ( ) [ ] { } without inner content
-	use({ "kylechui/nvim-surround" })
 
-	use({ "tpope/vim-dadbod" })
-	use({ "kristijanhusak/vim-dadbod-ui" })
+	-- Coment
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
 		end,
 	})
-	use({ "akinsho/toggleterm.nvim" })
 
-	use({ "vimwiki/vimwiki" })
-	use({ "junegunn/fzf" })
-	use({ "junegunn/fzf.vim" })
-	use({ "michal-h21/vim-zettel" })
+	-- Delete ( ) [ ] { } without inner content
+	use({ "kylechui/nvim-surround" })
 
-	-- debugger
-	use("mfussenegger/nvim-dap")
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	-- prisma '
 	use("pantharshit00/vim-prisma")
-
 	use("j-hui/fidget.nvim")
 
+	-- CMP
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/nvim-cmp")
+	use("onsails/lspkind.nvim")
+	use("nvim-tree/nvim-web-devicons")
+	use("jcha0713/cmp-tw2css")
+
+	-- Snippets
+	use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
+	use("rafamadriz/friendly-snippets")
+
+	-- Copilot
+	-- use("github/copilot.vim")
+	use("zbirenbaum/copilot.lua", {})
+
+	use("zbirenbaum/copilot-cmp", {})
+
+	-- Treesitter
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	--	use("/home/oacs/dev/rocket")
+
+	-- Add yanky to copy to system clipboard
+	use("gbprod/yanky.nvim")
 end)

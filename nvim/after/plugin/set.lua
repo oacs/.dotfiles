@@ -5,7 +5,7 @@ local g = vim.g
 o.number = true
 o.mouse = "a"
 o.numberwidth = 1
-o.clipboard = "unnamedplus"
+o.clipboard = o.clipboard .. "unnamedplus"
 o.showcmd = true
 o.ruler = true
 o.encoding = "UTF-8"
@@ -23,6 +23,7 @@ o.foldexpr = "nvim_treesitter#foldexpr()"
 o.fml = 16
 
 g.dashboard_default_executive = "telescope"
+-- CMP config
 g.completeopt = "menu,menuone,noselect"
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -31,7 +32,7 @@ o.updatetime = 50
 
 -- npm install -g @fsouza/prettierd
 g.neoformat_enabled_vue = { "prettierd", "eslint_d" }
-g.neoformat_enabled_javascript = { "prettierd" }
+g.neoformat_enabled_javascript = { "eslint_d" }
 g.neoformat_enabled_typescript = { "eslint_d" }
 g.neoformat_enabled_json = { "prettierd" }
 

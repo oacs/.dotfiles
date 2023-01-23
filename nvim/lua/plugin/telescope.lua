@@ -1,5 +1,6 @@
 local nnoremap = require("keymap").nnoremap
 local vnoremap = require("keymap").vnoremap
+
 -- This is your opts table
 require("telescope").setup({
 	extensions = {
@@ -27,7 +28,9 @@ require("telescope").setup({
 -- To get ui-select loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("yank_history")
 
+nnoremap("<leader>p", ":Telescope yank_history<cr>")
 nnoremap("<leader>sS", ":lua require('telescope.builtin').git_files()<cr>")
 nnoremap("<leader>ss", ":lua require('telescope.builtin').find_files()<cr>")
 nnoremap("<leader>sg", ":lua require('telescope.builtin').live_grep()<cr>")
