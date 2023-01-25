@@ -3,9 +3,12 @@ require("plugin.cmp")
 require("plugin.harpoon")
 require("plugin.treesitter")
 
+require("nvim-surround").setup()
+
 require("fidget").setup({ text = {
 	spinner = "moon",
 } })
+
 -- Not Currently Recommended
 require("nvim-web-devicons").setup({
 	-- your personnal icons can go here (to override)
@@ -26,11 +29,33 @@ require("nvim-web-devicons").setup({
 	-- will get overriden by `get_icons` option
 	default = true,
 })
+
 require("copilot").setup({
 	suggestion = { enabled = false },
 	panel = { enabled = false },
 })
+
 require("copilot_cmp").setup({
 	clear_after_cursor = true,
 })
+
 require("yanky").setup({})
+
+-- Enable `lukas-reineke/indent-blankline.nvim`
+-- See `:help indent_blankline.txt`
+--require("indent_blankline").setup({
+--char = "┊",
+--show_trailing_blankline_indent = false,
+--})
+require("neodev").setup()
+
+require("gitsigns").setup({
+	signs = {
+		add = { text = "+" },
+		change = { text = "~" },
+		delete = { text = "_" },
+		topdelete = { text = "‾" },
+		changedelete = { text = "~" },
+	},
+})
+require("Comment").setup()

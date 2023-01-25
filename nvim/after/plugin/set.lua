@@ -42,6 +42,7 @@ g.neoformat_enabled_go = { "gofmt" }
 g.neoformat_enabled_lua = { "stylua" }
 
 g.neoformat_enabled_vim = { "prettier" }
+g.neoformat_enabled_prisma = { "prettier" }
 
 -- go install mvdan.cc/sh/v3/cmd/shfmt@latest
 g.neoformat_enabled_shell = { "shmft", "prettierd" }
