@@ -99,7 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 alias n="nvim ."
-export PATH="$HOME/.config/rofi/bin:$HOME/local/bin:$HOME/bin:$PATH"
+export PATH="$HOME/.config/rofi/bin:$HOME/local/bin:$HOME/bin:$HOME/.local/bin/:$PATH:/var/lib/snapd/"
 
 if [ -e /home/oacs/.nix-profile/etc/profile.d/nix.sh ]; then . /home/oacs/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
