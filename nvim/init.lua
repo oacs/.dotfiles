@@ -200,9 +200,5 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- set color scheme
 -- silent to avoid error if theme is missing
 vim.cmd("silent! colorscheme tokyonight-moon")
--- local _, _ = pcall(require, "oacs")
-require("oacs")
-require("indent_blankline").setup({
-	char = "┊",
-	show_trailing_blankline_indent = false,
-})
+local _, _ = pcall(require, "oacs")
+--require("oacs")
