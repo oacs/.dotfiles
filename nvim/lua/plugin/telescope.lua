@@ -29,6 +29,7 @@ require("telescope").setup({
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("yank_history")
+require("telescope").load_extension("emoji")
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
 
@@ -43,6 +44,7 @@ nnoremap("<leader>sb", require("telescope.builtin").buffers)
 nnoremap("<leader>sh", require("telescope.builtin").help_tags)
 vnoremap("<leader>sh", "y<ESC>:Telescope help_tags default_text=<c-r>0<CR>")
 nnoremap("<leader>sr", require("telescope.builtin").registers)
+nnoremap("<leader><leader>e", ":Telescope emoji<cr>")
 -- nnoremap("<leader>ft", require('plugin.custom_telescope').search_todos)
 nnoremap("<leader>sq", require("telescope.builtin").quickfix)
 

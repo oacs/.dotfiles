@@ -32,8 +32,8 @@ o.updatetime = 50
 
 -- npm install -g @fsouza/prettierd
 g.neoformat_enabled_vue = { "prettierd", "eslint_d" }
-g.neoformat_enabled_javascript = { "eslint_d" }
-g.neoformat_enabled_typescript = { "eslint_d" }
+g.neoformat_enabled_javascript = { "prettierd", "eslint_d" }
+g.neoformat_enabled_typescript = { "prettierd", "eslint_d" }
 g.neoformat_enabled_json = { "prettierd" }
 
 -- https://pkg.go.dev/cmd/gofmt

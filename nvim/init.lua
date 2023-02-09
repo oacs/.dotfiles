@@ -35,6 +35,7 @@ require("packer").startup(function(use)
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 })
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
+	use("xiyaowong/telescope-emoji.nvim")
 
 	-- Harpoon quick terminal jumps
 	use("ThePrimeagen/harpoon")
@@ -111,6 +112,12 @@ require("packer").startup(function(use)
 	use({ "sainnhe/gruvbox-material" })
 	use("folke/tokyonight.nvim")
 
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")
 	if has_plugins then

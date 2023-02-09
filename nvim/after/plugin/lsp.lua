@@ -52,6 +52,7 @@ local servers = {
 	gopls = {},
 	vuels = {},
 	tsserver = {},
+	emmet_ls = {},
 	sumneko_lua = {
 		Lua = {
 			workspace = { checkThirdParty = false },
