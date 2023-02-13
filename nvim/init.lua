@@ -201,8 +201,8 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.o.syntax = true
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*.lua", "*.sh", "*.ts", "*.vue", "*.json", "*.tsx", "*.js", "*.html" },
-	command = "Neoformat",
+	pattern = { "*.astro", "*.lua", "*.sh", "*.ts", "*.vue", "*.json", "*.tsx", "*.js", "*.html" },
+	command = ":Format",
 })
 -- set color scheme
 -- silent to avoid error if theme is missing
