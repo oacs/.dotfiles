@@ -205,16 +205,14 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- use space as a the leader key
-
 vim.o.syntax = true
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*.astro", "*.lua", "*.sh", "*.ts", "*.vue", "*.json", "*.tsx", "*.js", "*.html" },
-	command = ":Format",
-})
 -- set color scheme
 -- silent to avoid error if theme is missing
 vim.cmd("silent! colorscheme tokyonight-moon")
-local _, _ = pcall(require, "oacs")
+local main_config_failed, _ = pcall(require, "oacs")
+if not main_config_failed then
+	print("Failed to load main config")
+end
+
 --require("oacs")
