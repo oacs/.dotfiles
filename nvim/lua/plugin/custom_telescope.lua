@@ -33,7 +33,7 @@ M.tmux_sessions = function(opts)
 	table.insert(dirs, "/home/oacs/notes")
 	pickers
 		.new(opts, {
-			prompt_title = "colors",
+			prompt_title = "projects",
 			finder = finders.new_table({
 				results = dirs,
 			}),

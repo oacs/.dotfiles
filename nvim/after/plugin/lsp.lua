@@ -52,6 +52,8 @@ local servers = {
 	tailwindcss = {},
 	-- tsserver === typescript-language-server
 	tsserver = {},
+	--lua_ls === lua_language_server
+	lua_ls = {},
 }
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
