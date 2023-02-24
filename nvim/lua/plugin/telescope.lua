@@ -1,5 +1,6 @@
 local nnoremap = require("keymap").nnoremap
 local vnoremap = require("keymap").vnoremap
+
 -- This is your opts table
 require("telescope").setup({
 	extensions = {
@@ -27,23 +28,32 @@ require("telescope").setup({
 -- To get ui-select loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("dap")
+require("telescope").load_extension("yank_history")
+require("telescope").load_extension("emoji")
+-- Enable telescope fzf native, if installed
+pcall(require("telescope").load_extension, "fzf")
 
-nnoremap("<leader>sS", ":lua require('telescope.builtin').git_files()<cr>")
-nnoremap("<leader>ss", ":lua require('telescope.builtin').find_files()<cr>")
-nnoremap("<leader>sg", ":lua require('telescope.builtin').live_grep()<cr>")
+nnoremap("<leader>p", ":Telescope yank_history<cr>")
+nnoremap("<leader>sS", require("telescope.builtin").git_files)
+nnoremap("<leader>ss", require("telescope.builtin").find_files)
+nnoremap("<leader>sg", require("telescope.builtin").live_grep)
+nnoremap("<leader>sd", require("telescope.builtin").diagnostics)
+nnoremap("<leader>sw", require("telescope.builtin").grep_string)
 vnoremap("<leader>sg", "y<ESC>:Telescope live_grep default_text=<c-r>0<CR>")
-nnoremap("<leader>sb", ":lua require('telescope.builtin').buffers()<cr>")
-nnoremap("<leader>sh", ":lua require('telescope.builtin').help_tags()<cr>")
+nnoremap("<leader>sb", require("telescope.builtin").buffers)
+nnoremap("<leader>sh", require("telescope.builtin").help_tags)
 vnoremap("<leader>sh", "y<ESC>:Telescope help_tags default_text=<c-r>0<CR>")
-nnoremap("<leader>sr", ":lua require('telescope.builtin').registers()<cr>")
--- nnoremap("<leader>ft", ":lua require('plugin.custom_telescope').search_todos()<cr>")
-nnoremap("<leader>sq", ":lua require('telescope.builtin').quickfix()<cr>")
+nnoremap("<leader>sr", require("telescope.builtin").registers)
+nnoremap("<leader><leader>e", ":Telescope emoji<cr>")
+-- nnoremap("<leader>ft", require('plugin.custom_telescope').search_todos)
+nnoremap("<leader>sq", require("telescope.builtin").quickfix)
 
--- nnoremap("<leader>gw", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
-nnoremap("<leader>gs", ":lua require('telescope.builtin').git_branches()<CR>")
-nnoremap("<leader>gS", ":lua require('telescope.builtin').git_stash()<CR>")
+-- nnoremap("<leader>gw", require('telescope').extensions.git_worktree.git_worktrees)
+nnoremap("<leader>gs", require("telescope.builtin").git_branches)
+nnoremap("<leader>gS", require("telescope.builtin").git_stash)
 
-nnoremap("<leader>sT", ":lua require('telescope.builtin').treesitter()<cr>")
+nnoremap("<leader>sT", require("telescope.builtin").treesitter)
 
-nnoremap("<leader>st", ":lua require('plugin.custom_telescope').tmux_sessions()<CR>")
-nnoremap("<leader>sd", ":lua require('plugin.custom_telescope').search_dotfiles()<CR>")
+nnoremap("<leader>st", require("plugin.custom_telescope").tmux_sessions)
+nnoremap("<leader>sD", require("plugin.custom_telescope").search_dotfiles)

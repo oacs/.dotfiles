@@ -1,20 +1,37 @@
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
-		"bash",
-		"comment",
-		"go",
-		"css",
-		"graphql",
+		-- Web development
 		"html",
+		"css",
 		"javascript",
 		"json",
+		"graphql",
+		"typescript",
+		"tsx",
+		"comment",
+		"vue",
+		"prisma",
+
+		-- Others
+		"bash",
+		"rust",
+		"go",
 		"lua",
 		"regex",
-		"tsx",
-		"vue",
-		"typescript",
+		"dockerfile",
+		"markdown",
 	},
+	auto_install = true,
 	highlight = { enable = true },
-	incremental_selection = { enable = true },
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "<c-space>",
+			node_incremental = "<c-space>",
+			scope_incremental = "<c-s>",
+			node_decremental = "<c-backspace>",
+		},
+	},
 	textobjects = { enable = true },
+	indent = { enable = true, disable = { "python" } },
 })
