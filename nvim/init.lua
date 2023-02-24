@@ -29,7 +29,6 @@ require("packer").startup(function(use)
 
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.X",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
@@ -118,6 +117,8 @@ require("packer").startup(function(use)
 			vim.fn["mkdp#util#install"]()
 		end,
 	})
+
+	use("jose-elias-alvarez/null-ls.nvim")
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")
 	if has_plugins then
