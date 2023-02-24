@@ -28,6 +28,7 @@ require("telescope").setup({
 -- To get ui-select loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("dap")
 require("telescope").load_extension("yank_history")
 require("telescope").load_extension("emoji")
 -- Enable telescope fzf native, if installed
