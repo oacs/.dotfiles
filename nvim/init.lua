@@ -81,17 +81,18 @@ require("packer").startup(function(use)
 	use("rafamadriz/friendly-snippets")
 
 	-- Copilot
-	-- use("github/copilot.vim")
-	use("zbirenbaum/copilot.lua", {})
-	use("zbirenbaum/copilot-cmp", {})
-	use({
-		"mfussenegger/nvim-dap",
-	})
-	use({
-		"jay-babu/mason-nvim-dap.nvim",
-	})
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-	use({ "nvim-telescope/telescope-dap.nvim" })
+	--use("github/copilot.vim")
+	--use("zbirenbaum/copilot.lua", {})
+	--use("zbirenbaum/copilot-cmp", {})
+
+	-- use({
+	-- 	"mfussenegger/nvim-dap",
+	-- })
+	-- use({
+	-- 	"jay-babu/mason-nvim-dap.nvim",
+	-- })
+	-- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	-- use({ "nvim-telescope/telescope-dap.nvim" })
 
 	-- Treesitter
 	use({ -- Highlight, edit, and navigate code

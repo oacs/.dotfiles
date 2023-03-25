@@ -20,7 +20,7 @@ cmp.setup({
 			with_text = true,
 			menu = {
 				buffer = "[buf]",
-				copilot = "[cop]",
+				-- copilot = "[cop]",
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[api]",
 				path = "[path]",

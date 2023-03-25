@@ -65,11 +65,11 @@ if isMasonInstaled then
 	mason.setup()
 end
 -- Dap config
-require("mason-nvim-dap").setup({
-	ensure_installed = { "node2", "chrome", "js" },
-	automatic_setup = true,
-})
-require("mason-nvim-dap").setup_handlers({})
+-- require("mason-nvim-dap").setup({
+-- ensure_installed = { "node2", "chrome", "js" },
+-- automatic_setup = true,
+-- })
+-- require("mason-nvim-dap").setup_handlers({})
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
