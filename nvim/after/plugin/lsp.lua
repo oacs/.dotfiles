@@ -41,19 +41,19 @@ end
 
 -- Enable the following language servers
 local servers = {
-	gopls = {},
-	emmet_ls = {},
-	rust_analyzer = {},
+	--gopls = {},
+	--emmet_ls = {},
+	--rust_analyzer = {},
 	-- prismals === prisma-language-server
-	prismals = {},
+	--prismals = {},
 	-- volar === vue-language-server
-	volar = {},
+	--volar = {},
 	-- tailwindcss === tailwindcss-language-server
-	tailwindcss = {},
+	-- tailwindcss = {},
 	-- tsserver === typescript-language-server
 	tsserver = {},
 	--lua_ls === lua_language_server
-	lua_ls = {},
+	--lua_ls = {},
 }
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()

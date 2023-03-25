@@ -33,7 +33,7 @@ o.updatetime = 50
 
 -- TODO: Ensure the formatters above are installed
 local formatters = {
-	eslint_d = {},
+	--eslint_d = {},
 	eslint = {},
 	prettierd = {},
 	prettier = {},
@@ -43,7 +43,7 @@ local formatters = {
 
 g.neoformat_enabled_vue = { "prettierd", "eslint_d" }
 g.neoformat_enabled_javascript = { "prettierd", "eslint_d" }
-g.neoformat_enabled_typescript = { "prettierd", "eslint_d" }
+g.neoformat_enabled_typescript = { "prettier", "eslint" }
 g.neoformat_enabled_json = { "prettierd" }
 
 g.neoformat_enabled_go = { "gofmt" }

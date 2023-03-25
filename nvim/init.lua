@@ -58,7 +58,6 @@ require("packer").startup(function(use)
 
 	-- prisma '
 	use("pantharshit00/vim-prisma")
-	use("j-hui/fidget.nvim")
 
 	-- CMP
 	use({ -- Autocompletion
@@ -116,9 +115,9 @@ require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically
 	-- You can alias plugin names
-	-- use({ "dracula/vim", as = "dracula" })
-	use({ "sainnhe/gruvbox-material" })
-	use("folke/tokyonight.nvim")
+	use({ "dracula/vim", as = "dracula" })
+	-- use({ "sainnhe/gruvbox-material" })
+	-- use("folke/tokyonight.nvim")
 
 	use({
 		"iamcco/markdown-preview.nvim",
@@ -210,7 +209,8 @@ vim.o.syntax = true
 
 -- set color scheme
 -- silent to avoid error if theme is missing
-vim.cmd("silent! colorscheme tokyonight-moon")
+-- vim.cmd("silent! colorscheme tokyonight-moon")
+vim.cmd("silent! colorscheme dracula")
 local main_config_failed, _ = pcall(require, "oacs")
 if not main_config_failed then
 	print("Failed to load main config")
