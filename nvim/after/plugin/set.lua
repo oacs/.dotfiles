@@ -2,6 +2,7 @@ local o = vim.o
 -- local wo = vim.wo
 local g = vim.g
 
+o.shell = "/usr/bin/fish"
 o.number = true
 o.mouse = "a"
 o.numberwidth = 1
