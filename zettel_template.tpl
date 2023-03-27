@@ -1,4 +1,0 @@
-= %title =
-
-Backlink: %backlink
--------------------
