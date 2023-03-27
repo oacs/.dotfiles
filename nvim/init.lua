@@ -57,13 +57,14 @@ require("packer").startup(function(use)
 	use({ "kylechui/nvim-surround" })
 
 	-- prisma '
-	use("pantharshit00/vim-prisma")
+	-- use("pantharshit00/vim-prisma")
 
 	-- CMP
 	use({ -- Autocompletion
 		"hrsh7th/nvim-cmp",
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"L3MON4D3/LuaSnip",
@@ -119,14 +120,14 @@ require("packer").startup(function(use)
 	-- use({ "sainnhe/gruvbox-material" })
 	-- use("folke/tokyonight.nvim")
 
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	})
+	-- use({
+	-- 	"iamcco/markdown-preview.nvim",
+	-- 	run = function()
+	-- 		vim.fn["mkdp#util#install"]()
+	-- 	end,
+	-- })
 
-	use("jose-elias-alvarez/null-ls.nvim")
+	-- use("jose-elias-alvarez/null-ls.nvim")
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")
 	if has_plugins then
@@ -162,7 +163,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
