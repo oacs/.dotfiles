@@ -15,10 +15,10 @@ local on_attach = function(_, bufnr)
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-	nmap("<F2>", vim.lsp.buf.rename, "[R]e[n]ame")
+	--nmap("<F2>", vim.lsp.buf.rename, "[R]e[n]ame")
 	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
+	nmap("<leader>td", vim.lsp.buf.type_definition, "[T]ype [D]efinition")
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 	-- See `:help K` for why this keymap
@@ -45,7 +45,7 @@ local servers = {
 	--emmet_ls = {},
 	--rust_analyzer = {},
 	-- prismals === prisma-language-server
-	--prismals = {},
+	prismals = {},
 	-- volar === vue-language-server
 	--volar = {},
 	-- tailwindcss === tailwindcss-language-server
@@ -53,7 +53,7 @@ local servers = {
 	-- tsserver === typescript-language-server
 	tsserver = {},
 	--lua_ls === lua_language_server
-	--lua_ls = {},
+	lua_ls = {},
 }
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
