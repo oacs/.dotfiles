@@ -1,30 +1,11 @@
-# dotfiles
+# OACS Dotfiles
 
-Dotfiles for linux systems
+Here I store all the configs that I need for my Arch env
 
-# List of utils
+## File structure
 
-## Console
+Prabably this is going to change in the future, but so far so good with:
 
-lf - file manager
-gdu - disk usage tool
-NetworkManager - network tool
-
-
-## TODOS
-
-- Config dashboard
-
-
-## Install
-
-- You need to add set.secret.vim with the db credentials
-ex: 
-```
-let g:dbs = {
-\ 'mordev': 'postgres://postgres:mypassword@localhost:5432/my-dev-db',
-\ }
-```
-## Apps
-
-flameshot - screenshots
+./
+| [config folder]/ # config folders for `$XDG_CONFIG_HOME`
+| scripts/ # Any useful script that I need
