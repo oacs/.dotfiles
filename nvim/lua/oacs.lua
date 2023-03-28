@@ -62,7 +62,7 @@ require("indent_blankline").setup({
 	show_trailing_blankline_indent = false,
 })
 
-local null_ls = require("null-ls")
+-- local null_ls = require("null-ls")
 
 --null_ls.setup({
 --sources = {
@@ -74,3 +74,4 @@ local null_ls = require("null-ls")
 -- null_ls.builtins.code_actions.gitsigns,
 --},
 --})
+require("nap").setup()
