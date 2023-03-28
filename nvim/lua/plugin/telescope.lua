@@ -61,5 +61,6 @@ nnoremap("<leader>sD", require("plugin.custom_telescope").search_dotfiles, desc(
 nnoremap("<leader>sc", require("telescope.builtin").commands, desc("[S]earch [C]ommands"))
 nnoremap("<leader>sC", require("telescope.builtin").command_history, desc("[S]earch [C]ommands"))
 
+-- nnoremap("<leader>sl", require("telescope.builtin").loclist, desc("[S]earch [L]oclist"))
 nnoremap("<leader>sl", require("telescope.builtin").loclist, desc("[S]earch [L]oclist"))
 nnoremap("<leader>sk", require("telescope.builtin").keymaps, desc("[S]earch [K]eymaps"))
