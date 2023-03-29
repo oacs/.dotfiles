@@ -5,7 +5,20 @@ require("plugin.harpoon")
 require("plugin.tmux")
 require("plugin.treesitter")
 
-require("nvim-surround").setup()
+require("nvim-surround").setup({
+	keymaps = {
+		insert = "<C-g>s",
+		insert_line = "<C-g>S",
+		normal = "S",
+		normal_cur = "Ss",
+		normal_line = "SS",
+		normal_cur_line = "ySS",
+		visual = "S",
+		visual_line = "gS",
+		delete = "ds",
+		change = "cs",
+	},
+})
 
 require("fidget").setup({ text = {
 	spinner = "moon",
