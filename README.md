@@ -12,4 +12,13 @@ Prabably this is going to change in the future, but so far so good with:
 
 ## Deps
 
-Wayland for for rofi: https://github.com/lbonn/rofi
+Wayland for for rofi: [rofi-wayland](https://github.com/lbonn/rofi)
+
+### Obsidian
+
+Wayland install:
+
+```
+flatpak install flathub md.obsidian.Obsidian
+flatpak override --user --env=OBSIDIAN_USE_WAYLAND=1 md.obsidian.obsidian
+```
