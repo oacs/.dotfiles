@@ -20,6 +20,7 @@ require("telescope").setup({
 -- To get ui-select loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("harpoon")
 -- require("telescope").load_extension("dap")
 require("telescope").load_extension("yank_history")
 require("telescope").load_extension("emoji")
@@ -47,6 +48,7 @@ vnoremap("<leader>sh", "y<ESC>:Telescope help_tags default_text=<c-r>0<CR>", des
 
 nnoremap("<leader>sr", require("telescope.builtin").registers, desc("[S]earch [R]egisters"))
 nnoremap("<leader><leader>e", ":Telescope emoji<cr>", desc("[S]earch [E]moji"))
+nnoremap("<leader>hs", ":Telescope harpoon marks<cr>", desc("[H]arpoon [S]earch"))
 -- nnoremap("<leader>ft", require('plugin.custom_telescope').search_todos)
 nnoremap("<leader>sq", require("telescope.builtin").quickfix, desc("[S]earch [Q]uickfix"))
 

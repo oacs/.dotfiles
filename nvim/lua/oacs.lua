@@ -4,7 +4,9 @@ require("plugin.cmp")
 require("plugin.harpoon")
 require("plugin.tmux")
 require("plugin.treesitter")
-
+require("nvim-autopairs").setup({
+	disable_filetype = { "TelescopePrompt", "vim" },
+})
 require("nvim-surround").setup({
 	keymaps = {
 		insert = "<C-g>s",
@@ -87,4 +89,7 @@ require("indent_blankline").setup({
 -- null_ls.builtins.code_actions.gitsigns,
 --},
 --})
-require("nap").setup()
+require("nap").setup({
+	next_repeat = "<c-n><c-n>",
+	prev_repeat = "<c-p><c-p>",
+})

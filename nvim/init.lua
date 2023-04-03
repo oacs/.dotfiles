@@ -106,6 +106,7 @@ require("packer").startup(function(use)
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
 	})
+	use("nvim-treesitter/nvim-treesitter-context")
 	--	use("/home/oacs/dev/rocket")
 
 	-- Add yanky to copy to system clipboard
@@ -128,7 +129,8 @@ require("packer").startup(function(use)
 	-- })
 
 	-- use("jose-elias-alvarez/null-ls.nvim")
-	use("https://github.com/liangxianzhe/nap.nvim")
+	use("liangxianzhe/nap.nvim")
+	use("windwp/nvim-autopairs")
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")
 	if has_plugins then
