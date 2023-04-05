@@ -94,6 +94,8 @@ require("packer").startup(function(use)
 	-- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	-- use({ "nvim-telescope/telescope-dap.nvim" })
 
+	-- use({ "lervag/vimtex" })
+
 	-- Treesitter
 	use({ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
