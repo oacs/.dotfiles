@@ -16,7 +16,7 @@ end
 
 local nnoremap = require("keymap").nnoremap
 
-nnoremap("<leader>tu", ':lua require("plugin.tmux").tmux_move_to_window("{previous}")<CR>')
-nnoremap("<leader>ti", ':lua require("plugin.tmux").tmux_move_to_window("{next}")<CR>')
+nnoremap("<leader>tp", ':lua require("plugin.tmux").tmux_move_to_window("{previous}")<CR>')
+nnoremap("<leader>tn", ':lua require("plugin.tmux").tmux_move_to_window("{next}")<CR>')
 
 return M

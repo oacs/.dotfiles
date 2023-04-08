@@ -133,6 +133,10 @@ require("packer").startup(function(use)
 	-- use("jose-elias-alvarez/null-ls.nvim")
 	use("liangxianzhe/nap.nvim")
 	use("windwp/nvim-autopairs")
+
+	use("nvim-lua/plenary.nvim")
+	use("MunifTanjim/nui.nvim")
+	use("dpayne/CodeGPT.nvim")
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")
 	if has_plugins then
