@@ -129,25 +129,31 @@ require("lazy").setup({
 
 	-- prisma '
 	-- "pantharshit00/vim-prisma",
-
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "<CurrentMajor>.*",
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
+		config = function() end,
+	},
 	-- CMP
 	{ -- Autocompletion
 		"hrsh7th/nvim-cmp",
 		dependencies = {
+			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			-- "L3MON4D3/LuaSnip",
-			-- "saadparwaiz1/cmp_luasnip",
+			"saadparwaiz1/cmp_luasnip",
 		},
 
-		config = function()
-			require("plugin.cmp")
-		end,
+		config = function() end,
 	},
-
-	"onsails/lspkind.nvim",
 
 	{
 		"nvim-tree/nvim-web-devicons",
@@ -183,9 +189,7 @@ require("lazy").setup({
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		config = function()
-			require("plugin.treesitter")
-		end,
+		config = function() end,
 	},
 
 	{ -- Additional text objects via treesitter

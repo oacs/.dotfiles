@@ -1,4 +1,7 @@
-
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip").filetype_extend("javascript", { "next" })
+require("plugin.cmp")
+require("plugin.treesitter")
 -- require("copilot").setup({
 -- 	suggestion = { enabled = false },
 -- 	panel = { enabled = false },
