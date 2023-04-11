@@ -62,6 +62,7 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			"nvim-telescope/telescope-ui-select.nvim",
 			"xiyaowong/telescope-emoji.nvim",
+			"benfowler/telescope-luasnip.nvim",
 		},
 		config = function()
 			require("plugin.tmux")
