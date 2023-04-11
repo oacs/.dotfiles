@@ -4,7 +4,8 @@ local lspkind = require("lspkind")
 
 lspkind.init()
 
-require("luasnip.loaders.from_vscode").lazy_load()
+
+-- require("luasnip.loaders.from_vscode").lazy_load()
 
 local has_words_before = function()
 	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
@@ -40,7 +41,7 @@ cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+			-- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	sorting = {
