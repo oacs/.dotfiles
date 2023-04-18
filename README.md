@@ -22,3 +22,16 @@ Wayland install:
 flatpak install flathub md.obsidian.Obsidian
 flatpak override --user --env=OBSIDIAN_USE_WAYLAND=1 md.obsidian.obsidian
 ```
+
+### Initial packages
+yay
+
+wayland setup
+
+firefox nordpass
+
+git  git config name email
+git config --global user.name "Oscar C" 
+git config --global user.email oacs1221@gmail.com
+
+set dark theme preference
