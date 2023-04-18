@@ -29,6 +29,7 @@ yay
 wayland setup
 
 firefox nordpass
+for nordpass gnome-keyring libsecret-1-dev
 
 git  git config name email
 git config --global user.name "Oscar C" 

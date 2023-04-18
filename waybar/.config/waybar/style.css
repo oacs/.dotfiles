@@ -1,106 +1,147 @@
 * {
-  border: none;
-  font-family: "JetbrainsMono Nerd Font";
-  font-size: 14px;
-  min-height: 14px;
+    border: none;
+    border-radius: 0;
+    font-family: Cartograph CF Nerd Font, monospace;
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
 }
 
 window#waybar {
-  background: transparent;
-}
-.modules-left,
-.modules-right {
-}
-.modules-center {
-  padding: 2px 10px 2px 10px;
-
-  background: rgba(20, 22, 30, 0.7);
-  color: #979eab;
-
-  border-radius: 10px;
-  margin-top: 8px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-
-  border: 4px transparent;
-  box-shadow: 5px 5px 5px 1px rgba(10, 10, 12, 0.7);
+    background: rgba(21, 18, 27, 0);
+    color: #cdd6f4;
 }
 
-#custom-launcher {
-  color: #a6e3a1;
-  font-size: 16px;
-  padding-right: 14px;
-  padding-left: 8px;
+tooltip {
+    background: #1e1e2e;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
 }
-#workspaces,
+
 #workspaces button {
-  color: #a9b1d6;
+    padding: 5px;
+    color: #313244;
+    margin-right: 5px;
 }
-#workspaces button.inactive {
-  color: #a9b1d6;
-}
+
 #workspaces button.active {
-  color: rgb(83, 193, 237);
+    color: #a6adc8;
 }
+
+#workspaces button.focused {
+    color: #a6adc8;
+    background: #eba0ac;
+    border-radius: 10px;
+}
+
 #workspaces button.urgent {
-  color: #ff3e96;
+    color: #11111b;
+    background: #a6e3a1;
+    border-radius: 10px;
 }
-#cpu {
-  color: #74c7ec;
-  padding-left: 10px;
-  padding-right: 10px;
+
+#workspaces button:hover {
+    background: #11111b;
+    color: #cdd6f4;
+    border-radius: 10px;
 }
-#memory {
-  color: #87b0f9;
-  padding-left: 10px;
-  padding-right: 10px;
+
+#custom-language,
+#custom-updates,
+#custom-caffeine,
+#custom-weather,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#tray,
+#backlight {
+    background: #1e1e2e;
+    padding: 0px 10px;
+    margin: 3px 0px;
+    margin-top: 10px;
+    border: 1px solid #181825;
 }
-#temperature {
-  color: #b4befe;
-  padding-left: 10px;
-  padding-right: 5px;
-}
-#clock {
-  color: #c0caf5;
-  padding-left: 5px;
-  padding-right: 10px;
-}
-#custom-weather {
-  color: #89dceb;
-  padding-left: 10px;
-  padding-right: 5px;
-}
-#custom-keybindings {
-  padding-right: 12px;
-  transition: none;
-  color: #cba6f7;
-  font-size: 18px;
-}
-#custom-updates {
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: none;
-  color: #f5c2e7;
-}
-#network {
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: none;
-  color: #fab387;
-}
-#pulseaudio {
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: none;
-  color: #f38ba8;
-}
+
 #tray {
-  padding-left: 10px;
-  padding-right: 10px;
-  color: #31bef7;
+    border-radius: 10px;
+    margin-right: 10px;
 }
-#custom-power {
-  padding-left: 15px;
-  color: #ff3e96;
+
+#workspaces {
+    background: #1e1e2e;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-right: 0px;
+    padding-left: 5px;
+}
+
+#custom-caffeine {
+    color: #89dceb;
+    border-radius: 10px 0px 0px 10px;
+    border-right: 0px;
+    margin-left: 10px;
+}
+
+#custom-language {
+    color: #f38ba8;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#custom-updates {
+    color: #f5c2e7;
+    border-radius: 10px 0px 0px 10px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#window {
+    border-radius: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+#clock {
+    color: #fab387;
+    border-radius: 10px 0px 0px 10px;
+    margin-left: 5px;
+    border-right: 0px;
+}
+
+#network {
+    color: #f9e2af;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#pulseaudio {
+    color: #89b4fa;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#pulseaudio.microphone {
+    color: #cba6f7;
+    border-radius: 0px 10px 10px 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-right: 5px;
+}
+
+#battery {
+    color: #a6e3a1;
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+    border-left: 0px;
+}
+
+#custom-weather {
+    border-radius: 0px 10px 10px 0px;
+    border-right: 0px;
+    margin-left: 0px;
 }
