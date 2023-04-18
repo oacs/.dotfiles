@@ -33,8 +33,8 @@ vnoremap("<leader>p", "d:Telescope yank_history<cr>", desc("[P]aste history + <C
 
 nnoremap("<leader>sS", require("telescope.builtin").git_files, desc("[SS]earch files"))
 
-nnoremap("<leader>ss", require("telescope.builtin").find_files, desc("[SS]earch files"))
-vnoremap("<leader>ss", "y<ESC>:Telescope find_files default_text=<c-r>0<CR>", desc("[SS]earch files"))
+nnoremap("<leader>ss", require("telescope.builtin").git_files, desc("[SS]earch files"))
+vnoremap("<leader>ss", "y<ESC>:Telescope find_files default_text=<c-r>0<CR>", desc("[SS]earch files (ALL)"))
 
 nnoremap("<leader>sd", require("telescope.builtin").diagnostics, desc("[S]earch [D]iagnostics"))
 
