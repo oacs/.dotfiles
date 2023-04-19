@@ -28,8 +28,18 @@ yay
 
 wayland setup
 
+fish
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
+chsh -s /usr/bin/fish
+
 firefox nordpass
 for nordpass gnome-keyring libsecret-1-dev
+
+github-cli
+ssh setup
+msh-keygen -t ed25519 -C "oacs1221@gmail.com"
+eval (ssh-agent -c)
+ssh-add ~/.ssh/id_ed25519
 
 git  git config name email
 git config --global user.name "Oscar C" 

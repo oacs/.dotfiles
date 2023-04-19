@@ -227,9 +227,9 @@ require("lazy").setup({
 	},
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	-- You can alias plugin names
-	"dracula/vim",
+	-- "dracula/vim",
 	-- "sainnhe/gruvbox-material",
-	-- "folke/tokyonight.nvim",
+	"folke/tokyonight.nvim",
 
 	-- {
 	--	"iamcco/markdown-preview.nvim",
@@ -307,8 +307,8 @@ vim.o.syntax = true
 
 -- set color scheme
 -- silent to avoid error if theme is missing
--- vim.cmd("silent! colorscheme tokyonight-moon")
-vim.cmd("silent! colorscheme dracula")
+vim.cmd("silent! colorscheme tokyonight-moon")
+-- vim.cmd("silent! colorscheme dracula")
 local main_config_failed, _ = pcall(require, "oacs")
 if not main_config_failed then
 	print("Failed to load main config")
