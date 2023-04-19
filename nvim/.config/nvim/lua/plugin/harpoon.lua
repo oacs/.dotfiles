@@ -5,6 +5,7 @@ local desc = function(desc)
 	end
 	return { desc = desc }
 end
+
 local clear_all_marks = function()
 	require("harpoon").get_mark_config().marks = {}
 end

@@ -1,28 +1,48 @@
--- Install lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+-- Bootstrap lazy
+local opt = vim.opt
+local g = vim.g
+local o = vim.o
+
+local bootstrap_lazy = function()
+	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+	if not vim.loop.fs_stat(lazypath) then
+		vim.fn.system({
+			"git",
+			"clone",
+			"--filter=blob:none",
+			"https://github.com/folke/lazy.nvim.git",
+			"--branch=stable", -- latest stable release
+			lazypath,
+		})
+	end
+	opt.rtp:prepend(lazypath)
 end
-vim.opt.rtp:prepend(lazypath)
+
+bootstrap_lazy()
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+g.mapleader = " "
+g.maplocalleader = " "
 
 require("lazy").setup({
+	-- Folke supremacy
+	{
+		"folke/tokyonight.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			-- set color scheme
+			-- silent to avoid error if theme is missing
+			vim.cmd([[silent! colorscheme tokyonight]])
+		end,
+	},
 	{
 		"folke/which-key.nvim",
 		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
+			o.timeout = true
+			o.timeoutlen = 300
 			require("which-key").setup({})
 		end,
 	},
@@ -30,7 +50,15 @@ require("lazy").setup({
 		"folke/neoconf.nvim",
 		cmd = "Neoconf",
 	},
-
+	{
+		"dstein64/vim-startuptime",
+		-- lazy-load on a command
+		cmd = "StartupTime",
+		-- init is called during startup. Configuration for vim plugins typically should be set in an init function
+		init = function()
+			vim.g.startuptime_tries = 10
+		end,
+	},
 	-- Plebvim lsp Plugins
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
@@ -69,7 +97,6 @@ require("lazy").setup({
 			require("plugin.telescope")
 		end,
 	},
-	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 
 	-- Harpoon quick terminal jumps
 	{
@@ -97,7 +124,42 @@ require("lazy").setup({
 	},
 
 	-- Prettier
-	"sbdchd/neoformat",
+	{
+		"sbdchd/neoformat",
+		config = function()
+			g.neoformat_enabled_vue = { "prettierd", "eslint_d" }
+			g.neoformat_enabled_javascript = { "prettierd", "eslint_d" }
+			g.neoformat_enabled_typescript = { "prettier", "eslint" }
+			g.neoformat_enabled_json = { "prettierd" }
+			g.neoformat_enabled_go = { "gofmt" }
+			g.neoformat_enabled_lua = { "stylua" }
+			g.neoformat_enabled_vim = { "prettier" }
+			g.neoformat_enabled_prisma = { "prettier" }
+			g.neoformat_enabled_shell = { "shmft", "prettierd" }
+			g.neoformat_enabled_sh = { "shmft", "prettierd" }
+			g.neoformat_run_all_formatters = 1
+			g.shfmt_opt = "ci"
+			g.neoformat_basic_format_align = 1
+			g.neoformat_basic_format_retab = 1
+			g.neoformat_basic_format_trim = 1
+
+			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+				pattern = {
+					"*.rs",
+					"*.astro",
+					"*.lua",
+					"*.sh",
+					"*.ts",
+					"*.vue",
+					"*.json",
+					"*.tsx",
+					"*.js",
+					"*.html",
+				},
+				command = "undojoin | Neoformat",
+			})
+		end,
+	},
 
 	-- Coment
 	{
@@ -110,22 +172,20 @@ require("lazy").setup({
 	-- Delete ( ) [ ] { } without inner content
 	{
 		"kylechui/nvim-surround",
-		config = function()
-			require("nvim-surround").setup({
-				keymaps = {
-					insert = "<C-g>s",
-					insert_line = "<C-g>S",
-					normal = "S",
-					normal_cur = "Ss",
-					normal_line = "SS",
-					normal_cur_line = "ySS",
-					visual = "S",
-					visual_line = "gS",
-					delete = "ds",
-					change = "cs",
-				},
-			})
-		end,
+		opts = {
+			keymaps = {
+				insert = "<C-g>s",
+				insert_line = "<C-g>S",
+				normal = "S",
+				normal_cur = "Ss",
+				normal_line = "SS",
+				normal_cur_line = "ySS",
+				visual = "S",
+				visual_line = "gS",
+				delete = "ds",
+				change = "cs",
+			},
+		},
 	},
 
 	-- prisma '
@@ -139,37 +199,35 @@ require("lazy").setup({
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
-		config = function() end,
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip").filetype_extend("javascript", { "next" })
+		end,
 	},
 	-- CMP
 	{ -- Autocompletion
 		"hrsh7th/nvim-cmp",
+		-- load cmp on InsertEnter
+		event = "InsertEnter",
 		dependencies = {
 			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"rafamadriz/friendly-snippets",
 			"saadparwaiz1/cmp_luasnip",
 		},
 
-		config = function() end,
+		config = function()
+			require("plugin.cmp")
+		end,
 	},
 
 	{
 		"nvim-tree/nvim-web-devicons",
-		config = function()
-			require("nvim-web-devicons").setup({
-				color_icons = true,
-				default = true,
-			})
-		end,
+		lazy = true,
 	},
-
-	-- Snippets
-	tag = "v<CurrentMajor>.*",
-	"rafamadriz/friendly-snippets",
-
 	-- Copilot
 	--"github/copilot.vim",
 	--"zbirenbaum/copilot.lua"
@@ -189,76 +247,77 @@ require("lazy").setup({
 	-- Treesitter
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+
+			"nvim-treesitter/nvim-treesitter-context",
+		},
 		build = ":TSUpdate",
-		config = function() end,
+		config = function()
+			require("plugin.treesitter")
+		end,
 	},
 
 	{ -- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
 	},
-	"nvim-treesitter/nvim-treesitter-context",
 	--	"/home/oacs/dev/rocket",
 
 	-- Add yanky to copy to system clipboard
 	{
 		"gbprod/yanky.nvim",
-		config = function()
-			require("yanky").setup({})
-		end,
+		opts = {},
 	},
 
 	-- NOTE: Style and look and feel
 	{
 		"nvim-lualine/lualine.nvim", -- Fancier statusline
-
-		config = function()
-			require("plugin.lualine")
-		end,
+		opts = {
+			options = {
+				theme = "tokyonight",
+			},
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "filename" },
+				lualine_c = { "diff", "diagnostics" },
+				lualine_x = { "encoding" },
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+		},
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("indent_blankline").setup({
-				char = "┊",
-				show_trailing_blankline_indent = false,
-			})
-		end,
+		opts = {
+			char = "┊",
+			show_trailing_blankline_indent = false,
+		},
 	},
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-	-- You can alias plugin names
-	-- "dracula/vim",
-	-- "sainnhe/gruvbox-material",
-	"folke/tokyonight.nvim",
 
-	-- {
-	--	"iamcco/markdown-preview.nvim",
-	--	run = function()
-	--		vim.fn["mkdp#util#install"]()
-	--	end,
-	-- }
+	{
+		"iamcco/markdown-preview.nvim",
+		enabled = false,
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
 
 	-- "jose-elias-alvarez/null-ls.nvim",
 	{
 		"liangxianzhe/nap.nvim",
-		config = function()
-			require("nap").setup({
-				next_repeat = "<c-n><c-n>",
-				prev_repeat = "<c-p><c-p>",
-			})
-		end,
+		opts = {
+			next_repeat = "<c-n><c-n>",
+			prev_repeat = "<c-p><c-p>",
+		},
 	},
 	{
 		"windwp/nvim-autopairs",
-
-		config = function()
-			require("nvim-autopairs").setup({
-				disable_filetype = { "TelescopePrompt", "vim" },
-			})
-		end,
+		opts = {
+			disable_filetype = { "TelescopePrompt", "vim" },
+		},
 	},
 
-	"nvim-lua/plenary.nvim",
 	"MunifTanjim/nui.nvim",
 	"dpayne/CodeGPT.nvim",
 })
@@ -267,33 +326,33 @@ require("lazy").setup({
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = true
+o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
 
 -- Enable mouse mode
-vim.o.mouse = "a"
+o.mouse = "a"
 
 -- Enable break indent
-vim.o.breakindent = true
+o.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+o.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Decrease update time
-vim.o.updatetime = 250
+o.updatetime = 250
 vim.wo.signcolumn = "yes"
 
 -- Set colorscheme
-vim.o.termguicolors = true
+o.termguicolors = true
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+o.completeopt = "menuone,noselect"
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -303,15 +362,11 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.o.syntax = true
+o.syntax = "ON"
 
--- set color scheme
--- silent to avoid error if theme is missing
-vim.cmd("silent! colorscheme tokyonight-moon")
--- vim.cmd("silent! colorscheme dracula")
-local main_config_failed, _ = pcall(require, "oacs")
-if not main_config_failed then
-	print("Failed to load main config")
-end
-
---require("oacs")
+-- Indenting
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.smartindent = true
+opt.tabstop = 2
+opt.softtabstop = 2

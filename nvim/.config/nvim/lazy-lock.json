@@ -39,6 +39,7 @@
   "tokyonight.nvim": { "branch": "main", "commit": "26bb05ba114f2f841c57f205faec1d55c99f9e2a" },
   "vim-fugitive": { "branch": "master", "commit": "ef99f1d90cdb33a52931aed5868785b51fb9411d" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
+  "vim-startuptime": { "branch": "master", "commit": "c9da356b59eb30dfca6cd573b63d0e81c0a24ff9" },
   "which-key.nvim": { "branch": "main", "commit": "4b73390eec680b4c061ea175eb32c0ff3412271d" },
   "yanky.nvim": { "branch": "main", "commit": "c4c794afd762a00ca543972e5b9e34ce9aa14a87" }
 }

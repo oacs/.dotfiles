@@ -2,12 +2,12 @@ local nnoremap = require("keymap").nnoremap
 local vnoremap = require("keymap").vnoremap
 local tnoremap = require("keymap").tnoremap
 local xnoremap = require("keymap").xnoremap
-local inoremap = require("keymap").inoremap
+-- local inoremap = require("keymap").inoremap
 
 nnoremap("<Leader>q", ":q<CR>")
 nnoremap("<Leader>w", ":w<CR>")
 nnoremap("<Leader>l", "<C-w>")
-nnoremap("<Leader>cp", ":let @* =', 'expand(\"%\")<CR>")
+-- nnoremap("<Leader>cp", ":let @* =', 'expand(\"%\")<CR>")
 --nnoremap("<Leader>bp", ":bp<CR>")
 --nnoremap("<Leader>bb", ":buffers<CR>")
 --nnoremap("<Leader>bd", ":bd<CR>")
@@ -18,19 +18,10 @@ nnoremap("<Leader>e", ":Explore<CR>")
 tnoremap("hh", "<C-\\><C-n>")
 vnoremap("//", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
 xnoremap("<leader>p", '"_dP')
-nnoremap("<F5>", ":UndotreeToggle<CR>")
+-- nnoremap("<F5>", ":UndotreeToggle<CR>")
 -- map <C-L> (redraw screen) to also turn off search highlighting until the
 -- next search
 nnoremap("<C-L>", ":nohl<CR><C-L>")
--- Don't use arrow keys
---[[ map("", "<up>", "<nop>")
-map("", "<down>", "<nop>")
-map("", "<left>", "<nop>")
-map("", "<right>", "<nop>") ]]
--- Easy quick of insert mode
-inoremap("hh", "<Esc>")
-
--- map("", "<Leader>e", "<cmd>lua require('lf').start()<CR>")
 
 -- greatest remap ever
 xnoremap("<leader>p", '"_dP')

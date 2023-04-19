@@ -46,7 +46,7 @@ local servers = {
 	--emmet_ls = {},
 	--rust_analyzer = {},
 	-- prismals === prisma-language-server
-	prismals = {},
+	-- prismals = {},
 	-- volar === vue-language-server
 	--volar = {},
 	-- tailwindcss === tailwindcss-language-server
