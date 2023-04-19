@@ -60,3 +60,4 @@ set OPENAI_API_KEY
 
 node and npm install
 
+ansible-core
