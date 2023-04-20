@@ -49,3 +49,6 @@ flatpak override --user --env=OBSIDIAN_USE_WAYLAND=1 md.obsidian.obsidian
 - [ ] set OPENAI_API_KEY
 - [x] node and npm install
 - [x] ansible-core
+
+### Things to do
+- [ ] gpg sign commits
