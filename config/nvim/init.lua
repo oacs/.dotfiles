@@ -318,8 +318,17 @@ require("lazy").setup({
 		},
 	},
 
-	"MunifTanjim/nui.nvim",
-	"dpayne/CodeGPT.nvim",
+	{
+		"dpayne/CodeGPT.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		build = "pip install tiktoken",
+		config = function()
+			require("codegpt.config")
+		end,
+	},
 })
 
 -- [[ Setting options ]]
