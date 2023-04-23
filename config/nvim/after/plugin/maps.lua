@@ -9,6 +9,7 @@ nnoremap("<C-t>", ":tabnew<CR>")
 
 nnoremap("<Leader>q", ":q<CR>")
 nnoremap("<Leader>w", ":w<CR>")
+nnoremap("<Leader><C-w>", ":qw<CR>")
 nnoremap("<Leader>l", "<C-w>")
 -- nnoremap("<Leader>cp", ":let @* =', 'expand(\"%\")<CR>")
 --nnoremap("<Leader>bp", ":bp<CR>")
