@@ -26,9 +26,10 @@
     label: "~/.config/{{item.path | basename}}"
 
 - name: .bashrc
-  copy:
-    dest: ~/.bashrc
-    content: "source <(starship init bash --print-full-init)"
+  file:
+    src: ~/.dotfiles/config/bash/.bashrc
+    dest: "~/.bashrc"
+    state: link
 
 - name: .zshrc
   copy:
