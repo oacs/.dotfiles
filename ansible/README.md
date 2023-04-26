@@ -8,7 +8,7 @@ sudo pacman -S ansible -y
 
 # install ansible community plugins
 ansible-galaxy collection install community.general
-
+ansible-galaxy collection install kewlfft.aur
 
 sudo dnf group install 'Development Tools'
 sudo dnf install procps-ng curl file git libxcrypt-compat

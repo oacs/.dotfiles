@@ -8,27 +8,20 @@
       # - libxcrypt-compat
 
       # gui
-      # - alacritty
       - thunar
       - firefox
-      - microsoft-edge-stable-bin
       - dconf-editor
-      - discord
-      - nordpass-bin
-      - gnome-keyring # need it for nordpass-bin
-      - libsecret-1-dev # need it for nordpass-bin
       # - element
       # - gnome-tweaks
       - kitty
       # - foot
-      - waybar
+      - waybar-hyprland
       # - sway
       # - wdisplays
       # - nwg-launchers
       # - nwg-panel
       - slurp
       - grim
-      - wev
       - swaylock-effects
       - imv
       - blueman
@@ -44,7 +37,6 @@
       # - mangohud
 
       # utils
-      - clipman
       # - pulseaudio-utils
       - playerctl
       - brightnessctl
@@ -52,10 +44,8 @@
       # - fuzzel
       - wofi
       - bemenu
-      - rofi-wayland
       - rofimoji
       - lm_sensors
-      - gammastep-indicator
       - light
 
       # cli
@@ -68,7 +58,7 @@
       # - bottom
       # - ctop
       - curl
-      - mad-db
+      - man-db
       - github-cli
       - stow
       # - git-delta
@@ -112,6 +102,21 @@
       - wget
       - wezterm
       # - zoxide
+
+- name: Install aur packages with yay
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - gammastep-indicator
+      - rofi-wayland
+      - wev
+      - clipman
+      - microsoft-edge-stable-bin
+      - alacritty
+      - discord
+      - nordpass-bin
+      - gnome-keyring # need it for nordpass-bin
+      - libsecret-1-dev # need it for nordpass-bin
 
 # - name: install brew tools
 #   community.general.homebrew:

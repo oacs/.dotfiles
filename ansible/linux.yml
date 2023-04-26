@@ -1,7 +1,7 @@
 - name: Setup Linux Workstation
   hosts: local
   roles:
-    # - packages
+    - packages
     # - fonts
     - dot
     # - node
