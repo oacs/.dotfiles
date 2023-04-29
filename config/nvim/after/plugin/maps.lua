@@ -1,9 +1,11 @@
 local nnoremap = require("keymap").nnoremap
+local cnoremap = require("keymap").cnoremap
 local vnoremap = require("keymap").vnoremap
 local tnoremap = require("keymap").tnoremap
 local xnoremap = require("keymap").xnoremap
 local inoremap = require("keymap").inoremap
 
+cnoremap("<C-f>", "<nop>")
 inoremap("<C-h>", "<C-[>")
 nnoremap("<C-t>", ":tabnew<CR>")
 

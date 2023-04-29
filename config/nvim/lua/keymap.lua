@@ -8,8 +8,10 @@ local function bind(op, outer_opts)
 	end
 end
 
+
 M.nmap = bind("n", { noremap = false })
 M.nnoremap = bind("n")
+M.cnoremap = bind("c")
 M.vnoremap = bind("v")
 M.xnoremap = bind("x")
 M.inoremap = bind("i")
