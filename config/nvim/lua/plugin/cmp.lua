@@ -14,6 +14,15 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
+local buffer_cmp_config = {
+			name = "buffer",
+			option = {
+				get_bufnrs = function()
+					return vim.api.nvim_list_bufs()
+				end,
+			},
+		}
+
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({
@@ -51,6 +60,20 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
+		["<c-p>"] = vim.schedule_wrap(function(fallback)
+			if cmp.visible() and has_words_before() then
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+			else
+				fallback()
+			end
+		end),
+		["<c-n>"] = vim.schedule_wrap(function(fallback)
+			if cmp.visible() and has_words_before() then
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+			else
+				fallback()
+			end
+		end),
 		["<Tab>"] = vim.schedule_wrap(function(fallback)
 			if cmp.visible() and has_words_before() then
 				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
@@ -71,7 +94,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "path" },
 	}, {
-		{ name = "buffer" },
+		buffer_cmp_config,
 	}),
 })
 
@@ -79,8 +102,8 @@ cmp.setup({
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
 		{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+		buffer_cmp_config,
 	}, {
-		{ name = "buffer" },
 	}),
 })
 
@@ -88,7 +111,7 @@ cmp.setup.filetype("gitcommit", {
 cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
-		{ name = "buffer" },
+		buffer_cmp_config,
 	},
 })
 

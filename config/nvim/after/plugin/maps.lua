@@ -2,20 +2,19 @@ local nnoremap = require("keymap").nnoremap
 local vnoremap = require("keymap").vnoremap
 local tnoremap = require("keymap").tnoremap
 local xnoremap = require("keymap").xnoremap
--- local inoremap = require("keymap").inoremap
+local inoremap = require("keymap").inoremap
+
+inoremap("<C-h>", "<C-[>")
+nnoremap("<C-t>", ":tabnew<CR>")
 
 nnoremap("<Leader>q", ":q<CR>")
 nnoremap("<Leader>w", ":w<CR>")
+nnoremap("<Leader><C-w>", ":wq<CR>")
 nnoremap("<Leader>l", "<C-w>")
 -- nnoremap("<Leader>cp", ":let @* =', 'expand(\"%\")<CR>")
---nnoremap("<Leader>bp", ":bp<CR>")
---nnoremap("<Leader>bb", ":buffers<CR>")
---nnoremap("<Leader>bd", ":bd<CR>")
---nnoremap("<Leader>bw", ":bw<CR>")
---nnoremap("<Leader>bn", ":bn<CR>")
---nnoremap("<Leader>l", ":bn<CR>")
 nnoremap("<Leader>e", ":Explore<CR>")
 tnoremap("hh", "<C-\\><C-n>")
+tnoremap("<C-h>", "<C-\\><C-n>")
 vnoremap("//", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
 xnoremap("<leader>p", '"_dP')
 -- nnoremap("<F5>", ":UndotreeToggle<CR>")

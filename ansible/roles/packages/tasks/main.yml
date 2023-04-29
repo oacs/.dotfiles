@@ -1,0 +1,135 @@
+- name: install tools
+  become: true
+  pacman:
+    name:
+      # - procps-ng
+      - curl
+      # - file
+      # - libxcrypt-compat
+
+      # gui
+      - thunar
+      - firefox
+      - dconf-editor
+      # - element
+      # - gnome-tweaks
+      - kitty
+      # - foot
+      - waybar-hyprland
+      # - sway
+      # - wdisplays
+      # - nwg-launchers
+      # - nwg-panel
+      - slurp
+      - grim
+      - swaylock-effects
+      - imv
+      - blueman
+
+      # Wayland Development
+      # - wayland-devel
+      # - libxkbcommon-devel
+
+      # Gaming
+      # - lutris
+      # - steam
+      # - wine
+      # - mangohud
+
+      # utils
+      # - pulseaudio-utils
+      - playerctl
+      - brightnessctl
+      # - wob
+      # - fuzzel
+      - wofi
+      - bemenu
+      - rofimoji
+      - lm_sensors
+      - light
+
+      # cli
+      - fish
+      - starship
+      # - aria2
+      # - aspell
+      # - bat
+      # - bandwhich
+      # - bottom
+      # - ctop
+      - curl
+      - man-db
+      - github-cli
+      - stow
+      # - git-delta
+      # - exa
+      # - fd-find
+      # - direnv
+      - fzf
+      # - fzy
+      - git
+      # - git-lfs
+      # - glow
+      - gnupg
+      - gnuplot
+      - htop
+      # - httpie
+      # - hub
+      # - hyperfine
+      - jq
+      # - languagetool
+      # - lazydocker
+      # - lazygit
+      - neovim
+      # - nnn
+      - nodejs
+      - npm
+      - rust
+      # - ncdu
+      # - osmium-tool
+      # - pass
+      # - procs
+      # - qemu
+      # - ranger
+      - ripgrep
+      # - ShellCheck
+      - shfmt
+      # - tealdeer
+      - tmux
+      # - tmuxinator
+      # - tokei
+      # - weechat
+      - wget
+      - wezterm
+      # - zoxide
+
+- name: Install aur packages with yay
+  kewlfft.aur.aur:
+    use: yay
+    name:
+      - gammastep-indicator
+      - rofi-wayland
+      - wev
+      - clipman
+      - microsoft-edge-stable-bin
+      - alacritty
+      - discord
+      - nordpass-bin
+      - gnome-keyring # need it for nordpass-bin
+      - libsecret-1-dev # need it for nordpass-bin
+
+# - name: install brew tools
+#   community.general.homebrew:
+#     path: /home/linuxbrew/.linuxbrew/bin
+#     name:
+      # cli
+      # - as-tree
+      # - broot
+      # - duf
+      # - dust
+      # - grc
+      # - markdownlint-cli
+      # - mdcat
+      # - pfetch
+      # - selene
+      # - stylua

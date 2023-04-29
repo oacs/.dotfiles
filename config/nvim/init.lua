@@ -269,16 +269,20 @@ require("lazy").setup({
 		opts = {},
 	},
 
-	-- NOTE: Style and look and feel
+	-- NOTE: Style and look and feel, bar
 	{
 		"nvim-lualine/lualine.nvim", -- Fancier statusline
 		opts = {
 			options = {
 				theme = "tokyonight",
 			},
+			extensions = {
+				"fugitive",
+				"lazy",
+			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "filename" },
+				lualine_b = { "filename", "FugitiveHead" },
 				lualine_c = { "diff", "diagnostics" },
 				lualine_x = { "encoding" },
 				lualine_y = { "progress" },
@@ -318,8 +322,17 @@ require("lazy").setup({
 		},
 	},
 
-	"MunifTanjim/nui.nvim",
-	"dpayne/CodeGPT.nvim",
+	{
+		"dpayne/CodeGPT.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		build = "pip install tiktoken",
+		config = function()
+			require("codegpt.config")
+		end,
+	},
 })
 
 -- [[ Setting options ]]

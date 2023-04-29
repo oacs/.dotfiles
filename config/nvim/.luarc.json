@@ -59,5 +59,8 @@
         "${3rd}/luassert/library",
         "${3rd}/busted/library"
     ],
-    "workspace.checkThirdParty": false
+    "workspace.checkThirdParty": false,
+    "diagnostics.globals": [
+        "vim"
+    ]
 }
