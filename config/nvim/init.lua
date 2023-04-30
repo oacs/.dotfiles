@@ -272,23 +272,26 @@ require("lazy").setup({
 	-- NOTE: Style and look and feel, bar
 	{
 		"nvim-lualine/lualine.nvim", -- Fancier statusline
-		opts = {
-			options = {
-				theme = "tokyonight",
-			},
-			extensions = {
-				"fugitive",
-				"lazy",
-			},
-			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { "filename", "FugitiveHead" },
-				lualine_c = { "diff", "diagnostics" },
-				lualine_x = { "encoding" },
-				lualine_y = { "progress" },
-				lualine_z = { "location" },
-			},
-		},
+		config = function()
+			local CodeGPTModule = require("codegpt")
+			require("lualine").setup({
+				options = {
+					theme = "tokyonight",
+				},
+				extensions = {
+					"fugitive",
+					"lazy",
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "filename", "FugitiveHead" },
+					lualine_c = { "diff", "diagnostics" },
+					lualine_x = { CodeGPTModule.get_status, "encoding" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
+				},
+			})
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -336,21 +339,39 @@ require("lazy").setup({
 
 	{
 		"xiyaowong/transparent.nvim",
-		config = function ()
+		config = function()
 			require("transparent").setup({
 				groups = { -- table: default groups
-					'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-					'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-					'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-					'SignColumn', 'CursorLineNr', 'EndOfBuffer',
+					"Normal",
+					"NormalNC",
+					"Comment",
+					"Constant",
+					"Special",
+					"Identifier",
+					"Statement",
+					"PreProc",
+					"Type",
+					"Underlined",
+					"Todo",
+					"String",
+					"Function",
+					"Conditional",
+					"Repeat",
+					"Operator",
+					"Structure",
+					"LineNr",
+					"NonText",
+					"SignColumn",
+					"CursorLineNr",
+					"EndOfBuffer",
 				},
 				extra_groups = {
-					"NvimTreeNormal" -- NvimTree
+					"NvimTreeNormal", -- NvimTree
 				}, -- table: additional groups that should be cleared
 				exclude_groups = {}, -- table: groups you don't want to clear
 			})
-		end
-	}
+		end,
+	},
 })
 
 -- [[ Setting options ]]
@@ -381,9 +402,6 @@ vim.wo.signcolumn = "yes"
 
 -- Set colorscheme
 o.termguicolors = true
-
--- Set completeopt to have a better completion experience
-o.completeopt = "menuone,noselect"
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`

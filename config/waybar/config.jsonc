@@ -9,6 +9,8 @@
     "modules-left": [
         "clock",
         "custom/weather",
+        "custom/gpu-usage",
+        "custom/pomodoro",
         "wlr/workspaces"
     ],
     "modules-center": ["hyprland/window"],
@@ -48,11 +50,22 @@
         "interval": 7200,                     // every two hours
         "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'",       // # of updates and tooltip details
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "kitty -e sudo pacman -Syu", // update system
+        "on-click": "alacritty -e sudo pacman -Syu", // update system
         "signal": 8
+    },"custom/gpu-usage": {
+  "exec": "cat /sys/class/hwmon/hwmon2/device/gpu_busy_percent",
+  "format": "GPU: {}%",
+  "return-type": "",
+  "interval": 1
+},
+   "custom/pomodoro" : {
+        "format" : "🍅 {}",
+        "max-length": 20,
+        "exec" : "~/dev/waybar-pomodoro/target/debug/waybar-pomodoro ~/dev/waybar-pomodoro/assets/ding.wav",
+        "on-click": "echo 'toggle' | socat -u - ./pomodoro_fifo", // update system
+        "return-type" : "json"
     },
    "custom/weather" : {
-        "tooltip" : true,
         "format" : "{}",
         "interval" : 30,
         "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
