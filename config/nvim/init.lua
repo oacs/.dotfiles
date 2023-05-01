@@ -256,6 +256,7 @@ require("lazy").setup({
 		dependencies = {
 
 			"nvim-treesitter/nvim-treesitter-context",
+			"nvim-treesitter/playground",
 		},
 		build = ":TSUpdate",
 		config = function()
@@ -377,5 +378,23 @@ require("lazy").setup({
 				exclude_groups = {}, -- table: groups you don't want to clear
 			})
 		end,
+	},
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		opts = {
+			load = {
+				["core.defaults"] = {}, -- Loads default behaviour
+				["core.concealer"] = {}, -- Adds pretty icons to your documents
+				["core.dirman"] = { -- Manages Neorg workspaces
+					config = {
+						workspaces = {
+							notes = "~/dev/notes",
+						},
+					},
+				},
+			},
+		},
+		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
 })
