@@ -38,3 +38,8 @@ end
     set -g fish_pager_color_selected_background --background=$selection
 
 starship init fish | source
+
+alias ls='ls --color=auto'
+alias vim='nvim'
+alias grep='grep --color=auto'
+alias t='tmux'
