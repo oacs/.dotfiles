@@ -3,7 +3,7 @@
     border-radius: 0;
     font-family: scientifica, monospace;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 20px;
     min-height: 0;
 }
 
@@ -52,6 +52,8 @@ tooltip {
 #custom-updates,
 #custom-caffeine,
 #custom-weather,
+#custom-pomodoro,
+#custom-gpu-usage,
 #window,
 #clock,
 #battery,
@@ -144,4 +146,15 @@ tooltip {
     border-radius: 0px 10px 10px 0px;
     border-right: 0px;
     margin-left: 0px;
+}
+
+#custom-pomodoro {
+    border-radius: 0px 10px 10px 0px;
+    border-right: 0px;
+    margin-left: 0px;
+}
+
+#custom-gpu-usage {
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 5px;
 }
