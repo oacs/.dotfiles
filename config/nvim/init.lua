@@ -51,6 +51,7 @@ require("lazy").setup({
 		cmd = "Neoconf",
 	},
 	{
+		enabled = false,
 		"dstein64/vim-startuptime",
 		-- lazy-load on a command
 		cmd = "StartupTime",
@@ -129,7 +130,10 @@ require("lazy").setup({
 		config = function()
 			-- g.neoformat_enabled_vue = { "prettierd", "eslint_d" }
 			-- g.neoformat_enabled_javascript = { "prettierd", "eslint_d" }
-			-- g.neoformat_enabled_typescript = { "prettier", "eslint" }
+			g.neoformat_run_all_formatters = 1
+			g.neoformat_enabled_typescript = { "eslint_d", "prettier" }
+			g.neoformat_enabled_html = { "prettier", "eslint_d" }
+			g.neoformat_enabled_less = { "prettier" }
 			-- g.neoformat_enabled_json = { "prettierd" }
 			-- g.neoformat_enabled_go = { "gofmt" }
 			-- g.neoformat_enabled_lua = { "stylua" }
@@ -160,9 +164,10 @@ require("lazy").setup({
 					"*.css",
 					"*.scss",
 					"*.sass",
+					"*.less",
 					"*.html",
 				},
-				command = "Neoformat prettier",
+				command = "Neoformat",
 			})
 		end,
 	},
@@ -280,7 +285,7 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim", -- Fancier statusline
 		config = function()
-			local CodeGPTModule = require("codegpt")
+			-- local CodeGPTModule = require("codegpt")
 			require("lualine").setup({
 				options = {
 					theme = "tokyonight",
@@ -293,7 +298,7 @@ require("lazy").setup({
 					lualine_a = { "mode" },
 					lualine_b = { "filename", "FugitiveHead" },
 					lualine_c = { "diff", "diagnostics" },
-					lualine_x = { CodeGPTModule.get_status, "encoding" },
+					-- lualine_x = { CodeGPTModule.get_status, "encoding" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				},
@@ -333,6 +338,7 @@ require("lazy").setup({
 	},
 
 	{
+		enabled = false,
 		"dpayne/CodeGPT.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -346,6 +352,7 @@ require("lazy").setup({
 
 	{
 		"xiyaowong/transparent.nvim",
+		enabled = false,
 		config = function()
 			require("transparent").setup({
 				groups = { -- table: default groups
@@ -381,6 +388,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-neorg/neorg",
+		enabled = false,
 		build = ":Neorg sync-parsers",
 		opts = {
 			load = {
@@ -402,6 +410,7 @@ require("lazy").setup({
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
 	{
+		enabled = false,
 		"epwalsh/obsidian.nvim",
 		-- lazy = true,
 		-- event = { "BufReadPre ~/dev/notes/**.md" },

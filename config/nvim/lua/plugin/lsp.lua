@@ -21,7 +21,7 @@ local on_attach = function(_, bufnr)
 	nmap("<leader>td", vim.lsp.buf.type_definition, "[T]ype [D]efinition")
 	nmap("<leader>sl", vim.diagnostic.open_float, "[S]how [L]ine diagnostic")
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+	-- nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 	-- See `:help K` for why this keymap
 	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
 	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
