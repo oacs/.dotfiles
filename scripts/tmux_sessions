@@ -6,6 +6,7 @@ WORKSPACE="~/workspace"
 QA="$WORKSPACE/QA"
 ACCOUNT_SERVICE="$WORKSPACE/account-service"
 BACKEND="$WORKSPACE/backend"
+BACKEND="$WORKSPACE/models"
 BI_SERVICE="$WORKSPACE/bi-service"
 BUILDFRONTENDTRANSLATIONS="$WORKSPACE/buildFrontendTranslations"
 DOCKER_COMPOSE="$WORKSPACE/docker-compose"
@@ -50,19 +51,20 @@ attachSession() {
 }
 
 createSession fcloud workspace -c $WORKSPACE
-createWindow fcloud QA -c $QA
-createWindow fcloud account-c $ACCOUNT_SERVICE
-createWindow fcloud backend -c $BACKEND
-createWindow fcloud bi-c $BI_SERVICE
-createWindow fcloud translations -c $BUILDFRONTENDTRANSLATIONS
-createWindow fcloud docker $DOCKER_COMPOSE
 createWindow fcloud frontend -c $FRONTEND
-createWindow fcloud location -c $LOCATION_SERVICE
-createWindow fcloud notification -c $NOTIFICATION_SERVICE
-createWindow fcloud preorder -c $PREORDER_SERVICE
-createWindow fcloud search -c $SEARCH_SERVICE
-createWindow fcloud shared_infrastructure_services -c $SHARED_INFRASTRUCTURE_SERVICES
-createWindow fcloud webuicomponents -c $WEB_UI_COMPONENTS
+createWindow fcloud backend -c $BACKEND
+createWindow fcloud madels -c $MODELS
+createWindow fcloud translations -c $BUILDFRONTENDTRANSLATIONS
+# createWindow fcloud account-c $ACCOUNT_SERVICE
+# createWindow fcloud bi-c $BI_SERVICE
+# createWindow fcloud location -c $LOCATION_SERVICE
+# createWindow fcloud notification -c $NOTIFICATION_SERVICE
+# createWindow fcloud preorder -c $PREORDER_SERVICE
+# createWindow fcloud search -c $SEARCH_SERVICE
+# createWindow fcloud webuicomponents -c $WEB_UI_COMPONENTS
+# createWindow fcloud QA -c $QA
+# createWindow fcloud docker $DOCKER_COMPOSE
+# createWindow fcloud shared_infrastructure_services -c $SHARED_INFRASTRUCTURE_SERVICES
 
 attachSession fcloud
 

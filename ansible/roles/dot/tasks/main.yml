@@ -42,6 +42,11 @@
     dest: "~/.tmux.conf"
     state: link
 
+- name: .wezterm.lua
+  file:
+    src: ~/.dotfiles/config/wezterm/wezterm.lua
+    dest: "~/.wezterm.lua"
+    state: link
 # - name: .hushlogin
 #   copy:
 #     dest: ~/.hushlogin

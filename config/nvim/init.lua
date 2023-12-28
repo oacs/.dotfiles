@@ -2,6 +2,7 @@
 local opt = vim.opt
 local g = vim.g
 local o = vim.o
+local cmd = vim.cmd
 
 local bootstrap_lazy = function()
 	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -26,18 +27,31 @@ g.mapleader = " "
 g.maplocalleader = " "
 
 require("lazy").setup({
-	-- Folke supremacy
 	{
-		"folke/tokyonight.nvim",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		dependencies = { "nvim-lualine/lualine.nvim" },
 		config = function()
 			-- load the colorscheme here
 			-- set color scheme
 			-- silent to avoid error if theme is missing
-			vim.cmd([[silent! colorscheme tokyonight]])
+			vim.cmd([[silent! colorscheme catppuccin]])
 		end,
 	},
+
+	-- Folke supremacy
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		-- load the colorscheme here
+	-- 		-- set color scheme
+	-- 		-- silent to avoid error if theme is missing
+	-- 		vim.cmd([[silent! colorscheme tokyonight]])
+	-- 	end,
+	-- },
 	{
 		"folke/which-key.nvim",
 		config = function()
@@ -136,7 +150,7 @@ require("lazy").setup({
 			g.neoformat_enabled_less = { "prettier" }
 			-- g.neoformat_enabled_json = { "prettierd" }
 			-- g.neoformat_enabled_go = { "gofmt" }
-			-- g.neoformat_enabled_lua = { "stylua" }
+			g.neoformat_enabled_lua = { "stylua" }
 			-- g.neoformat_enabled_vim = { "prettier" }
 			-- g.neoformat_enabled_prisma = { "prettier" }
 			-- g.neoformat_enabled_shell = { "shmft", "prettierd" }
@@ -158,6 +172,7 @@ require("lazy").setup({
 					"*.ts",
 					"*.vue",
 					"*.json",
+					"*.gd",
 					"*.tsx",
 					"*.js",
 					"*.jsx",
@@ -241,8 +256,8 @@ require("lazy").setup({
 	},
 	-- Copilot
 	--"github/copilot.vim",
-	--"zbirenbaum/copilot.lua"
-	--"zbirenbaum/copilot-cmp"
+	-- "zbirenbaum/copilot.lua"
+	-- "zbirenbaum/copilot-cmp"
 
 	--
 	--	"mfussenegger/nvim-dap",
@@ -283,12 +298,14 @@ require("lazy").setup({
 
 	-- NOTE: Style and look and feel, bar
 	{
+		enabled = true,
 		"nvim-lualine/lualine.nvim", -- Fancier statusline
 		config = function()
 			-- local CodeGPTModule = require("codegpt")
 			require("lualine").setup({
 				options = {
-					theme = "tokyonight",
+					-- theme = "tokyonight",
+					theme = "catppuccin",
 				},
 				extensions = {
 					"fugitive",
@@ -307,9 +324,14 @@ require("lazy").setup({
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		opts = {
-			char = "┊",
-			show_trailing_blankline_indent = false,
+			indent = {
+				char = "┊",
+			},
+			whitespace = {
+				remove_blankline_trail = false,
+			},
 		},
 	},
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
@@ -322,7 +344,20 @@ require("lazy").setup({
 		end,
 	},
 
-	-- "jose-elias-alvarez/null-ls.nvim",
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			local null_ls = require("null-ls")
+
+			null_ls.setup({
+				sources = {
+					-- null_ls.builtins.formatting.stylua,
+					-- null_ls.builtins.diagnostics.eslint,
+					-- null_ls.builtins.completion.spell,
+				},
+			})
+		end,
+	},
 	{
 		"liangxianzhe/nap.nvim",
 		opts = {
@@ -336,7 +371,23 @@ require("lazy").setup({
 			disable_filetype = { "TelescopePrompt", "vim" },
 		},
 	},
-
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
+	},
 	{
 		enabled = false,
 		"dpayne/CodeGPT.nvim",
