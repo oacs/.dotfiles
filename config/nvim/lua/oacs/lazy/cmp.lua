@@ -12,6 +12,8 @@ return { -- Autocompletion
 		"hrsh7th/cmp-path",
 		"rafamadriz/friendly-snippets",
 		"saadparwaiz1/cmp_luasnip",
+		"zbirenbaum/copilot-cmp",
+		"zbirenbaum/copilot.lua",
 	},
 
 	config = function()

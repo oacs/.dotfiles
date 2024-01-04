@@ -24,4 +24,12 @@ end
 
 bootstrap_lazy()
 
-require("lazy").setup("oacs.lazy")
+require("lazy").setup(
+     "oacs.lazy"
+, {
+	change_detection = {
+		-- automatically check for config file changes and reload the ui
+		enabled = false,
+		notify = true, -- get a notification when changes are found
+	},
+})
