@@ -32,9 +32,10 @@
     state: link
 
 - name: .zshrc
-  copy:
-    dest: ~/.zshrc
-    content: "source <(starship init zsh --print-full-init)"
+  file:
+    src: ~/.dotfiles/config/zsh/.zshrc
+    dest: "~/.zshrc"
+    state: link
 
 - name: .tmux.conf
   file:

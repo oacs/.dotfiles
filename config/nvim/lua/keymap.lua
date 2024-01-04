@@ -8,6 +8,14 @@ local function bind(op, outer_opts)
 	end
 end
 
+local function bind_with_desc(op, outer_opts)
+	outer_opts = outer_opts or { noremap = true }
+	return function(base_desc)
+		return function(lhs, rhs, desc)
+			vim.keymap.set(op, lhs, rhs, { desc = base_desc .. desc })
+		end
+	end
+end
 
 M.nmap = bind("n", { noremap = false })
 M.nnoremap = bind("n")
@@ -17,4 +25,10 @@ M.xnoremap = bind("x")
 M.inoremap = bind("i")
 M.tnoremap = bind("t")
 
+M.nnoremapwdesc = bind_with_desc("n")
+M.cnoremapwdesc = bind_with_desc("c")
+M.vnoremapwdesc = bind_with_desc("v")
+M.xnoremapwdesc = bind_with_desc("x")
+M.inoremapwdesc = bind_with_desc("i")
+M.tnoremapwdesc = bind_with_desc("t")
 return M

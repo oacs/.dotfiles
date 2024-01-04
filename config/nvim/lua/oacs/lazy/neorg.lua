@@ -1,14 +1,7 @@
-local nnoremap = require("keymap").nnoremap
+local nnoremap = require("keymap").nnoremapwdesc("[N]eorg: ")
 
-local desc = function(desc)
-	if desc then
-		desc = "[N]eorg " .. desc
-	end
-	return { desc = desc }
-end
-
-nnoremap("<leader>nm", ":Neorg inject-metadata<CR>", desc("Insert [M]etadata"))
-nnoremap("<leader>no", ":Neorg<CR>", desc("[O]org"))
+nnoremap("<leader>nm", ":Neorg inject-metadata<CR>", "Insert [M]etadata")
+nnoremap("<leader>no", ":Neorg<CR>", "[O]org")
 
 return {
 	"nvim-neorg/neorg",

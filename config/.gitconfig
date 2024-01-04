@@ -4,9 +4,6 @@
 	process = git-lfs filter-process
 	required = true
 
-[user]
-	name = Oscar Castillejo
-	email = oacs1221@gmail.com
 
 [color]
 	ui = true
@@ -54,8 +51,10 @@
 	rebase = true
 [github]
 	user = oacs
+
 [init]
 	defaultBranch = main
+
 ; [commit]
 ; 	gpgsign = true
 [credential]
@@ -70,3 +69,6 @@
 	autoSetupRemote = true
 [safe]
 	directory = /opt/flutter
+[user]
+	name = Oscar C
+	email = oscar.castillejo@fashion.cloud
