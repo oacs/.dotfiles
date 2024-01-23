@@ -35,7 +35,7 @@ return {
 				change = "cs",
 			},
 		},
-	,
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
@@ -56,5 +56,19 @@ return {
 			prev_repeat = "<c-p><c-p>",
 		},
 	},
-}
 
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "<CurrentMajor>.*",
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip").filetype_extend("javascript", { "next" })
+		end,
+	},
+}

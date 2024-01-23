@@ -1,5 +1,5 @@
 return {
-	enabled = false,
+	enabled = true,
 	"epwalsh/obsidian.nvim",
 	-- lazy = true,
 	-- event = { "BufReadPre ~/dev/notes/**.md" },
@@ -54,7 +54,7 @@ return {
 			local out = { id = note.id, aliases = note.aliases, tags = note.tags }
 			-- `note.metadata` contains any manually added fields in the frontmatter.
 			-- So here we just make sure those fields are kept in the frontmatter.
-			if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
+			if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
 				for k, v in pairs(note.metadata) do
 					out[k] = v
 				end
@@ -86,15 +86,5 @@ return {
 	},
 	config = function(_, opts)
 		require("obsidian").setup(opts)
-
-		-- Optional, override the 'gf' keymap to utilize Obsidian's search functionality.
-		-- see also: 'follow_url_func' config option above.
-		vim.keymap.set("n", "gf", function()
-			if require("obsidian").util.cursor_on_markdown_link() then
-				return "<cmd>ObsidianFollowLink<CR>"
-			else
-				return "gf"
-			end
-		end, { noremap = false, expr = true })
 	end,
 }

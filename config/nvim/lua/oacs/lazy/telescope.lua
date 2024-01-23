@@ -98,8 +98,16 @@ return {
 		require("telescope").setup({
 			defaults = {
 				mappings = {
-					i = { ["<c-t>"] = trouble.open_with_trouble },
-					n = { ["<c-t>"] = trouble.open_with_trouble },
+					i = {
+						["<c-t>"] = trouble.open_with_trouble,
+						["<C-j>"] = actions.cycle_history_next,
+						["<C-k>"] = actions.cycle_history_prev,
+					},
+					n = {
+						["<c-t>"] = trouble.open_with_trouble,
+						["<C-j>"] = actions.cycle_history_next,
+						["<C-k>"] = actions.cycle_history_prev,
+					},
 				},
 			},
 			extensions = {
