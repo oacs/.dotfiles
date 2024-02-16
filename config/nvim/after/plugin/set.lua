@@ -45,10 +45,20 @@ o.ts = 2
 o.sts = 2
 o.et = true
 o.hidden = true
-o.foldmethod = "manual"
-o.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- o.foldmethod = "manual"
+-- o.foldexpr = "nvim_treesitter#foldexpr()"
+opt.fillchars = { fold = " " }
+opt.foldmethod = "indent"
+opt.foldenable = false
+opt.foldlevel = 99
+g.markdown_folding = 1 -- enable markdown folding
+
 o.fml = 16
 
 g.dashboard_default_executive = "telescope"
 -- CMP config
 g.completeopt = "menu,menuone,noselect"
+
+-- Obsidian
+opt.conceallevel = 2
