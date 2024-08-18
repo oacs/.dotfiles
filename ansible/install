@@ -14,4 +14,4 @@ have ansible || yay ansible
 	ansible-galaxy collection install community.general
 
 # Run Ansible
-# ansible-playbook -i ./hosts ./linux.yml --ask-become-pass
+ansible-playbook -i ./hosts ./linux.yml --ask-become-pass

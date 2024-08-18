@@ -4,10 +4,6 @@
 	process = git-lfs filter-process
 	required = true
 
-[user]
-	name = Oscar Castillejo
-	email = oacs1221@gmail.com
-
 [color]
 	ui = true
 
@@ -21,6 +17,7 @@
 
 [core]
 	pager = delta
+  difftool = true
 
 [interactive]
 	diffFilter = delta --color-only
@@ -47,15 +44,27 @@
 	conflictstyle = diff3
 
 [diff]
+  tool = difftastic
 	colorMoved = default
+  external = difft
+[difftool]
+  prompt = false
+
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 
 [pull]
 	ff = only
 	rebase = true
 [github]
 	user = oacs
+
 [init]
 	defaultBranch = main
+
 ; [commit]
 ; 	gpgsign = true
 [credential]
@@ -70,3 +79,6 @@
 	autoSetupRemote = true
 [safe]
 	directory = /opt/flutter
+[user]
+	name = Oscar C
+	email = oscar.castillejo@fashion.cloud

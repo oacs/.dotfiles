@@ -32,9 +32,10 @@
     state: link
 
 - name: .zshrc
-  copy:
-    dest: ~/.zshrc
-    content: "source <(starship init zsh --print-full-init)"
+  file:
+    src: ~/.dotfiles/config/zsh/.zshrc
+    dest: "~/.zshrc"
+    state: link
 
 - name: .tmux.conf
   file:
@@ -42,6 +43,11 @@
     dest: "~/.tmux.conf"
     state: link
 
+- name: .wezterm.lua
+  file:
+    src: ~/.dotfiles/config/wezterm/wezterm.lua
+    dest: "~/.wezterm.lua"
+    state: link
 # - name: .hushlogin
 #   copy:
 #     dest: ~/.hushlogin

@@ -42,4 +42,5 @@ starship init fish | source
 alias ls='ls --color=auto'
 alias vim='nvim'
 alias grep='grep --color=auto'
+alias python='python3'
 alias t='tmux'
