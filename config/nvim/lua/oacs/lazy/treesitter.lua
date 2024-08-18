@@ -3,13 +3,14 @@ return { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-context",
+		"nvim-treesitter/nvim-treesitter-textobjects",
 		"nvim-treesitter/playground",
 	},
 
 	-- build = ":TSUpdate",
-	  build = function()
-        require("nvim-treesitter.install").update({ with_sync = true })()
-    end,
+	build = function()
+		require("nvim-treesitter.install").update({ with_sync = true })()
+	end,
 
 	config = function()
 		require("nvim-treesitter.configs").setup({
@@ -38,7 +39,7 @@ return { -- Highlight, edit, and navigate code
 			auto_install = true,
 			highlight = { enable = true },
 			incremental_selection = {
-				enable = true,
+				enabled = true,
 				keymaps = {
 					init_selection = "gnn",
 					node_incremental = "grn",
@@ -46,7 +47,6 @@ return { -- Highlight, edit, and navigate code
 					node_decremental = "grm",
 				},
 			},
-			textobjects = { enable = true },
 			indent = { enable = true, disable = { "python" } },
 		})
 

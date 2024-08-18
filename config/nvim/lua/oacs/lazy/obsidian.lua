@@ -1,7 +1,7 @@
+local nnoremap = require("keymap").nnoremapwdesc("Obsidian :")
 return {
 	enabled = true,
 	"epwalsh/obsidian.nvim",
-	-- lazy = true,
 	-- event = { "BufReadPre ~/dev/notes/**.md" },
 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
 	-- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
@@ -13,20 +13,31 @@ return {
 		"preservim/vim-markdown",
 	},
 	opts = {
-		dir = "~/dev/notes", -- no need to call 'vim.fn.expand' here
-
+		dir = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/notes", -- no need to call 'vim.fn.expand' here
 		-- Optional, if you keep notes in a specific subdirectory of your vault.
 		notes_subdir = "slipbox",
-
 		-- Optional, if you keep daily notes in a separate directory.
 		daily_notes = {
-			folder = "dailies",
+			folder = "calendar/daily",
+			template = "daily.template.md",
+		},
+		["gf"] = {
+			action = function()
+				return require("obsidian").util.gf_passthrough()
+			end,
+			opts = { noremap = false, expr = true, buffer = true },
+		},
+		-- Toggle check-boxes.
+		["<leader>ch"] = {
+			action = function()
+				return require("obsidian").util.toggle_checkbox()
+			end,
+			opts = { buffer = true },
 		},
 		-- Optional, completion.
 		completion = {
 			nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
 		},
-
 		-- Optional, customize how names/IDs for new notes are created.
 		note_id_func = function(title)
 			-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
@@ -44,10 +55,8 @@ return {
 			end
 			return tostring(os.time()) .. "-" .. suffix
 		end,
-
 		-- Optional, set to true if you don't want Obsidian to manage frontmatter.
 		disable_frontmatter = false,
-
 		-- Optional, alternatively you can customize the frontmatter data.
 		note_frontmatter_func = function(note)
 			-- This is equivalent to the default frontmatter function.
@@ -64,11 +73,10 @@ return {
 
 		-- Optional, for templates (see below).
 		templates = {
-			subdir = "templates",
+			subdir = "extra/templates",
 			date_format = "%Y-%m-%d-%a",
 			time_format = "%H:%M",
 		},
-
 		-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
 		-- URL it will be ignored but you can customize this behavior here.
 		follow_url_func = function(url)
@@ -82,9 +90,30 @@ return {
 		use_advanced_uri = true,
 
 		-- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
-		open_app_foreground = false,
+		open_app_foreground = true,
+
+		-- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
+		-- way then set 'mappings = {}'.
+		mappings = {
+			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+			["gf"] = {
+				action = function()
+					return require("obsidian").util.gf_passthrough()
+				end,
+				opts = { noremap = false, expr = true, buffer = true },
+			},
+			-- Toggle check-boxes.
+			["<leader>ch"] = {
+				action = function()
+					return require("obsidian").util.toggle_checkbox()
+				end,
+				opts = { buffer = true },
+			},
+		},
 	},
 	config = function(_, opts)
 		require("obsidian").setup(opts)
+		nnoremap("<leader>oo", ":ObsidianOpen<CR>", "[O]bsidian [O]pen")
+		nnoremap("<leader>ot", ":ObsidianToday<CR>", "[O]bsidian [T]oday")
 	end,
 }

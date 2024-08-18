@@ -4,7 +4,6 @@
 	process = git-lfs filter-process
 	required = true
 
-
 [color]
 	ui = true
 
@@ -18,6 +17,7 @@
 
 [core]
 	pager = delta
+  difftool = true
 
 [interactive]
 	diffFilter = delta --color-only
@@ -44,7 +44,17 @@
 	conflictstyle = diff3
 
 [diff]
+  tool = difftastic
 	colorMoved = default
+  external = difft
+[difftool]
+  prompt = false
+
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 
 [pull]
 	ff = only

@@ -93,18 +93,24 @@ return {
 		-- TODo
 		-- TODO
 		require("plugin.tmux")
-		local trouble = require("trouble.providers.telescope")
 		-- This is your opts table
+		local open_with_trouble = require("trouble.sources.telescope").open
+
+		-- Use this to add more results without clearing the trouble list
+		local add_to_trouble = require("trouble.sources.telescope").add
+
 		require("telescope").setup({
 			defaults = {
 				mappings = {
 					i = {
-						["<c-t>"] = trouble.open_with_trouble,
+						["<c-t>"] = open_with_trouble,
+						["<c-T>"] = add_to_trouble,
 						["<C-j>"] = actions.cycle_history_next,
 						["<C-k>"] = actions.cycle_history_prev,
 					},
 					n = {
-						["<c-t>"] = trouble.open_with_trouble,
+						["<c-t>"] = open_with_trouble,
+						["<c-T>"] = add_to_trouble,
 						["<C-j>"] = actions.cycle_history_next,
 						["<C-k>"] = actions.cycle_history_prev,
 					},

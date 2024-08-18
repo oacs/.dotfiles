@@ -12,8 +12,8 @@ return { -- Autocompletion
 		"hrsh7th/cmp-path",
 		"rafamadriz/friendly-snippets",
 		"saadparwaiz1/cmp_luasnip",
-		"zbirenbaum/copilot-cmp",
-		"zbirenbaum/copilot.lua",
+		-- "zbirenbaum/copilot-cmp",
+		-- "zbirenbaum/copilot.lua",
 	},
 
 	config = function()
@@ -108,7 +108,7 @@ return { -- Autocompletion
 				["<C-f>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			}),
 			sources = cmp.config.sources({
-				{ name = "copilot" },
+				-- { name = "copilot" },
 				{ name = "cmp-tw2css" },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
