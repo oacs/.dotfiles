@@ -24,6 +24,7 @@ M.vnoremap = bind("v")
 M.xnoremap = bind("x")
 M.inoremap = bind("i")
 M.tnoremap = bind("t")
+M.snoremap = bind("s")
 
 M.nnoremapwdesc = bind_with_desc("n")
 M.cnoremapwdesc = bind_with_desc("c")
@@ -31,4 +32,7 @@ M.vnoremapwdesc = bind_with_desc("v")
 M.xnoremapwdesc = bind_with_desc("x")
 M.inoremapwdesc = bind_with_desc("i")
 M.tnoremapwdesc = bind_with_desc("t")
+M.snoremapwdesc = bind_with_desc("s")
 return M
+
+-- TODO maybe just create map("i", "<leader>zzz", ":goToSleep<CR>") and add noremap = true as def

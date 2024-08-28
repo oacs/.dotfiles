@@ -4,6 +4,9 @@ local opt = vim.opt
 -- local wo = vim.wo
 local g = vim.g
 
+opt.listchars = "eol:↲,tab:\\x20\\x20"
+opt.list = true
+
 -- Set highlight on search
 o.hlsearch = true
 -- Make line numbers default

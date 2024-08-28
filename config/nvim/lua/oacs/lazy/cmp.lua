@@ -10,17 +10,16 @@ return { -- Autocompletion
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		"rafamadriz/friendly-snippets",
-		"saadparwaiz1/cmp_luasnip",
-		-- "zbirenbaum/copilot-cmp",
-		-- "zbirenbaum/copilot.lua",
+		"L3MON4D3/LuaSnip",
 	},
 
 	config = function()
 		-- Set up nvim-cmp.
 		local cmp = require("cmp")
 		local lspkind = require("lspkind")
+		local luasnip = require("luasnip")
 
+		-- To make LSP notifications look like vscode
 		lspkind.init()
 
 		-- require("luasnip.loaders.from_vscode").lazy_load()
@@ -42,6 +41,20 @@ return { -- Autocompletion
 			},
 		}
 
+		local confirm_with_snippets = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				if luasnip.expandable() then
+					luasnip.expand()
+				else
+					cmp.confirm({
+						select = true,
+					})
+				end
+			else
+				fallback()
+			end
+		end)
+
 		cmp.setup({
 			formatting = {
 				format = lspkind.cmp_format({
@@ -49,10 +62,10 @@ return { -- Autocompletion
 					menu = {
 						buffer = "[buf]",
 						-- copilot = "[cop]",
+						luasnip = "[snip]",
 						nvim_lsp = "[LSP]",
 						nvim_lua = "[api]",
 						path = "[path]",
-						luasnip = "[snip]",
 					},
 					mode = "symbol", -- show only symbol annotations
 					maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
@@ -96,22 +109,33 @@ return { -- Autocompletion
 				["<Tab>"] = vim.schedule_wrap(function(fallback)
 					if cmp.visible() and has_words_before() then
 						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+					elseif luasnip.locally_jumpable(1) then
+						luasnip.jump(1)
 					else
 						fallback()
 					end
 				end),
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<C-f>"] = confirm_with_snippets,
+				["<CR>"] = confirm_with_snippets,
+
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-c>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-				["<C-f>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			}),
 			sources = cmp.config.sources({
-				-- { name = "copilot" },
+				{ name = "luasnip" },
 				{ name = "cmp-tw2css" },
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
 				{ name = "path" },
 			}, {
 				buffer_cmp_config,
