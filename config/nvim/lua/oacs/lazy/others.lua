@@ -36,18 +36,6 @@ return {
 			},
 		},
 	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {
-			indent = {
-				char = "┊",
-			},
-			whitespace = {
-				remove_blankline_trail = false,
-			},
-		},
-	},
 	--
 	{
 		"liangxianzhe/nap.nvim",
@@ -82,4 +70,5 @@ return {
 	},
 
 	{ "saadparwaiz1/cmp_luasnip" },
+	{ "sindrets/diffview.nvim" },
 }

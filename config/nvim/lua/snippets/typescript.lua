@@ -72,5 +72,11 @@ return {
 			}
 		)
 	),
+	s(
+		"tag",
+		fmt("tag({}),", {
+			i(1, "LogTag."),
+		})
+	),
 }
 -- ttt

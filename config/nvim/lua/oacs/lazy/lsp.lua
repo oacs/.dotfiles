@@ -43,7 +43,8 @@ local servers = {
 	-- tailwindcss = {},
 	-- tsserver === typescript-language-server
 	angularls = {},
-	tsserver = {},
+	-- tsserver = {},
+	ts_ls = {},
 	--lua_ls === lua_language_server
 	lua_ls = {},
 }

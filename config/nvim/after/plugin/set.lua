@@ -4,8 +4,9 @@ local opt = vim.opt
 -- local wo = vim.wo
 local g = vim.g
 
-opt.listchars = "eol:↲,tab:\\x20\\x20"
-opt.list = true
+-- opt.listchars = "eol:↲,tab:\\x20\\x20"
+-- opt.list = true
+opt.swapfile = false
 
 -- Set highlight on search
 o.hlsearch = true
