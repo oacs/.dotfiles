@@ -17,7 +17,7 @@ local function bind_with_desc(op, outer_opts)
 	end
 end
 
-local function keymap_with_desc(base_desc, outer_opts)
+local function keymap_with_desc_binding(base_desc, outer_opts)
 	outer_opts = outer_opts or { noremap = true }
 	return function(op, lhs, rhs, desc)
 		vim.keymap.set(op, lhs, rhs, { desc = base_desc .. desc })
@@ -25,6 +25,15 @@ local function keymap_with_desc(base_desc, outer_opts)
 end
 
 local function keymap(op, lhs, rhs, opts)
+	vim.keymap.set(op, lhs, rhs, opts)
+end
+
+local function keymap_with_desc(op, lhs, rhs, desc, opts)
+	opts = vim.tbl_extend("force", { desc = desc }, opts or {})
+	-- print(vim.fn.printf("op=%s", op))
+	-- print(vim.fn.printf("lhs=%s", lhs))
+	-- print(vim.fn.printf("rhs=%s", rhs))
+	-- print(vim.fn.printf("opts=%s", opts))
 	vim.keymap.set(op, lhs, rhs, opts)
 end
 
@@ -41,13 +50,9 @@ M.nnoremapwdesc = bind_with_desc("n")
 M.cnoremapwdesc = bind_with_desc("c")
 M.vnoremapwdesc = bind_with_desc("v")
 M.xnoremapwdesc = bind_with_desc("x")
-M.inoremapwdesc = bind_with_desc("i")
-M.tnoremapwdesc = bind_with_desc("t")
-M.snoremapwdesc = bind_with_desc("s")
 
 M.keymap = keymap
-M.keymap_with_desc = keymap_with_desc
+M.keymap_desc = keymap_with_desc
+M.keymap_with_desc = keymap_with_desc_binding
 
 return M
-
--- TODO maybe just create map("i", "<leader>zzz", ":goToSleep<CR>") and add noremap = true as def

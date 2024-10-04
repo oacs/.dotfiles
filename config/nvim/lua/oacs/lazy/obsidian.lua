@@ -1,6 +1,5 @@
-local nnoremap = require("keymap").nnoremapwdesc("Obsidian :")
 return {
-	enabled = true,
+	enabled = false,
 	"epwalsh/obsidian.nvim",
 	-- event = { "BufReadPre ~/dev/notes/**.md" },
 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
@@ -113,7 +112,6 @@ return {
 	},
 	config = function(_, opts)
 		require("obsidian").setup(opts)
-		nnoremap("<leader>oo", ":ObsidianOpen<CR>", "[O]bsidian [O]pen")
-		nnoremap("<leader>ot", ":ObsidianToday<CR>", "[O]bsidian [T]oday")
+		require("oacs.maps.maps").add_obsidian_maps()
 	end,
 }
