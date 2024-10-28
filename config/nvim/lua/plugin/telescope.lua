@@ -18,6 +18,9 @@ M.search_neorg_todos = function()
 	require("telescope.builtin").grep_string({
 		use_regex = true,
 		search = "- \\( \\) ",
+		search_dirs = {
+			"~/dev/notes",
+		},
 	})
 end
 

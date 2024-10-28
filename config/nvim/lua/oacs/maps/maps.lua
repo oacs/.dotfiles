@@ -6,7 +6,7 @@ M.add_git_maps = function()
   map("n","<leader>gg", ":G<CR>", "[GG]it center")
   map("n","<leader>g<leader>", ":G ", "[G]it ")
   map("n","<leader>gp", ":G push<CR>", "[G]it [P]ush")
-  map("n","<leader>ga", ":G hola beto %<CR>", "[G]it [A]dd")
+  map("n","<leader>ga", ":G add %<CR>", "[G]it [A]dd")
   map("n","<leader>gr", ":G restore %<CR>", "[G]it [R]estore")
   map("n","<leader>gc", ":G commit<CR>", "[G]it [C]ommit")
   map("n","<leader>gP", ":G push -f<CR>", "[G]it [P]ush force")
@@ -151,7 +151,7 @@ map("n", "<leader>tn", tmuxCustom.tmux_move_to_window("{next}") , "[T]mux next")
 
 -- Harpoon Module
 
-M.add_obsidian_maps = function()
+M.add_harpoon_maps = function()
 local customHarpoon = require("plugin.harpoon")
 map("n", "<leader>hta", customHarpoon.go_to_terminal(1), "[TH]erminal secondary")
 map("n", "<leader>hto", customHarpoon.go_to_terminal(2), "[TT]erminal main")
@@ -175,19 +175,19 @@ map("n", "<leader>sl", vim.diagnostic.open_float, "[S]how [L]ine diagnostic")
 	-- nmap("<leader>wl", function()
 	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	-- end, "[W]orkspace [L]ist Folders")
-	map("m", "gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-	map("m", "gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	map("m", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+	map("n", "gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+	map("n", "gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+	map("n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	--map("m", "<F2>", vim.lsp.buf.rename, "[R]e[n]ame")
-	map("m", "gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-	map("m", "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-	map("m", "<leader>td", vim.lsp.buf.type_definition, "[T]ype [D]efinition")
-	map("m", "<leader>sl", vim.diagnostic.open_float, "[S]how [L]ine diagnostic")
-	map("m", "<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+	map("n", "gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+	map("n", "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+	map("n", "<leader>td", vim.lsp.buf.type_definition, "[T]ype [D]efinition")
+	map("n", "<leader>sl", vim.diagnostic.open_float, "[S]how [L]ine diagnostic")
+	map("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 	-- map("m", "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 	-- See `:help K` for why this keymap
-	map("m", "K", vim.lsp.buf.hover, "Hover Documentation")
-	map("m", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+	map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+	map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
 	-- Lesser used LSP functionality
 	map("m", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -211,19 +211,33 @@ map("n", "<leader>E", ":Oil .<CR>")
 --- Delete Yank Paste
 map("x", "<leader>p", '"_dP')
 map("x", "<leader>p", '"_dP')
-map("n", "<leader>y", '"+y')
-map("v","y", '"+y')
+map({ "n", "v" }, "<leader>y", '"+y')
 map("n", "<leader>Y", 'gg"+yG')
 map("n", "<leader>d", '"_d')
-map("v","d", '"_d')
+-- map("v","d", '"_d')
 map("n", "<leader>cp", ":let @* =', 'expand(\"%\")<CR>") -- Copy file name?
+map("v", "//", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
+-- map <C-L> (redraw screen) to also turn off search highlighting until the
+map("n", "<C-L>", ":nohl<CR><C-L>")
 
 map("n", "<leader>q", ":q<CR>")
 map("n", "<leader>w", ":w<CR>")
  map("n", "<leader><C-w>", ":wq<CR>")
 
-map("n", "<leader>m", "<c-w>")
+map("n", "<leader>l", "<c-w>")
 map("n", "<leader>o", ":SymbolsOutline<CR>")
+
+map("t", "hh", "<C-\\><C-n>")
+map("t", "<C-h>", "<C-\\><C-n>")
+map("n", "<leader>o", ":SymbolsOutline<CR>")
+
+map({ "n", "v" }, "<Space>", "<Nop>", "",{ silent = true })
+-- Remap for dealing with word wrap
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", "",{ expr = true, silent = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'","", { expr = true, silent = true })
+map("c","<C-f>", "<nop>")
+map("i","<C-h>", "<C-[>")
+map("n","<C-t>", ":tabnew<CR>")
 
 end -- end of add_other_maps
 return M
