@@ -71,4 +71,12 @@ return {
 
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "sindrets/diffview.nvim" },
+	"nvchad/volt",
+	{ "nvchad/timerly", cmd = "TimerlyToggle" },
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
+	},
 }

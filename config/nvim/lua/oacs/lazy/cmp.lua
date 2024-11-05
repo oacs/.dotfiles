@@ -133,6 +133,7 @@ return { -- Autocompletion
 				["<C-e>"] = cmp.mapping.abort(),
 			}),
 			sources = cmp.config.sources({
+				{ name = "supermaven" },
 				{ name = "neorg" },
 				{ name = "luasnip" },
 				{ name = "cmp-tw2css" },
