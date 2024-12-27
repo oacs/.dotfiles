@@ -35,8 +35,12 @@ map("n","<leader>sn", ":Telescope luasnip<cr>", "[S]earch S[n]ippet")
 map("n","<leader>sp", customTelescope.search_neorg_todos, "[S]earch [P]ending tasks")
 map("n","<leader>sq", require("telescope.builtin").quickfix, "[S]earch [Q]uickfix")
 map("n","<leader>sT", require("telescope.builtin").treesitter, "[S]earch [T]reesitter")
+map("n","<leader>se", require("telescope").extensions.rest.select_env, "[S]earch [E]nvironment")
+
 map("n","<leader>st", customTelescope.tmux_sessions, "[S]earch [T]mux Session")
 map("n","<leader>sD", customTelescope.search_dotfiles, "[S]earch [D]otfiles")
+  map("n","<leader>sf", customTelescope.search_fc, "[S]earch [F]ashion cloud")
+  map("n","<leader>rs", customTelescope.search_rest, "[S]earch [R]est")
 map("n","<leader>sc", require("telescope.builtin").commands, "[S]earch [C]ommands")
 map("n","<leader>sC", require("telescope.builtin").command_history, "[S]earch [C]ommands")
 map("n","<leader>sl", require("telescope.builtin").loclist, "[S]earch [L]oclist")
@@ -51,7 +55,7 @@ map("n","<leader>gs", require("telescope.builtin").git_branches, "[G]it [S]earch
 map("n","<leader>gS", require("telescope.builtin").git_stash, "[G]it [S]tash")
 map("n","<leader>p", ":Telescope yank_history<cr>", "[P]aste history")
 map("v","<leader>p", "d:Telescope yank_history<cr>", "[P]aste history + <C-k>")
-map("n","<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+-- map("n","<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
  -- normal("ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 end
 
@@ -148,6 +152,12 @@ end
 local tmuxCustom = require("plugin.tmux")
 map("n", "<leader>tN", tmuxCustom.tmux_move_to_window("{previous}"), "[T]mux next")
 map("n", "<leader>tn", tmuxCustom.tmux_move_to_window("{next}") , "[T]mux next")
+map("n", "<C-l>", ":TmuxNavigateRight<CR>" , "[T]mux pane right")
+map("n", "<C-h>", ":TmuxNavigateLeft<CR>" , "[T]mux pane left")
+map("n", "<C-j>", ":TmuxNavigateDown<CR>" , "[T]mux pane down")
+map("n", "<C-k>", ":TmuxNavigateUp<CR>" , "[T]mux pane up")
+map("n", "<C-v>", "<C-w>v", "Split vertical")
+map("n", "<C-s>", "<C-w>s", "Split (horizontal)")
 
 -- Harpoon Module
 
@@ -164,6 +174,28 @@ map("n", "<leader>hn", require("harpoon.ui").nav_next, "[H]arpoon [N]ext") -- na
 map("n", "<leader>ho", require("harpoon.ui").nav_prev, "[H]arpoon [P]revious") -- navigates to previous mark
 end
 
+-- Dap Module
+M.add_dap_maps = function()
+map("n", "<leader>dd", ":lua require'dap'.toggle_breakpoint()<CR>", "[D]ebug [D]ebug")
+map("n", "<leader>dr", ":lua require'dap'.continue()<CR>", "[D]ebug [R]esume")
+map("n", "<leader>ds", ":lua require'dap'.step_over()<CR>", "[D]ebug [S]tep over")
+map("n", "<leader>di", ":lua require'dap'.step_into()<CR>", "[D]ebug [I]nspect")
+map("n", "<leader>dl", ":lua require'dap'.run_last()<CR>", "[D]ebug [L]ast")
+map("n", "<leader>do", ":lua require'dap'.terminate()<CR>", "[D]ebug [O]ut")
+map("n", "<leader>dp", ":lua require'dap'.pause.toggle()<CR>", "[D]ebug [P]ause")
+map("n", "<leader>dc", ":lua require'dap'.close()<CR>", "[D]ebug [C]lose")
+map("n", "<leader>de", ":lua require'dap'.repl.open()<CR>", "[D]ebug [E]valuate")
+map("n", "<leader>dv", ":lua require'dap'.vars.open()<CR>", "[D]ebug [V]ariables")
+end
+
+-- Rest module
+M.add_rest_maps = function()
+	map("n", "<leader>rr", ":Rest run<CR>", "[R]est")
+	map("n", "<leader>ro", ":Rest open<CR>", "[R]est [O]pen")
+	map("n", "<leader>rR", ":Rest last<CR>", "[R]est [L]ast")
+	map("n", "<leader>re", ":Rest env set ~/workspace/apiCalls/.env<CR>", "[R]est [E]nvironment")
+end
+
 -- Lsp Module
   M.add_lsp_maps = function()
 map("n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
@@ -178,19 +210,19 @@ map("n", "<leader>sl", vim.diagnostic.open_float, "[S]how [L]ine diagnostic")
 	map("n", "gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	map("n", "gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	map("n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-	--map("m", "<F2>", vim.lsp.buf.rename, "[R]e[n]ame")
+	--map("n", "<F2>", vim.lsp.buf.rename, "[R]e[n]ame")
 	map("n", "gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	map("n", "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 	map("n", "<leader>td", vim.lsp.buf.type_definition, "[T]ype [D]efinition")
 	map("n", "<leader>sl", vim.diagnostic.open_float, "[S]how [L]ine diagnostic")
-	map("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+	-- map("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 	-- map("m", "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 	-- See `:help K` for why this keymap
 	map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
 	map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
 	-- Lesser used LSP functionality
-	map("m", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	map("n", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 	-- nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
 	-- nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
 	-- nmap("<leader>wl", function()
@@ -212,13 +244,13 @@ map("n", "<leader>E", ":Oil .<CR>")
 map("x", "<leader>p", '"_dP')
 map("x", "<leader>p", '"_dP')
 map({ "n", "v" }, "<leader>y", '"+y')
-map("n", "<leader>Y", 'gg"+yG')
-map("n", "<leader>d", '"_d')
+-- map("n", "<leader>Y", 'gg"+yG')
+-- map("n", "<leader>d", '"_d')
 -- map("v","d", '"_d')
 map("n", "<leader>cp", ":let @* =', 'expand(\"%\")<CR>") -- Copy file name?
 map("v", "//", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
 -- map <C-L> (redraw screen) to also turn off search highlighting until the
-map("n", "<C-L>", ":nohl<CR><C-L>")
+-- map("n", "<C-L>", ":nohl<CR><C-L>")
 
 map("n", "<leader>q", ":q<CR>")
 map("n", "<leader>w", ":w<CR>")

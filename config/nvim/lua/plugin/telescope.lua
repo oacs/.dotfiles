@@ -31,6 +31,20 @@ M.search_dotfiles = function()
 	})
 end
 
+M.search_fc = function()
+	require("telescope.builtin").find_files({
+		prompt_title = "< FC >",
+		cwd = "~/workspace/",
+	})
+end
+
+M.search_rest = function()
+	require("telescope.builtin").find_files({
+		prompt_title = "< Rest >",
+		cwd = "~/workspace/apiCalls/",
+	})
+end
+
 M.tmux_sessions = function(opts)
 	opts = opts or {}
 	local dirs = scan.scan_dir("/home/oacs/dev", {

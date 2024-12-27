@@ -2,6 +2,7 @@
 local on_attach = function(_, bufnr)
 	-- let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 	require("oacs.maps.maps").add_lsp_maps()
+	require("oacs.maps.maps").add_dap_maps()
 end
 
 -- Enable the following language servers
@@ -16,6 +17,7 @@ local servers = {
 	-- tailwindcss === tailwindcss-language-server
 	-- tailwindcss = {},
 	-- tsserver === typescript-language-server
+	zls = {},
 	angularls = {},
 	-- tsserver = {},
 	ts_ls = {},
@@ -29,7 +31,8 @@ return { -- LSP Configuration & Plugins
 		-- Automatically install LSPs to stdpath for neovim
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-
+		"mfussenegger/nvim-dap",
+		"jay-babu/mason-nvim-dap.nvim",
 		-- Useful status updates for LSP
 		"j-hui/fidget.nvim",
 
@@ -60,10 +63,29 @@ return { -- LSP Configuration & Plugins
 			mason.setup()
 		end
 		-- Dap config
-		-- require("mason-nvim-dap").setup({
-		-- ensure_installed = { "node2", "chrome", "js" },
-		-- automatic_setup = true,
-		-- })
+		require("mason-nvim-dap").setup({
+			ensure_installed = { "node2", "chrome", "js" },
+			automatic_setup = true,
+			handlers = {
+				function(config)
+					-- all sources with no handler get passed here
+
+					-- Keep original functionality
+					require("mason-nvim-dap").default_setup(config)
+				end,
+				-- chrome = function(config)
+				-- 	config.adapters = {
+				-- 		type = "executable",
+				-- 		command = "/usr/bin/python3",
+				-- 		args = {
+				-- 			"-m",
+				-- 			"debugpy.adapter",
+				-- 		},
+				-- 	}
+				-- 	require("mason-nvim-dap").default_setup(config) -- don't forget this!
+				-- end,
+			},
+		})
 		-- require("mason-nvim-dap").setup_handlers({})
 
 		-- Ensure the servers above are installed
