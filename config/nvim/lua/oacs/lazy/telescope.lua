@@ -54,11 +54,11 @@ return {
 		-- require("telescope").load_extension("dap")
 		require("telescope").load_extension("yank_history")
 		require("telescope").load_extension("emoji")
-		require("telescope").load_extension("luasnip")
-		require("telescope").load_extension("rest")
+		-- require("telescope").load_extension("luasnip")
+		-- require("telescope").load_extension("rest")
 		-- Enable telescope fzf native, if installed
 		pcall(require("telescope").load_extension, "fzf")
 		require("oacs.maps.maps").add_telescope_maps()
-		require("oacs.maps.maps").add_rest_maps()
+		-- require("oacs.maps.maps").add_rest_maps()
 	end,
 }

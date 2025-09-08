@@ -1,6 +1,3 @@
-local nnoremap = require("keymap").nnoremapwdesc("Git :")
--- local vnoremap = require("keymap").vnoremap
-
 return {
 	-- Git
 	{

@@ -3,6 +3,7 @@ local o = vim.o
 return {
 	{
 		"folke/which-key.nvim",
+		enabled = false,
 		config = function()
 			o.timeout = true
 			o.timeoutlen = 300
@@ -39,6 +40,7 @@ return {
 	--
 	{
 		"liangxianzhe/nap.nvim",
+		enabled = false,
 		opts = {
 			next_repeat = "<c-n><c-n>",
 			prev_repeat = "<c-p><c-p>",
@@ -90,16 +92,16 @@ return {
 
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "sindrets/diffview.nvim" },
-	"nvchad/volt",
-	{ "nvchad/timerly", cmd = "TimerlyToggle" },
 	{
 		"supermaven-inc/supermaven-nvim",
+		enabled = true,
 		config = function()
 			require("supermaven-nvim").setup({})
 		end,
 	},
 	{
 		"rest-nvim/rest.nvim",
+		enabled = false,
 		config = function()
 			require("rest-nvim").setup({
 				env = {

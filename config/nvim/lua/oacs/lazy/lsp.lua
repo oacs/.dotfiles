@@ -17,7 +17,7 @@ local servers = {
 	-- tailwindcss === tailwindcss-language-server
 	-- tailwindcss = {},
 	-- tsserver === typescript-language-server
-	zls = {},
+	-- zls = {},
 	angularls = {},
 	-- tsserver = {},
 	ts_ls = {},
@@ -69,7 +69,6 @@ return { -- LSP Configuration & Plugins
 			handlers = {
 				function(config)
 					-- all sources with no handler get passed here
-
 					-- Keep original functionality
 					require("mason-nvim-dap").default_setup(config)
 				end,
@@ -92,27 +91,10 @@ return { -- LSP Configuration & Plugins
 		local mason_lspconfig = require("mason-lspconfig")
 
 		--if isLspMasonConfigInstalled then
-		mason_lspconfig.setup({
-			ensure_installed = vim.tbl_keys(servers),
-		})
+		mason_lspconfig.setup({})
 
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				require("lspconfig")[server_name].setup({
-					capabilities = capabilities,
-					on_attach = on_attach,
-					settings = servers[server_name],
-				})
-			end,
+		vim.lsp.config("*", {
+			on_attach = on_attach,
 		})
-		-- local null_ls = require("null-ls")
-		--
-		-- null_ls.setup({
-		-- 	sources = {
-		-- 		null_ls.builtins.formatting.stylua,
-		-- 		null_ls.builtins.diagnostics.eslint,
-		-- 		null_ls.builtins.completion.spell,
-		-- 	},
-		-- })
 	end,
 }

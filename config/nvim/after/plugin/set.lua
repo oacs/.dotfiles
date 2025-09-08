@@ -55,7 +55,7 @@ o.hidden = true
 opt.fillchars = { fold = " " }
 opt.foldmethod = "indent"
 opt.foldenable = false
-opt.foldlevel = 99
+opt.foldlevel = 5
 g.markdown_folding = 1 -- enable markdown folding
 
 o.fml = 16

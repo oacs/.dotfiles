@@ -3,6 +3,7 @@ return {
 	version = "v2.*",
 	-- install jsregexp (optional!).
 	build = "make install_jsregexp",
+	enabled = false,
 
 	history = true, -- keep last snippet to use it
 	-- What's autosnippets?

@@ -17,7 +17,7 @@ return { -- Autocompletion
 		-- Set up nvim-cmp.
 		local cmp = require("cmp")
 		local lspkind = require("lspkind")
-		local luasnip = require("luasnip")
+		-- local luasnip = require("luasnip")
 
 		-- To make LSP notifications look like vscode
 		lspkind.init()
@@ -43,13 +43,13 @@ return { -- Autocompletion
 
 		local confirm_with_snippets = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				if luasnip.expandable() then
-					luasnip.expand()
-				else
-					cmp.confirm({
-						select = true,
-					})
-				end
+				-- if luasnip.expandable() then
+				-- 	luasnip.expand()
+				-- else
+				cmp.confirm({
+					select = true,
+				})
+				-- end
 			else
 				fallback()
 			end
@@ -62,7 +62,7 @@ return { -- Autocompletion
 					menu = {
 						buffer = "[buf]",
 						-- copilot = "[cop]",
-						luasnip = "[snip]",
+						-- luasnip = "[snip]",
 						nvim_lsp = "[LSP]",
 						nvim_lua = "[api]",
 						path = "[path]",
@@ -81,7 +81,7 @@ return { -- Autocompletion
 			snippet = {
 				-- REQUIRED - you must specify a snippet engine
 				expand = function(args)
-					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+					-- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 				end,
 			},
 			sorting = {
@@ -109,8 +109,8 @@ return { -- Autocompletion
 				["<Tab>"] = vim.schedule_wrap(function(fallback)
 					if cmp.visible() and has_words_before() then
 						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-					elseif luasnip.locally_jumpable(1) then
-						luasnip.jump(1)
+					-- elseif luasnip.locally_jumpable(1) then
+					-- 	luasnip.jump(1)
 					else
 						fallback()
 					end
@@ -118,8 +118,8 @@ return { -- Autocompletion
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
-					elseif luasnip.locally_jumpable(-1) then
-						luasnip.jump(-1)
+					-- elseif luasnip.locally_jumpable(-1) then
+					-- 	luasnip.jump(-1)
 					else
 						fallback()
 					end
@@ -135,7 +135,7 @@ return { -- Autocompletion
 			sources = cmp.config.sources({
 				{ name = "supermaven" },
 				{ name = "neorg" },
-				{ name = "luasnip" },
+				-- { name = "luasnip" },
 				{ name = "cmp-tw2css" },
 				{ name = "nvim_lsp" },
 				{ name = "path" },
