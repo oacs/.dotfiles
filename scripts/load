@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 HOME_DIR=/home/oacs
-DOTFILES_DIR=$HOME_DIR/.dotfiles
+DOTFILES_DIR=$HOME_DIR/.dotfiles/config
 
 mkdir -p $HOME_DIR/bin
 touch ~/.local/share/clipman-primary.json
@@ -8,6 +8,7 @@ touch ~/.local/share/clipman-primary.json
 ln -sf $DOTFILES_DIR/.tmux.conf.local $HOME_DIR/.tmux.conf.local
 
 ln -sf $DOTFILES_DIR/hypr $HOME_DIR/.config
+ln -sf $DOTFILES_DIR/aerospace $HOME_DIR/.config
 ln -sf $DOTFILES_DIR/nvim $HOME_DIR/.config
 ln -sf $DOTFILES_DIR/kitty $HOME_DIR/.config
 ln -sf $DOTFILES_DIR/wezterm/wezterm.lua $HOME_DIR/.wezterm.lua

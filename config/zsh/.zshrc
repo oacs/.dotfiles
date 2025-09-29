@@ -116,5 +116,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+export NPM_TOKEN="imported-in-zshrc-secrets"
+source ~/.dotfiles/config/zsh/.zshrc-secrets
 alias aws_login='export AWS_PROFILE=default && aws sso login'
 export AWS_SDK_LOAD_CONFIG=1
