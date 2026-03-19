@@ -16,7 +16,7 @@
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
 
 [core]
-	pager = delta
+	pager = nvim -
   difftool = true
 
 [interactive]
@@ -82,3 +82,5 @@
 [user]
 	name = Oscar C
 	email = oscar.castillejo@fashion.cloud
+[coderabbit]
+	machineId = cli/8c683d1052134439bce7d4dbdee5478b

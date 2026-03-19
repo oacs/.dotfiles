@@ -1,16 +1,4 @@
-local o = vim.o
-
 return {
-	{
-		"folke/which-key.nvim",
-		enabled = false,
-		config = function()
-			o.timeout = true
-			o.timeoutlen = 300
-			require("which-key").setup({})
-		end,
-	},
-
 	-- 	-- Coment
 	{
 		"numToStr/Comment.nvim",
@@ -22,31 +10,8 @@ return {
 	-- 	-- Delete ( ) [ ] { } without inner content
 	{
 		"kylechui/nvim-surround",
-		opts = {
-			keymaps = {
-				insert = "<C-g>s",
-				insert_line = "<C-g>S",
-				normal = "S",
-				normal_cur = "Ss",
-				normal_line = "SS",
-				normal_cur_line = "ySS",
-				visual = "S",
-				visual_line = "gS",
-				delete = "ds",
-				change = "cs",
-			},
-		},
 	},
 	--
-	{
-		"liangxianzhe/nap.nvim",
-		enabled = false,
-		opts = {
-			next_repeat = "<c-n><c-n>",
-			prev_repeat = "<c-p><c-p>",
-		},
-	},
-
 	{
 		"stevearc/oil.nvim",
 		opts = {},
@@ -90,26 +55,12 @@ return {
 		end,
 	},
 
-	{ "saadparwaiz1/cmp_luasnip" },
 	{ "sindrets/diffview.nvim" },
 	{
 		"supermaven-inc/supermaven-nvim",
 		enabled = true,
 		config = function()
 			require("supermaven-nvim").setup({})
-		end,
-	},
-	{
-		"rest-nvim/rest.nvim",
-		enabled = false,
-		config = function()
-			require("rest-nvim").setup({
-				env = {
-					enabled = true,
-					pattern = "~/workspace/apiCalls/*.env",
-				},
-			})
-			-- require("oacs.maps.maps").add_rest_maps()
 		end,
 	},
 }

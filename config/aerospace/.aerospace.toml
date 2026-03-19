@@ -207,7 +207,7 @@ automatically-unhide-macos-hidden-apps = false
     shift-down = ['volume set 0', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
+if.app-id = 'com.mitchellh.ghostty'
 run = "move-node-to-workspace T"
 
 # Slack
@@ -228,7 +228,7 @@ run = "move-node-to-workspace N"
 # DataGrip
 [[on-window-detected]]
 if.app-id = "com.jetbrains.datagrip" 
-run = "move-node-to-workspace C"
+run = "move-node-to-workspace Y"
 
 # Docker 
 [[on-window-detected]]
@@ -238,7 +238,7 @@ run = "move-node-to-workspace D"
 # Postman
 [[on-window-detected]]
 if.app-id = "com.postmanlabs.mac" 
-run = "move-node-to-workspace C"
+run = "move-node-to-workspace R"
 
 # Cursor
 [[on-window-detected]]

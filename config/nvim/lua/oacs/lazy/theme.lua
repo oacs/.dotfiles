@@ -2,7 +2,7 @@ local cmd = vim.cmd
 return {
 	{
 		"catppuccin/nvim",
-		name = "catppuccin",
+		name = "catppuccin-nvim",
 		priority = 1000,
 		dependencies = { "nvim-lualine/lualine.nvim" },
 		config = function()
@@ -20,7 +20,7 @@ return {
 			require("lualine").setup({
 				options = {
 					-- theme = "tokyonight",
-					theme = "catppuccin",
+					theme = "catppuccin-nvim",
 				},
 				extensions = {
 					"fugitive",
@@ -38,16 +38,3 @@ return {
 		end,
 	},
 }
-
--- Folke supremacy
--- {
--- 	"folke/tokyonight.nvim",
--- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
--- 	priority = 1000, -- make sure to load this before all the other start plugins
--- 	config = function()
--- 		-- load the colorscheme here
--- 		-- set color scheme
--- 		-- silent to avoid error if theme is missing
--- 		vim.cmd([[silent! colorscheme tokyonight]])
--- 	end,
--- },
