@@ -5,8 +5,6 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-telescope/telescope-ui-select.nvim",
 		"xiyaowong/telescope-emoji.nvim",
-		"benfowler/telescope-luasnip.nvim",
-
 		-- Add yanky to copy to system clipboard
 		{
 			"gbprod/yanky.nvim",

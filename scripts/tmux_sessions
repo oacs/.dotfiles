@@ -6,7 +6,7 @@ WORKSPACE="~/workspace"
 QA="$WORKSPACE/QA"
 ACCOUNT_SERVICE="$WORKSPACE/account-service"
 BACKEND="$WORKSPACE/backend"
-BACKEND="$WORKSPACE/models"
+MODELS="$WORKSPACE/models"
 BI_SERVICE="$WORKSPACE/bi-service"
 BUILDFRONTENDTRANSLATIONS="$WORKSPACE/buildFrontendTranslations"
 DOCKER_COMPOSE="$WORKSPACE/docker-compose"
@@ -23,14 +23,10 @@ createWindow() {
     window=$2
     shift
     shift
-    hasWindow=$(tmux list-windows -t $session | grep "$window")
+    hasWindow=$(tmux list-windows -t "$session" | grep "$window")
     if [ -z "$hasWindow" ]; then
-        cmd="tmux neww -t $session: -n $window -d"
-        if [ $# -gt 0 ]; then
-            cmd="$cmd $@"
-        fi
-        echo "Creating Window(\"$hasWindow\"): $cmd"
-        eval $cmd
+        echo "Creating Window: tmux neww -t $session: -n $window -d $*"
+        tmux neww -t "$session:" -n "$window" -d "$@"
     fi
 }
 
@@ -39,21 +35,19 @@ createSession() {
     window=$2
     shift
     shift
-    cmd="tmux new -s $session -d -n $window $@"
-
-    echo "Creating Session: $cmd"
-    eval $cmd
+    echo "Creating Session: tmux new -s $session -d -n $window $*"
+    tmux new -s "$session" -d -n "$window" "$@"
 }
 
 attachSession() {
     session=$1
-    eval "tmux attach -t $session"
+    tmux attach -t "$session"
 }
 
 createSession fcloud workspace -c $WORKSPACE
 createWindow fcloud frontend -c $FRONTEND
 createWindow fcloud backend -c $BACKEND
-createWindow fcloud madels -c $MODELS
+createWindow fcloud models -c $MODELS
 createWindow fcloud translations -c $BUILDFRONTENDTRANSLATIONS
 # createWindow fcloud account-c $ACCOUNT_SERVICE
 # createWindow fcloud bi-c $BI_SERVICE
@@ -67,6 +61,3 @@ createWindow fcloud translations -c $BUILDFRONTENDTRANSLATIONS
 # createWindow fcloud shared_infrastructure_services -c $SHARED_INFRASTRUCTURE_SERVICES
 
 attachSession fcloud
-
-
-done

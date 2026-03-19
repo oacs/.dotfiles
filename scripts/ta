@@ -17,7 +17,7 @@ else
         if [ $DIR = "." ]; then
                 path_name=$(pwd)
         fi
-        session_name=$(basename $path_name)
+        session_name=$(basename "$path_name")
 fi
 
 echo session name is \"$session_name\"
@@ -42,16 +42,16 @@ create_detached_session() {
                         TMUX=''
                         tmux new-session -Ad -s "$session_name" -c "$path_name/frontend" -n "front"
                 )
-                tmux send-keys -t "$session_name" "nvim ." Enter
+                tmux send-keys -t "$session_name" "nvim ." C-m
                 tmux new-window -t "$session_name" -n "back" -c "$path_name/backend"
-                tmux send-keys -t "$session_name" "nvim ." Enter
+                tmux send-keys -t "$session_name" "nvim ." C-m
                 ;;
         *)
                 (
                         TMUX=''
-                        tmux new-session -Ad -s "$session_name" -c $path_name
+                        tmux new-session -Ad -s "$session_name" -c "$path_name"
                 )
-                tmux send-keys -t "$session_name" "nvim ." Enter
+                tmux send-keys -t "$session_name" "nvim ." C-m
                 echo -n "unknown"
                 ;;
         esac

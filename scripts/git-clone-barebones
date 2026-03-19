@@ -12,7 +12,7 @@ url=$1
 basename=${url##*/}
 name=${2:-${basename%.*}}
 
-mkdir $name
+mkdir "$name"
 cd "$name"
 
 # Moves all the administrative git files (a.k.a $GIT_DIR) under .bare directory.

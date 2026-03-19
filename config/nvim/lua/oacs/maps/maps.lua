@@ -31,7 +31,6 @@ M.add_telescope_maps = function()
 	map("n", "<leader>sh", require("telescope.builtin").help_tags, "[S]earch [H]elp tags")
 	map("v", "<leader>sh", "y<ESC>:Telescope help_tags default_text=<c-r>0<CR>", "[S]earch [H]elp tags")
 	map("n", "<leader>sr", require("telescope.builtin").registers, "[S]earch [R]egisters")
-	map("n", "<leader>sn", ":Telescope luasnip<cr>", "[S]earch S[n]ippet")
 	map("n", "<leader>sp", customTelescope.search_neorg_todos, "[S]earch [P]ending tasks")
 	map("n", "<leader>sq", require("telescope.builtin").quickfix, "[S]earch [Q]uickfix")
 	map("n", "<leader>sT", require("telescope.builtin").treesitter, "[S]earch [T]reesitter")
@@ -143,7 +142,7 @@ M.add_neorg_maps = function()
 end
 
 -- Obsidian Module
-M.add_harpoon_maps = function()
+M.add_obsidian_maps = function()
 	map("n", "<leader>oo", ":ObsidianOpen<CR>", "[O]bsidian [O]pen")
 	map("n", "<leader>ot", ":ObsidianToday<CR>", "[O]bsidian [T]oday")
 end
@@ -257,11 +256,9 @@ M.add_other_maps = function()
 	map("n", "<leader><C-w>", ":wq<CR>")
 
 	map("n", "<leader>l", "<c-w>")
-	map("n", "<leader>o", ":SymbolsOutline<CR>")
 
 	map("t", "hh", "<C-\\><C-n>")
 	map("t", "<C-h>", "<C-\\><C-n>")
-	map("n", "<leader>o", ":SymbolsOutline<CR>")
 
 	map({ "n", "v" }, "<Space>", "<Nop>", "", { silent = true })
 	-- Remap for dealing with word wrap

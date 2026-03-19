@@ -13,8 +13,8 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-WORKSPACE_PATH="/Users/oacs/workspace"
-DOCKER_COMPOSE_PATH="$WORKSPACE_PATH/docker-compose"
+WORKSPACE_PATH="${WORKSPACE_PATH:-$HOME/workspace}"
+DOCKER_COMPOSE_PATH="$WORKSPACE_PATH/docker compose"
 ECOSYSTEM_PATH="$DOCKER_COMPOSE_PATH/ecosystem.config.js"
 
 # Function to print colored output
@@ -87,22 +87,22 @@ start_docker_desktop() {
 start_docker_containers() {
     print_status "Starting Docker containers..."
     
-    if [ ! -f "$DOCKER_COMPOSE_PATH/docker-compose.yml" ]; then
-        print_error "docker-compose.yml not found at $DOCKER_COMPOSE_PATH"
+    if [ ! -f "$DOCKER_COMPOSE_PATH/docker compose.yml" ]; then
+        print_error "docker compose.yml not found at $DOCKER_COMPOSE_PATH"
         return 1
     fi
     
     cd "$DOCKER_COMPOSE_PATH"
     
     # Start containers in detached mode
-    docker-compose up -d
+    docker compose up -d
     
     if [ $? -eq 0 ]; then
         print_success "Docker containers started successfully"
         
         # Show running containers
         print_status "Running containers:"
-        docker-compose ps
+        docker compose ps
     else
         print_error "Failed to start Docker containers"
         return 1
@@ -160,14 +160,14 @@ show_final_status() {
     print_status "Development environment startup complete!"
     echo
     print_status "Services running:"
-    echo "  - Docker containers: $(docker-compose -f $DOCKER_COMPOSE_PATH/docker-compose.yml ps --services --filter status=running | wc -l | tr -d ' ') services"
+    echo "  - Docker containers: $(docker compose -f $DOCKER_COMPOSE_PATH/docker compose.yml ps --services --filter status=running | wc -l | tr -d ' ') services"
     echo "  - PM2 processes: $(pm2 jlist | jq length 2>/dev/null || echo 'Unknown') processes"
     echo
     print_status "Useful commands:"
-    echo "  - View Docker logs: docker-compose -f $DOCKER_COMPOSE_PATH/docker-compose.yml logs -f"
+    echo "  - View Docker logs: docker compose -f $DOCKER_COMPOSE_PATH/docker compose.yml logs -f"
     echo "  - View PM2 logs: pm2 logs"
     echo "  - Stop PM2: pm2 stop all"
-    echo "  - Stop Docker: docker-compose -f $DOCKER_COMPOSE_PATH/docker-compose.yml down"
+    echo "  - Stop Docker: docker compose -f $DOCKER_COMPOSE_PATH/docker compose.yml down"
 }
 
 # Main execution

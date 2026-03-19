@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-HOME_DIR=/home/oacs
+HOME_DIR="$HOME"
 DOTFILES_DIR=$HOME_DIR/.dotfiles/config
 
 mkdir -p $HOME_DIR/bin
