@@ -119,6 +119,8 @@ esac
 export NPM_TOKEN="imported-in-zshrc-secrets"
 source ~/.dotfiles/config/zsh/.zshrc-secrets
 alias aws_login='export AWS_PROFILE=default && aws sso login'
+alias dev-start='~/.dotfiles/scripts/start-dev-environment.sh start'
+alias dev-stop='~/.dotfiles/scripts/start-dev-environment.sh stop'
 export AWS_SDK_LOAD_CONFIG=1
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR='nvim'

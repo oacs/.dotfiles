@@ -1,4 +1,5 @@
 local map = require("keymap").keymap_desc
+local demand = require("luai").demand
 local M = {}
 
 -- [G]it module
@@ -50,7 +51,9 @@ M.add_telescope_maps = function()
 	map("n", "<leader>hs", ":Telescope harpoon marks<cr>", "[H]arpoon [S]earch")
 	map("n", "<leader>ft", customTelescope.search_todos)
 	-- map("n","<leader>gw", require('telescope').extensions.git_worktree.git_worktrees)
-	map("n", "<leader>gs", require("telescope.builtin").git_branches, "[G]it [S]earch")
+	map("n", "<leader>gs", function()
+		require("telescope.builtin").git_branches({ layout_strategy = "vertical" })
+	end, "[G]it [S]earch")
 	map("n", "<leader>gS", require("telescope.builtin").git_stash, "[G]it [S]tash")
 	map("n", "<leader>p", ":Telescope yank_history<cr>", "[P]aste history")
 	map("v", "<leader>p", "d:Telescope yank_history<cr>", "[P]aste history + <C-k>")
@@ -151,6 +154,11 @@ end
 local tmuxCustom = require("plugin.tmux")
 map("n", "<leader>tN", tmuxCustom.tmux_move_to_window("{previous}"), "[T]mux next")
 map("n", "<leader>tn", tmuxCustom.tmux_move_to_window("{next}"), "[T]mux next")
+map("n", "<leader>ts", function()
+	demand("custom.utils").switch_or_create_tmux_window_with_nvim_from_telescope({
+		path = "~/workspace/",
+	})
+end, "[T]mux [S]witch")
 map("n", "<C-l>", ":TmuxNavigateRight<CR>", "[T]mux pane right")
 map("n", "<C-h>", ":TmuxNavigateLeft<CR>", "[T]mux pane left")
 map("n", "<C-j>", ":TmuxNavigateDown<CR>", "[T]mux pane down")
@@ -164,6 +172,8 @@ M.add_harpoon_maps = function()
 	local customHarpoon = require("plugin.harpoon")
 	map("n", "<leader>hta", customHarpoon.go_to_terminal(1), "[TH]erminal secondary")
 	map("n", "<leader>hto", customHarpoon.go_to_terminal(2), "[TT]erminal main")
+	map("n", "<leader>hte", customHarpoon.go_to_terminal(3), "[TE]erminal secondary")
+	map("n", "<leader>htu", customHarpoon.go_to_terminal(4), "[TU]erminal main")
 	map("n", "<leader>htc", require("harpoon.cmd-ui").toggle_quick_menu, "[T]erminal [C]ommands")
 	map("n", "<leader>hts", customHarpoon.send_command, "[T]erminal [S]end command")
 	map("n", "<leader>hh", require("harpoon.ui").toggle_quick_menu, "[H]arpoon [M]enu")

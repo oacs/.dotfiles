@@ -63,4 +63,15 @@ return {
 			require("supermaven-nvim").setup({})
 		end,
 	},
+
+	{
+		"tjdevries/luai.nvim",
+		dir = "~/dev/luai.nvim/",
+		config = function()
+			require("luai").setup({
+				provider = "claude",
+				model = "claude-sonnet-4-6",
+			})
+		end,
+	},
 }

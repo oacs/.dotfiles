@@ -7,9 +7,9 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>{{ kanata }}</string>
+        <string>/Users/oacs/.cargo/bin/kanata</string>
         <string>-c</string>
-        <string>{{ ~/.dotfiles/config/kanata/config.kbd }}</string>
+        <string>/Users/oacs/.dotfiles/config/kanata/config.kbd</string>
     </array>
 
     <key>RunAtLoad</key>
