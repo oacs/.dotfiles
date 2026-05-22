@@ -195,6 +195,7 @@ M.add_dap_maps = function()
 	map("n", "<leader>dc", ":lua require'dap'.close()<CR>", "[D]ebug [C]lose")
 	map("n", "<leader>de", ":lua require'dap'.repl.open()<CR>", "[D]ebug [E]valuate")
 	map("n", "<leader>dv", ":lua require'dap'.vars.open()<CR>", "[D]ebug [V]ariables")
+	map("n", "<leader>du", ":lua require'dapui'.toggle()<CR>", "[D]ebug [U]I toggle")
 end
 
 -- Rest module

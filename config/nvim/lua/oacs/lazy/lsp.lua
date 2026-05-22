@@ -33,6 +33,10 @@ return { -- LSP Configuration & Plugins
 			cmd = "Neoconf",
 		},
 		"nvimtools/none-ls.nvim",
+
+		-- DAP UI
+		"rcarriga/nvim-dap-ui",
+		"nvim-neotest/nvim-nio",
 	},
 	config = function()
 		require("neodev").setup()
@@ -60,6 +64,20 @@ return { -- LSP Configuration & Plugins
 				end,
 			},
 		})
+
+		-- DAP UI setup
+		local dap, dapui = require("dap"), require("dapui")
+		dapui.setup()
+
+		dap.listeners.after.event_initialized["dapui_config"] = function()
+			dapui.open()
+		end
+		dap.listeners.before.event_terminated["dapui_config"] = function()
+			dapui.close()
+		end
+		dap.listeners.before.event_exited["dapui_config"] = function()
+			dapui.close()
+		end
 
 		-- Ensure the servers above are installed
 		local mason_lspconfig = require("mason-lspconfig")
