@@ -253,6 +253,11 @@ M.add_other_maps = function()
 
 	require("oacs.maps.maps").add_rest_maps()
 
+	-- Database maps
+	map("n", "<leader>Dt", "<cmd>DBUIToggle<cr>", "[D]atabase [T]oggle UI")
+	map("n", "<leader>Da", "<cmd>DBUIAddConnection<cr>", "[D]atabase [A]dd connection")
+	map("n", "<leader>Df", "<cmd>DBUIFindBuffer<cr>", "[D]atabase [F]ind buffer")
+
 	--- Delete Yank Paste
 	map("x", "<leader>p", '"_dP')
 	map("x", "<leader>p", '"_dP')
