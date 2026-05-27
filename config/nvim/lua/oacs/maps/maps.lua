@@ -200,10 +200,11 @@ end
 
 -- Rest module
 M.add_rest_maps = function()
-	map("n", "<leader>rr", ":Rest run<CR>", "[R]est")
-	map("n", "<leader>ro", ":Rest open<CR>", "[R]est [O]pen")
-	map("n", "<leader>rR", ":Rest last<CR>", "[R]est [L]ast")
-	map("n", "<leader>re", ":Rest env set ~/workspace/apiCalls/.env<CR>", "[R]est [E]nvironment")
+	map("n", "<leader>rr", function() require("kulala").run() end, "[R]est [R]un request")
+	map("n", "<leader>rl", function() require("kulala").run_all() end, "[R]est [R]un [L]ist all")
+	map("n", "<leader>re", function() require("kulala").set_selected_env() end, "[R]est [E]nvironment")
+	map("n", "<leader>ri", function() require("kulala").inspect() end, "[R]est [I]nspect")
+	map("n", "<leader>rc", function() require("kulala").copy() end, "[R]est [C]opy as curl")
 end
 
 -- Lsp Module
@@ -249,6 +250,8 @@ end
 M.add_other_maps = function()
 	map("n", "<leader>e", ":Oil<CR>")
 	map("n", "<leader>E", ":Oil .<CR>")
+
+	require("oacs.maps.maps").add_rest_maps()
 
 	--- Delete Yank Paste
 	map("x", "<leader>p", '"_dP')
