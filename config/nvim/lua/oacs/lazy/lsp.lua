@@ -26,20 +26,26 @@ return { -- LSP Configuration & Plugins
 		"j-hui/fidget.nvim",
 
 		-- Additional lua configuration, makes nvim stuff amazing
-		"folke/neodev.nvim",
+		{
+			"folke/lazydev.nvim",
+			ft = "lua",
+			opts = {
+				library = {
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 
 		{
 			"folke/neoconf.nvim",
 			cmd = "Neoconf",
 		},
-		"nvimtools/none-ls.nvim",
 
 		-- DAP UI
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
 	},
 	config = function()
-		require("neodev").setup()
 		require("fidget").setup({})
 		require("neoconf").setup({})
 

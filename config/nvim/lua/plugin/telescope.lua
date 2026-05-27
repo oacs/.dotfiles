@@ -47,14 +47,14 @@ end
 
 M.tmux_sessions = function(opts)
 	opts = opts or {}
-	local dirs = scan.scan_dir("/home/oacs/dev", {
+	local dirs = scan.scan_dir(vim.fn.expand("~/dev"), {
 		hidden = true,
 		depth = 1,
 		only_dirs = true,
 		selint = true,
 	})
-	table.insert(dirs, "/home/oacs/dev/dotfiles")
-	table.insert(dirs, "/home/oacs/notes")
+	table.insert(dirs, vim.fn.expand("~/dev/dotfiles"))
+	table.insert(dirs, vim.fn.expand("~/notes"))
 	pickers
 		.new(opts, {
 			prompt_title = "projects",
