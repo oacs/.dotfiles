@@ -1,5 +1,5 @@
 return {
-	enabled = false,
+	enabled = true,
 	"epwalsh/obsidian.nvim",
 	-- event = { "BufReadPre ~/dev/notes/**.md" },
 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
