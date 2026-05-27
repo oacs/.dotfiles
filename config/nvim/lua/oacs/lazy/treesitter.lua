@@ -50,6 +50,9 @@ return { -- Highlight, edit, and navigate code
 			indent = { enable = true, disable = { "python" } },
 		})
 
-		require("treesitter-context").setup()
+		local ok, ctx = pcall(require, "treesitter-context")
+		if ok then
+			ctx.setup()
+		end
 	end,
 }
