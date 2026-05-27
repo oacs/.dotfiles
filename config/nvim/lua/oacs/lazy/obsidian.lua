@@ -12,7 +12,7 @@ return {
 		"preservim/vim-markdown",
 	},
 	opts = {
-		dir = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/notes", -- no need to call 'vim.fn.expand' here
+		dir = "~/notes",
 		-- Optional, if you keep notes in a specific subdirectory of your vault.
 		notes_subdir = "slipbox",
 		-- Optional, if you keep daily notes in a separate directory.
@@ -35,7 +35,7 @@ return {
 		},
 		-- Optional, completion.
 		completion = {
-			nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+			nvim_cmp = false, -- using blink.cmp instead
 		},
 		-- Optional, customize how names/IDs for new notes are created.
 		note_id_func = function(title)
