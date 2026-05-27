@@ -1,11 +1,12 @@
 -- Treesitter
-return { -- Highlight, edit, and navigate code
-	"nvim-treesitter/nvim-treesitter",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-context",
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		"nvim-treesitter/playground",
-	},
+return {
+	{ -- Highlight, edit, and navigate code
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-context",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"nvim-treesitter/playground",
+		},
 
 	-- build = ":TSUpdate",
 	build = function()
@@ -55,4 +56,10 @@ return { -- Highlight, edit, and navigate code
 			ctx.setup()
 		end
 	end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {},
+	},
 }

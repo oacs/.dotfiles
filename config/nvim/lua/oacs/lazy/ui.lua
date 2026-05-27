@@ -17,4 +17,26 @@ return {
       },
     },
   },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = { check_ts = true },
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      indent = { char = "│" },
+      scope = { enabled = true },
+    },
+  },
+  {
+    "brenoprata10/nvim-highlight-colors",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      render = "background",
+      enable_tailwind = true,
+    },
+  },
 }
