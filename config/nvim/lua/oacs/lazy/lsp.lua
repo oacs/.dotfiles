@@ -9,6 +9,7 @@ end
 local servers = {
 	--gopls = {},
 	--rust_analyzer = {},
+	kulala_ls = {},
 	angularls = {},
 	ts_ls = {},
 	lua_ls = {},

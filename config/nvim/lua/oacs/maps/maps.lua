@@ -251,6 +251,19 @@ M.add_other_maps = function()
 	map("n", "<leader>e", ":Oil<CR>")
 	map("n", "<leader>E", ":Oil .<CR>")
 
+	map(
+		"v",
+		"<leader>fg",
+		":<C-u>lua require('plugin.format').format_selection()<CR>",
+		"[F]ormat [G]raphql"
+	)
+	map(
+		"v",
+		"<leader>fj",
+		":<C-u>lua require('plugin.format').format_json()<CR>",
+		"[F]ormat [J]son"
+	)
+
 	require("oacs.maps.maps").add_rest_maps()
 
 	-- Database maps

@@ -2,60 +2,60 @@
 return {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter-context",
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			"nvim-treesitter/playground",
+			{ "nvim-treesitter/nvim-treesitter-context" },
+			{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
 		},
+		lazy = false,
+		build = ":TSUpdate",
+		-- build = function()
+		-- 	require("nvim-treesitter.install").update({ with_sync = true })()
+		-- end,
 
-	-- build = ":TSUpdate",
-	build = function()
-		require("nvim-treesitter.install").update({ with_sync = true })()
-	end,
+		config = function()
+			require("nvim-treesitter").setup({
+				ensure_installed = {
+					-- Web development
+					"html",
+					"css",
+					"javascript",
+					"json",
+					"graphql",
+					"typescript",
+					"tsx",
+					"comment",
+					"vue",
+					"prisma",
 
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				-- Web development
-				"html",
-				"css",
-				"javascript",
-				"json",
-				"graphql",
-				"typescript",
-				"tsx",
-				"comment",
-				"vue",
-				"prisma",
-
-				-- Others
-				"bash",
-				"rust",
-				"go",
-				"lua",
-				"regex",
-				"dockerfile",
-				"markdown",
-			},
-			auto_install = true,
-			highlight = { enable = true },
-			incremental_selection = {
-				enabled = true,
-				keymaps = {
-					init_selection = "gnn",
-					node_incremental = "grn",
-					scope_incremental = "grc",
-					node_decremental = "grm",
+					-- Others
+					"bash",
+					"rust",
+					"go",
+					"lua",
+					"regex",
+					"dockerfile",
+					"markdown",
 				},
-			},
-			indent = { enable = true, disable = { "python" } },
-		})
+				auto_install = true,
+				highlight = { enable = true },
+				incremental_selection = {
+					enabled = true,
+					keymaps = {
+						init_selection = "gnn",
+						node_incremental = "grn",
+						scope_incremental = "grc",
+						node_decremental = "grm",
+					},
+				},
+				indent = { enable = true, disable = { "python" } },
+			})
 
-		local ok, ctx = pcall(require, "treesitter-context")
-		if ok then
-			ctx.setup()
-		end
-	end,
+			local ok, ctx = pcall(require, "treesitter-context")
+			if ok then
+				ctx.setup()
+			end
+		end,
 	},
 	{
 		"windwp/nvim-ts-autotag",

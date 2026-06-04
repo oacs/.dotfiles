@@ -18,6 +18,7 @@
 [core]
 	pager = nvim -
   difftool = true
+	excludesFile = ~/.dotfiles/.gitignore
 
 [interactive]
 	diffFilter = delta --color-only
